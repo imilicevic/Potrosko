@@ -17,6 +17,9 @@ public class Category extends Model {
     @Column(name="description")
     private String description;
 
+    @Column(name="categoryImg")
+    private String categoryImg;
+
     public Category(){
         super();
     }
@@ -40,5 +43,9 @@ public class Category extends Model {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setCategoryImg(String description) {
+        this.categoryImg = categoryImg;
     }
 }

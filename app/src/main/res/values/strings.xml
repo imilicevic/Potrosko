@@ -1,8 +1,12 @@
 <resources>
-    <string name="app_name">Potrosko</string>
+    <string name="app_name">Potroško</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="btnIncomeText">Prihod</string>
+    <string name="btnExpenseText">Trošak</string>
+    <string name="title_activity_main">MainActivity</string>
+
 </resources>
