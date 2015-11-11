@@ -10,15 +10,29 @@
     tools:showIn="@layout/activity_main" tools:context="com.foi.air.potrosko.MainActivity">
 
 
+
     <!-- Home screen fragment-->
     <fragment
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:name="com.foi.air.potrosko.HomeScreen"
-        android:id="@+id/fragment"
+        android:id="@+id/fragmentHome"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         tools:layout="@layout/fragment_home_screen" />
 
+
+    <!-- Chart fragment
+    <fragment
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:name="com.foi.air.potrosko.ChartFragment"
+        android:id="@+id/fragmentChart"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        tools:layout="@layout/fragment_chart"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true" />
+    -->
 </RelativeLayout>
