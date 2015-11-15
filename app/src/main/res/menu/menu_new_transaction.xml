@@ -1,0 +1,25 @@
+    <menu xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.foi.air.potrosko.NewTransaction">
+
+        <item
+            android:id="@+id/action_cancel"
+            android:orderInCategory="100"
+            android:title="Cancel"
+            android:icon="@drawable/ic_cancel"
+            app:showAsAction="ifRoom"
+            >
+        </item>
+        <item
+            android:id="@+id/action_accept"
+            android:orderInCategory="200"
+            android:title="Accept"
+            android:icon="@drawable/ic_accept"
+            app:showAsAction="ifRoom"
+            >
+
+        </item>
+
+
+</menu>

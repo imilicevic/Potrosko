@@ -1,36 +1,37 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="com.foi.air.potrosko.ChartFragment"
-    >
-
-    <!-- TODO: Update blank fragment layout -->
-
+    android:layout_height="match_parent" tools:context="com.foi.air.potrosko.ChartFragment">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="left|top">
+        android:layout_gravity="left|top"
+        android:weightSum="1">
+    </LinearLayout>
+
 
         <LinearLayout
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            ></LinearLayout>
+            android:layout_marginLeft="100dp">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btnIncomeText"
-            android:id="@+id/btnIncome" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnIncomeText"
+                android:id="@+id/btnIncome"
+                android:layout_weight="0.07" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btnExpenseText"
-            android:id="@+id/btnExpense" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnExpenseText"
+                android:id="@+id/btnExpense" />
+        </LinearLayout>
 
-    </LinearLayout>
+
 
     <ImageView
         android:layout_width="match_parent"
@@ -48,9 +49,10 @@
 
         <ListView
             android:layout_width="wrap_content"
-            android:layout_height="318dp"
-            android:id="@+id/listView"
-            android:layout_gravity="center_horizontal|bottom" />
+            android:layout_height="0dp"
+            android:id="@+id/listViewChart"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1" />
     </LinearLayout>
 
 </FrameLayout>
