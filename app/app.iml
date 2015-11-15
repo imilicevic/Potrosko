@@ -95,9 +95,14 @@
     <orderEntry type="library" exported="" name="recyclerview-v7-23.1.0" level="project" />
     <orderEntry type="library" exported="" name="activeandroid-3.1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" exported="" name="support-v4-23.1.0" level="project" />
+<<<<<<< HEAD
     <orderEntry type="library" exported="" name="design-23.1.0" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-23.1.0" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-23.1.0" level="project" />
+=======
+    <orderEntry type="library" exported="" name="butterknife-6.1.0" level="project" />
+    <orderEntry type="module" module-name="core" exported="" />
+>>>>>>> 3e926e77824c1250e2e76006deeafaffe2dee644
     <orderEntry type="module" module-name="db" exported="" />
     <orderEntry type="module" module-name="core" exported="" />
   </component>

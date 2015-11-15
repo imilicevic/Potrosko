@@ -11,13 +11,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class ChartFragment extends Fragment {
+public class HomeScreenFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_chart, container, false);
+        return inflater.inflate(R.layout.fragment_home_screen, container, false);
     }
 
     @Override
@@ -25,7 +25,7 @@ public class ChartFragment extends Fragment {
         // TODO Srediti listView dummy podatke
         super.onActivityCreated(savedInstanceState);
         Log.d("CreatedActivity", "LaunchpadFragment");
-        ListView plaftaList= (ListView) getActivity().findViewById(R.id.listViewChart);
+        ListView plaftaList= (ListView) getActivity().findViewById(R.id.listViewHome);
         // Gets the ListView from the View list of the parent activity
         // Gets a CursorAdapter
         String[] str = {"Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"};
@@ -37,11 +37,12 @@ public class ChartFragment extends Fragment {
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String sky = String.valueOf(parent.getItemAtPosition(position));
-                        Toast.makeText(getActivity(), sky, Toast.LENGTH_SHORT).show();
+                        String ajs = String.valueOf(parent.getItemAtPosition(position));
+                        Toast.makeText(getActivity(), ajs, Toast.LENGTH_SHORT).show();
                     }
                 }
         );
 
     }
+
 }

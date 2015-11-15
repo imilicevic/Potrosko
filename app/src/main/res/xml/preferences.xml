@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceScreen
+        android:key="pref_key_pass_title"
+        android:title="@string/pass_title"
+        android:summary="@string/pass_summary"
+        android:defaultValue=""
+        >
+
+        <Preference
+            android:key="pref_key_setpass_title"
+            android:title="@string/setpass_title"
+            android:summary="@string/setpass_summary"
+            android:defaultValue=""
+            />
+
+        <EditTextPreference
+            android:key="pref_key_changepass_title"
+            android:title="@string/changepass_title"
+            android:summary="@string/changepass_summary"
+            android:defaultValue=""
+            />
+
+        </PreferenceScreen>
+
+
+    <ListPreference
+        android:key="pref_key_curr_title"
+        android:title="@string/curr_title"
+        android:entries="@array/currencies"
+        android:entryValues="@array/currencies_values"
+        android:defaultValue=""
+        />
+
+    <ListPreference
+        android:key="pref_key_lang_title"
+        android:title="@string/lang_title"
+        android:entries="@array/languages"
+        android:entryValues="@array/languages_values"
+        android:defaultValue=""
+        />
+
+    </PreferenceScreen>
