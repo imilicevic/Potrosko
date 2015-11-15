@@ -10,7 +10,6 @@
     tools:showIn="@layout/activity_main" tools:context="com.foi.air.potrosko.MainActivity">
 
 
-
     <!-- Home screen fragment-->
     <fragment
         android:layout_width="wrap_content"

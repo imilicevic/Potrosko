@@ -26,6 +26,8 @@
         </activity>
         <activity android:name=".TransactionChartActivity" >
         </activity>
+        <activity android:name=".ChangePinActivity" >
+        </activity>
     </application>
 
 </manifest>
