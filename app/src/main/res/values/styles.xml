@@ -1,7 +1,12 @@
 <resources>
 
+    <!-- Base application theme. -->
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"> -->
+        <!-- Customize your theme here. -->
+
     <!-- Base application theme. Ovo je bilo po defaultu
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+>>>>>>> 7d38aa29bc269fad0d55a36654508978696a70d8
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>

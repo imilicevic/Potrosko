@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ChangePinActivity">
+
+    <item android:id="@+id/action_search"
+        android:title="Settings"
+        android:icon="@drawable/ic_action_cancel"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom" />
+
+
+    <item android:id="@+id/action_location_found"
+        android:title="Settings"
+        android:icon="@drawable/ic_action_accept"
+        android:orderInCategory="200"
+        app:showAsAction="ifRoom" />
+
+</menu>

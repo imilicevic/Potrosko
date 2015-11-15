@@ -1,6 +1,8 @@
 package com.foi.air.potrosko;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -12,6 +14,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileOutputStream;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
@@ -20,9 +25,12 @@ import butterknife.InjectView;
  */
 public class LoginActivity extends AppCompatActivity{
     private static final String TAG = "LoginActivity";
+    public static final String PIN = "PIN";
 
     @InjectView(R.id.input_password) EditText _passwordText;
     @InjectView(R.id.btn_login) Button _loginButton;
+
+
 
 
     @Override
@@ -30,7 +38,7 @@ public class LoginActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.inject(this);
-
+        
         _passwordText.requestFocus();
 
         _loginButton.setOnClickListener(new View.OnClickListener() {
@@ -90,6 +98,7 @@ public class LoginActivity extends AppCompatActivity{
         Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
 
         _loginButton.setEnabled(true);
+
     }
 
     public boolean validate() {
