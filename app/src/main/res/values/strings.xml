@@ -1,19 +1,18 @@
 <resources>
     <string name="app_name">Potroško</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-
-    <string name="action_settings">Settings</string>
-
-    <string name="title_activity_main">MainActivity</string>
-
-
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main"> </string>
+    
     <string name="btnIncomeText">Prihod</string>
     <string name="btnExpenseText">Trošak</string>
-    <string name="chartHome">Chart on the Homescreen</string>
 
+    <!-- Drawer -->
+    <string name="header">potrosko@gmail.com</string>
+    <string name="drawer1">Glavni pregled</string>
+    <string name="drawer2">Grafovi</string>
+    <string name="drawer3">Postavke</string>
+    <!-- ne prevoditi -->
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
 
 </resources>
