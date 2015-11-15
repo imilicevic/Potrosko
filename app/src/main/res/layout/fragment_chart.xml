@@ -48,11 +48,19 @@
         android:layout_marginTop="250dp">
 
         <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_width="353dp"
+            android:layout_height="205dp"
             android:id="@+id/listViewChart"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="1" />
+            android:layout_marginLeft="20dp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton10"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/plus"
+            android:onClick="addTransaction" />
+
     </LinearLayout>
 
 </FrameLayout>

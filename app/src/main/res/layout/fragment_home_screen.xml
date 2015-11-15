@@ -18,8 +18,18 @@
 
         <ListView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="234dp"
             android:id="@+id/listViewHome"
             android:layout_marginLeft="20dp"/>
+
     </LinearLayout>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton11"
+        android:layout_gravity="center_horizontal|bottom"
+        android:onClick="addTransaction"
+        android:src="@drawable/plus" />
+
 </FrameLayout>

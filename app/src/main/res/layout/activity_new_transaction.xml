@@ -27,13 +27,13 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Expense"
+                android:text="Trošak"
                 android:id="@+id/btnExpense" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Income"
+                android:text="Prihod"
                 android:id="@+id/btnIncome" />
 
         </LinearLayout>

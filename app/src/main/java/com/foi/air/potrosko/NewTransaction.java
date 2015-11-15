@@ -55,10 +55,10 @@ public class NewTransaction extends AppCompatActivity {
                 return true;
             case R.id.action_cancel:
                 this.finish();
-                /*
+
                 Intent myIntent2 = new Intent(this, MainActivity.class);
                 startActivity(myIntent2);
-                */
+
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

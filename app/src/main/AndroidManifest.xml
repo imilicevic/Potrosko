@@ -19,7 +19,7 @@
 
         <activity
             android:name=".MainActivity"
-            android:label="MainActivity"
+            android:label="Glavni pregled"
             android:theme="@style/AppTheme" >
         </activity>
 

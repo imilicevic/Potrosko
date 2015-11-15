@@ -22,7 +22,7 @@
         <FrameLayout
             android:id="@+id/flContent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
         <!-- TODO Srediti ovaj gumb. Mozda ce trebati svoj zasebni xml file -->
         <!-- The button for new transaction - LINK https://guides.codepath.com/android/Floating-Action-Buttons

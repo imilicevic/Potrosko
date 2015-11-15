@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Potroško</string>
 
-    <string name="title_activity_main"> </string>
+    <string name="title_activity_main">Glavni ekran</string>
     
     <string name="btnIncomeText">Prihod</string>
     <string name="btnExpenseText">Trošak</string>
@@ -17,15 +17,15 @@
     <string name="drawer_close">Close navigation drawer</string>
 
     //settings stringovi
-    <string name="pass_title">Password</string>
-    <string name="pass_summary">Set and change password</string>
-    <string name="setpass_title">Set password</string>
-    <string name="setpass_summary">Set a PIN to protect your data</string>
-    <string name="changepass_title">Change password</string>
-    <string name="changepass_summary">Change existing password</string>
+    <string name="pass_title">PIN</string>
+    <string name="pass_summary">Postavke i izmjena PIN-a</string>
+    <string name="setpass_title">Postavite PIN</string>
+    <string name="setpass_summary">Postavite PIN za zaštitu podataka</string>
+    <string name="changepass_title">Promijenite PIN</string>
+    <string name="changepass_summary">Promijenite trenutni PIN</string>
 
-    <string name="curr_title">Currency</string>
-    <string name="lang_title">Language</string>
+    <string name="curr_title">Valuta</string>
+    <string name="lang_title">Jezik</string>
 
 
 

@@ -29,7 +29,7 @@
                 android:gravity="center_horizontal"
                 android:password="true"
                 android:inputType="numberPassword"
-                android:hint="Enter PIN"/>
+                android:hint="Unesite PIN"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.v7.widget.AppCompatButton
@@ -40,7 +40,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:padding="12dp"
-            android:text="Login"/>
+            android:text="Prijava"/>
 
     </LinearLayout>
 </ScrollView>

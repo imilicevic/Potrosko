@@ -1,7 +1,9 @@
 package com.foi.air.potrosko;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 /**
  * Created by Ivan on 14.11.2015..
@@ -23,4 +25,5 @@ public class SettingsActivity extends Activity {
         super.onBackPressed();
         this.finish();
     }
+
 }

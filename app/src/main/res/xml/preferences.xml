@@ -13,6 +13,7 @@
             android:title="@string/setpass_title"
             android:summary="@string/setpass_summary"
             android:defaultValue=""
+
             />
 
         <EditTextPreference
