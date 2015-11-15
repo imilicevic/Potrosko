@@ -28,9 +28,9 @@ public class HomeScreenFragment extends Fragment {
         ListView plaftaList= (ListView) getActivity().findViewById(R.id.listViewHome);
         // Gets the ListView from the View list of the parent activity
         // Gets a CursorAdapter
-        String[] ajs = {"Esi", "Mi", "Dobar", "Essi", "Mii", "Dobaaaar"};
+        String[] str = {"Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"};
         ArrayAdapter<String> plaftaAdapter;
-        plaftaAdapter= new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1, ajs);
+        plaftaAdapter= new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1, str);
         plaftaList.setAdapter(plaftaAdapter);
         // On list item clik show Toast msg with the content of item
         plaftaList.setOnItemClickListener(

@@ -92,13 +92,12 @@ public class MainActivity extends AppCompatActivity {
             case R.id.nav_second_fragment:
                 fragmentClass = ChartFragment.class;
                 break;
+            case R.id.nav_third_fragment:
+                startActivity(new Intent(getBaseContext(), SettingsActivity.class));
+                break;
             default:
                 fragmentClass = HomeScreenFragment.class;
-                Context context = getApplicationContext();
-                CharSequence text = "Postavke jos nisu razvijene. Fragment se postavlja na default.";
-                int duration = Toast.LENGTH_LONG;
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
+
         }
 
         try {
