@@ -48,8 +48,11 @@ public class AddCategory extends AppCompatActivity {
                 startActivity(myIntent);
                 return true;
             case R.id.action_cancel:
+                this.finish();
+                /*
                 Intent myIntent2 = new Intent(this, NewTransactionCategory.class);
                 startActivity(myIntent2);
+                */
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -73,5 +76,10 @@ public class AddCategory extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+    }
 
 }

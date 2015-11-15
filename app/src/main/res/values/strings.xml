@@ -11,6 +11,7 @@
     <string name="drawer1">Glavni pregled</string>
     <string name="drawer2">Grafovi</string>
     <string name="drawer3">Postavke</string>
+    <string name="drawer4">Novi unos</string>
     <!-- ne prevoditi -->
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>

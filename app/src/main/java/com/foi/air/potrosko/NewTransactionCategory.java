@@ -46,12 +46,16 @@ public class NewTransactionCategory extends AppCompatActivity {
         int id = item.getItemId();
         switch (item.getItemId()) {
             case R.id.action_accept:
+                //TODO Srediti nakon unosa povratak na homeScreen
                 Intent myIntent = new Intent(this, MainActivity.class);
                 startActivity(myIntent);
                 return true;
             case R.id.action_cancel:
+                this.finish();
+                /*
                 Intent myIntent2 = new Intent(this, NewTransaction.class);
                 startActivity(myIntent2);
+                */
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -61,9 +65,16 @@ public class NewTransactionCategory extends AppCompatActivity {
     }
 
     public void addActivity(View view) {
-// Do something in response to button
+    // Do something in response to button
         Intent intent = new Intent(this, AddCategory.class);
         startActivity(intent);
 
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+    }
+
 }

@@ -20,6 +20,10 @@
                 android:id="@+id/nav_third_fragment"
                 android:icon="@drawable/ic_three"
                 android:title="@string/drawer3"/>
+
+            <item
+                android:id="@+id/nav_fourth_fragment"
+                android:title="@string/drawer4"/>
         </menu>
 
     </item>

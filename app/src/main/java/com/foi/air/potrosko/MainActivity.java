@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView nvDrawer;
     private Class fragmentClass;
     private ActionBarDrawerToggle drawerToggle;
+    private Intent intent;
 
     public MainActivity() {
     }
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(this, LoginActivity.class);
+        intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
 
         // Set a Toolbar to replace the ActionBar.
@@ -95,6 +96,11 @@ public class MainActivity extends AppCompatActivity {
             case R.id.nav_third_fragment:
                 startActivity(new Intent(getBaseContext(), SettingsActivity.class));
                 break;
+            case R.id.nav_fourth_fragment:
+                startActivity(new Intent(getBaseContext(), NewTransaction.class));
+                break;
+
+
             default:
                 fragmentClass = HomeScreenFragment.class;
 
