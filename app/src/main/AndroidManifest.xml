@@ -5,26 +5,36 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
             android:name=".SplashScreenActivity"
             android:label="@string/app_name" >
+
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+
+        </activity>
+        <activity android:name=".TransactionChartActivity" >
+        </activity>
+        <activity
+            android:name=".NewTransaction"
+            android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.foi.air.potrosko.MainActivity"
-            android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"
-            >
+        <activity
+            android:name=".NewTransactionCategory"
+             >
         </activity>
-        <activity android:name=".TransactionChartActivity" >
+        <activity android:name=".AddCategory" >
         </activity>
     </application>
 
 </manifest>
-
