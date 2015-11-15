@@ -31,17 +31,21 @@ public class Transaction extends Model{
     @Column(name = "attachment")
     private String attachment;
 
+    @Column(name = "amount")
+    private double amount;
+
     public Transaction(){
         super();
     }
 
-    public Transaction(TransactionType transactionType, Category category, String name, Date date, String note, String attachment) {
+    public Transaction(TransactionType transactionType, Category category, String name, Date date, String note, String attachment, double amount) {
         this.transactionType = transactionType;
         this.category = category;
         this.name = name;
         this.date = date;
         this.note = note;
         this.attachment = attachment;
+        this.amount = amount;
     }
 
     public TransactionType getTransactionType() {
@@ -90,5 +94,13 @@ public class Transaction extends Model{
 
     public void setAttachment(String attachment) {
         this.attachment = attachment;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 }
