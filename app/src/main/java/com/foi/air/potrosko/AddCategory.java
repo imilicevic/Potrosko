@@ -44,6 +44,7 @@ public class AddCategory extends AppCompatActivity {
             case R.id.action_accept:
                 Intent myIntent = new Intent(this, NewTransactionCategory.class);
                 startActivity(myIntent);
+                this.finish();
                 return true;
             case R.id.action_cancel:
                 this.finish();

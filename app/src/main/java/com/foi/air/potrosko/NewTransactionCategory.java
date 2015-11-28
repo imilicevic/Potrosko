@@ -44,7 +44,6 @@ public class NewTransactionCategory extends AppCompatActivity {
         int id = item.getItemId();
         switch (item.getItemId()) {
             case R.id.action_accept:
-                //TODO Srediti nakon unosa povratak na homeScreen
                 Intent myIntent = new Intent(this, MainActivity.class);
                 startActivity(myIntent);
                 return true;
@@ -65,6 +64,7 @@ public class NewTransactionCategory extends AppCompatActivity {
     public void addActivity(View view) {
     // Do something in response to button
         Intent intent = new Intent(this, AddCategory.class);
+        // TODO startActivityForResult
         startActivity(intent);
 
     }

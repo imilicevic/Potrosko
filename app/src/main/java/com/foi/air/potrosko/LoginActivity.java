@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity{
                         // onLoginFailed();
                         progressDialog.dismiss();
                     }
-                }, 3000);
+                }, 1500);
     }
 
 
@@ -91,6 +91,9 @@ public class LoginActivity extends AppCompatActivity{
 
     public void onLoginSuccess() {
         _loginButton.setEnabled(true);
+        // Starting MainActivity
+        Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+        startActivity(intent);
         finish();
     }
 

@@ -26,7 +26,7 @@ public class NewTransaction extends AppCompatActivity {
         setContentView(R.layout.activity_new_transaction);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar); // Attaching the layout to the toolbar object
-        setSupportActionBar(toolbar);                   // Setting toolbar as the ActionBar with setSupportActionBar() call
+        setSupportActionBar(toolbar); // Setting toolbar as the ActionBar with setSupportActionBar() call
 
         EditText keyboard = (EditText) findViewById(R.id.price);
         keyboard.requestFocus();
