@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private Class fragmentClass;
     private ActionBarDrawerToggle drawerToggle;
     private Intent intent;
+    private ImageButton floatButton;
 
     public MainActivity() {
     }
@@ -33,6 +35,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Create FloatingButton
+        floatButton = (ImageButton) findViewById(R.id.imageButtonNewTransaction);
+        floatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getBaseContext(), NewTransaction.class));
+            }
+        });
 
         // Set a Toolbar to replace the ActionBar.
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -94,11 +105,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.nav_third_fragment:
                 startActivity(new Intent(getBaseContext(), SettingsActivity.class));
                 break;
-            case R.id.nav_fourth_fragment:
-                startActivity(new Intent(getBaseContext(), NewTransaction.class));
-                break;
-
-
             default:
                 fragmentClass = HomeScreenFragment.class;
 
@@ -119,16 +125,6 @@ public class MainActivity extends AppCompatActivity {
         menuItem.setChecked(true);
         setTitle(menuItem.getTitle());
         mDrawer.closeDrawers();
-
-                    /* Defaultni action button
-                    FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-                    fab.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                                    .setAction("Action", null).show();
-                        }
-                    });   */
 
     }
 
@@ -154,10 +150,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
 
-    }
-
-    public void addTransaction(View view){
-        startActivity(new Intent(getBaseContext(), NewTransaction.class));
     }
 
 }

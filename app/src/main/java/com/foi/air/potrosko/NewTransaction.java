@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -54,8 +55,13 @@ public class NewTransaction extends AppCompatActivity {
                 startActivity(myIntent);
                 return true;
             case R.id.action_cancel:
+                // Check if no view has focus & hides keyboard
+                View view = this.getCurrentFocus();
+                if (view != null) {
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                }
                 this.finish();
-
                 Intent myIntent2 = new Intent(this, MainActivity.class);
                 startActivity(myIntent2);
 

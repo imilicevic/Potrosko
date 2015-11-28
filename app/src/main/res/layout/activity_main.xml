@@ -22,15 +22,20 @@
         <FrameLayout
             android:id="@+id/flContent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent" >
 
-        <!-- TODO Srediti ovaj gumb. Mozda ce trebati svoj zasebni xml file -->
-        <!-- The button for new transaction - LINK https://guides.codepath.com/android/Floating-Action-Buttons
-        <android.support.design.widget.FloatingActionButton
-            android:src="@drawable/ic_plus"
-            app:fabSize="normal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" /> -->
+            <ImageButton
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:id="@+id/imageButtonNewTransaction"
+                android:background="@drawable/oval"
+                android:elevation="10dp"
+                android:layout_gravity="bottom|end"
+                android:layout_marginBottom="25dp"
+                android:layout_marginRight="25dp"
+                android:src="@drawable/ic_plus_light"/>
+
+        </FrameLayout>
 
     </LinearLayout>
 
@@ -44,12 +49,6 @@
         android:background="@android:color/white"
         app:menu="@menu/drawer_view"
         app:headerLayout="@layout/nav_header" />
-
-    <!-- Defaultni gumb koji je bio
-    <android.support.design.widget.FloatingActionButton android:id="@+id/fab"
-        android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end" android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_dialog_email" /> -->
 
 </android.support.v4.widget.DrawerLayout>
 

@@ -6,7 +6,7 @@
     <string name="btnIncomeText">Prihod</string>
     <string name="btnExpenseText">Trošak</string>
 
-    <!-- Drawer -->
+    <!-- Drawer  TODO izmjeniti ili maknuti potrosko@gmail.com -->
     <string name="header">potrosko@gmail.com</string>
     <string name="drawer1">Glavni pregled</string>
     <string name="drawer2">Grafovi</string>
@@ -16,7 +16,7 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
 
-    //settings stringovi
+    <!-- settings stringovi -->
     <string name="pass_title">PIN</string>
     <string name="pass_summary">Postavke i izmjena PIN-a</string>
     <string name="setpass_title">Postavite PIN</string>
@@ -26,9 +26,6 @@
 
     <string name="curr_title">Valuta</string>
     <string name="lang_title">Jezik</string>
-
-
-
 
 
 </resources>
