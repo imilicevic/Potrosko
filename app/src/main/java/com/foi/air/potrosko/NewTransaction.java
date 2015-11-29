@@ -88,7 +88,7 @@ public class NewTransaction extends AppCompatActivity {
      * menu/menu_new_transaction.xml and distribute them across your devices screen
      * evenly using a Toolbar. Implemented by plf.
      * source: https://stackoverflow.com/questions/26489079/evenly-spaced-menu-items-on-toolbar
-     */
+    */
     public void setupEvenlyDistributedToolbar(){
         // Use Display metrics to get Screen Dimensions
         Display display = getWindowManager().getDefaultDisplay();

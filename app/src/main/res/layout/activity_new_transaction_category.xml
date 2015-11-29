@@ -41,9 +41,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.30"
-                android:rowCount="4"
+                android:rowCount="3"
                 android:columnCount="3"
-                android:padding="25dp">
+                android:layout_marginLeft="30dp">
 
                 <ImageButton
                     android:layout_width="108dp"
@@ -158,9 +158,9 @@
             android:layout_height="wrap_content"
             android:inputType="date"
             android:ems="10"
-            android:id="@+id/editText4"
-            android:focusable="true"
-            android:focusableInTouchMode="true"/>
+            android:id="@+id/DatePicker"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
 
     </LinearLayout>
 
