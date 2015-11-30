@@ -13,10 +13,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,6 +33,12 @@ public class MainActivity extends AppCompatActivity {
     private Intent intent;
     private ImageButton floatButton;
 
+    // Alert Dialog Manager
+    //AlertDialogManager alert = new AlertDialogManager();
+
+    // Session Manager Class
+    SessionManagement session;
+
     public MainActivity() {
     }
 
@@ -35,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         // Create FloatingButton
         floatButton = (ImageButton) findViewById(R.id.imageButtonNewTransaction);
@@ -151,5 +164,4 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
 
     }
-
 }
