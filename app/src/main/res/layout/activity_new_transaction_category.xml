@@ -22,8 +22,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="100,00 HRK"
-            android:id="@+id/textView2"
+            android:text=""
+            android:id="@+id/txtAmount"
             android:layout_gravity="right"
             android:elegantTextHeight="false"
             android:textSize="45dp"
@@ -142,7 +142,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText"
+            android:id="@+id/txtNote"
             android:focusable="true"
             android:focusableInTouchMode="true"/>
 
@@ -158,7 +158,7 @@
             android:layout_height="wrap_content"
             android:inputType="date"
             android:ems="10"
-            android:id="@+id/DatePicker"
+            android:id="@+id/txtDate"
             android:focusable="false"
             android:focusableInTouchMode="false"/>
 

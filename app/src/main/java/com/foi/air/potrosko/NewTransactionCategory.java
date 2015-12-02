@@ -15,6 +15,14 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.foi.air.potrosko.db.Category;
+import com.foi.air.potrosko.db.Transaction;
+import com.foi.air.potrosko.db.TransactionType;
+
+import java.util.List;
 
 import com.foi.air.potrosko.core.EditTextDatePicker;
 import com.foi.air.potrosko.core.SetupEvenlyDistributedToolbar;
@@ -39,9 +47,74 @@ public class NewTransactionCategory extends AppCompatActivity {
 
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
-        EditText edittext = (EditText) findViewById(R.id.DatePicker);
+        // Date handling
+        EditText edittext = (EditText) findViewById(R.id.txtDate);
         EditTextDatePicker datepicker = new EditTextDatePicker(this, edittext);
         datepicker.setCurrentDate();
+
+        // Getting data from previous activity (NewTransaction)
+        List<TransactionType> transactionTypes = TransactionType.getAll();
+        if(transactionTypes == null || transactionTypes.size() <= 0){
+            TransactionType expense = new TransactionType("expense", "amounts spent during time period");
+            TransactionType income = new TransactionType("income", "amounts received during time period");
+
+            expense.save();
+            Toast.makeText(getApplicationContext(), expense.toString(), Toast.LENGTH_SHORT).show();
+            income.save();
+            Toast.makeText(getApplicationContext(), income.toString(), Toast.LENGTH_SHORT).show();
+
+            List<Category> categories = Category.getAll();
+            Toast.makeText(getApplicationContext(), categories.toString(), Toast.LENGTH_LONG).show();
+            if(categories == null || categories.size() <= 0) {
+
+                // expense categories
+                Category general = new Category("opće", "Općenite transakcije, nesvrstane.", expense);
+                Category food = new Category("hrana", "Izdavanja na hranu.", expense);
+                Category car = new Category("auto", "Sva izdavanja za automobil.", expense);
+                Category travel = new Category("putovanja", "Sva izdavanja za putovanja.", expense);
+                Category home = new Category("kućanstvo", "Izdavanja vezana uz kućanstvo.", expense);
+                Category shopping = new Category("shopping", "Izdavanja vezana uz shopping", expense);
+                Category transport = new Category("prijevoz", "Izdavanja za prijevoz.", expense);
+                Category other = new Category("drugo", "Ostala nesvrstana plaćanja.", expense);
+
+                // income categories
+                Category salary = new Category("plaća", "Mjesečna naknada za rad.", income);
+                Category secondIncome = new Category("drugi dohodak", "Drugi ostvareni dohodak u mjesecu.", income);
+                Category gift = new Category("poklon", "Novac primljen kao poklon.", income);
+
+                general.save();
+                food.save();
+                car.save();
+                travel.save();
+                home.save();
+                shopping.save();
+                transport.save();
+                other.save();
+
+                salary.save();
+                secondIncome.save();
+                gift.save();
+
+                Toast.makeText(getApplicationContext(), gift.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Kategorije dodane.", Toast.LENGTH_SHORT).show();
+
+            }
+        }
+
+
+        try {
+            Intent intent = getIntent();
+            String s = intent.getStringExtra("myAmount");
+            Double amount = Double.parseDouble(s);
+
+            //String amount = bundle.getString("amount");
+            TextView txtAmount = (TextView) findViewById(R.id.txtAmount);
+            txtAmount.setText(amount.toString());
+            // Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+
+        }catch (Exception ex){
+            Toast.makeText(getApplicationContext(), "Smeće", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -61,6 +134,7 @@ public class NewTransactionCategory extends AppCompatActivity {
         int id = item.getItemId();
         switch (item.getItemId()) {
             case R.id.action_accept:
+
                 Intent myIntent = new Intent(this, MainActivity.class);
                 startActivity(myIntent);
                 return true;
@@ -90,7 +164,6 @@ public class NewTransactionCategory extends AppCompatActivity {
     public void onBackPressed() {
         this.finish();
         super.onBackPressed();
-
     }
 
 }

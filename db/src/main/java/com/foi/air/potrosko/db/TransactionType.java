@@ -3,6 +3,9 @@ package com.foi.air.potrosko.db;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
+
+import java.util.List;
 
 /**
  * Created by Ivan on 29.10.2015..
@@ -40,5 +43,21 @@ public class TransactionType extends Model {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    // popis svih kategorija
+    public static List<TransactionType> getAll() {
+        List<TransactionType> transactionTypes = new Select().from(Category.class).orderBy("name ASC").execute();
+        return transactionTypes;
+    }
+
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return "Name: "
+                + getName()
+                + " Description: "
+                + getDescription()
+                + "\n";
     }
 }
