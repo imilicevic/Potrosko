@@ -1,4 +1,4 @@
-package com.foi.air.potrosko;
+package com.foi.air.potrosko.core;
 
 import android.app.DatePickerDialog;
 import android.content.Context;

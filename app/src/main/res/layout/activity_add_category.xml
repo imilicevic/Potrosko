@@ -39,13 +39,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <RadioButton android:id="@+id/radio_pirates"
+            <RadioButton android:id="@+id/radio_income"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Income"
                 android:onClick="onRadioButtonClicked"/>
 
-            <RadioButton android:id="@+id/radio_ninjas"
+            <RadioButton android:id="@+id/radio_expence"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Expenses"
