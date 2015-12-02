@@ -3,8 +3,10 @@ package com.foi.air.potrosko.db;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Ivan on 29.10.2015..
@@ -39,6 +41,7 @@ public class Transaction extends Model{
     }
 
     public Transaction(TransactionType transactionType, Category category, String name, Date date, String note, String attachment, double amount) {
+        super();
         this.transactionType = transactionType;
         this.category = category;
         this.name = name;
@@ -46,14 +49,6 @@ public class Transaction extends Model{
         this.note = note;
         this.attachment = attachment;
         this.amount = amount;
-    }
-
-    public TransactionType getTransactionType() {
-        return transactionType;
-    }
-
-    public void setTransactionType(TransactionType transactionType) {
-        this.transactionType = transactionType;
     }
 
     public Category getCategory() {
@@ -103,4 +98,5 @@ public class Transaction extends Model{
     public void setAmount(double amount) {
         this.amount = amount;
     }
+
 }

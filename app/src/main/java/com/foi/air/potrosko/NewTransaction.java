@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class NewTransaction extends AppCompatActivity {
@@ -39,6 +40,8 @@ public class NewTransaction extends AppCompatActivity {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
 
+
+
     }
 
     @Override
@@ -50,13 +53,26 @@ public class NewTransaction extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        EditText price = (EditText) findViewById(R.id.price);
+        Double amount = 0.0;
+        try{
+            amount = Double.parseDouble(price.getText().toString());
+        }catch (Exception ex)
+        {
+            amount = 0.0;
+        }finally {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         switch (item.getItemId()) {
             case R.id.action_accept:
+
+                // Sending amount value to next activity (NewTransactionCategory)
                 Intent myIntent = new Intent(this, NewTransactionCategory.class);
+                myIntent.putExtra("myAmount", amount.toString());
+
+                Toast.makeText(getApplicationContext(), amount.toString(), Toast.LENGTH_SHORT).show();
                 startActivity(myIntent);
                 return true;
             case R.id.action_cancel:
@@ -74,7 +90,7 @@ public class NewTransaction extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-
+        }
     }
 
     @Override
