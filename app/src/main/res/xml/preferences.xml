@@ -2,26 +2,37 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <PreferenceScreen
+        android:id="@+id/listFragment"
         android:key="pref_key_pass_title"
         android:title="@string/pass_title"
         android:summary="@string/pass_summary"
         android:defaultValue=""
         >
 
-        <Preference
+        <Preference android:id="@+id/set_pin"
             android:key="pref_key_setpass_title"
             android:title="@string/setpass_title"
             android:summary="@string/setpass_summary"
-            android:defaultValue=""
-
+            android:defaultValue="">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.foi.air.potrosko"
+            android:targetClass="com.foi.air.potrosko.ChangePinActivity"
             />
+        </Preference>
 
-        <EditTextPreference
+        <Preference android:id="@+id/change_pin"
             android:key="pref_key_changepass_title"
             android:title="@string/changepass_title"
             android:summary="@string/changepass_summary"
-            android:defaultValue=""
+            android:defaultValue="">
+
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.foi.air.potrosko"
+            android:targetClass="com.foi.air.potrosko.ChangePinActivity"
             />
+        </Preference>
 
         </PreferenceScreen>
 

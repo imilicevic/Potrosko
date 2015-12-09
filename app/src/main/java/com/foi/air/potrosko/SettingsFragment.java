@@ -1,12 +1,22 @@
 package com.foi.air.potrosko;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.preference.PreferenceFragment;
+import android.support.v4.app.Fragment;
+import android.preference.Preference.OnPreferenceClickListener;
+
+import android.view.MenuItem;
+import android.view.View;
 
 /**
  * Created by Ivan on 14.11.2015..
  */
 public class SettingsFragment extends PreferenceFragment {
+    private Class fragmentClass;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -16,6 +26,14 @@ public class SettingsFragment extends PreferenceFragment {
         addPreferencesFromResource(R.xml.preferences);
 
 
+    }
+
+
+
+
+
+
+
 
     }
-}
+
