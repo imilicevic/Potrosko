@@ -3,19 +3,12 @@ package com.foi.air.potrosko;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.internal.view.menu.ActionMenuItemView;
-import android.support.v7.widget.ActionMenuView;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.RadioButton;
-
-import com.foi.air.potrosko.core.SetupEvenlyDistributedToolbar;
 
 public class AddCategory extends AppCompatActivity {
 

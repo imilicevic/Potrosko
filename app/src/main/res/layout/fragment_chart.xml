@@ -49,7 +49,7 @@
 
         <ListView
             android:layout_width="353dp"
-            android:layout_height="205dp"
+            android:layout_height="200dp"
             android:id="@+id/listViewChart"
             android:layout_marginLeft="20dp" />
 

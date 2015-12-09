@@ -1,4 +1,4 @@
-package com.foi.air.potrosko.core;
+package com.foi.air.potrosko;
 
 import android.support.v7.internal.view.menu.ActionMenuItemView;
 import android.support.v7.widget.ActionMenuView;
