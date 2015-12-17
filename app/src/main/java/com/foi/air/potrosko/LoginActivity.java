@@ -20,16 +20,10 @@ public class LoginActivity extends AppCompatActivity{
     // login button
     Button btnLogin;
 
-    // Session Manager Class
-    SessionManagement session;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        // Session Manager
-        session = new SessionManagement(getApplicationContext());
 
         // Pin input text
         txtPin = (EditText) findViewById(R.id.input_pin);
@@ -67,6 +61,8 @@ public class LoginActivity extends AppCompatActivity{
             }
         });
 
+
+
         // Login button
       /*  btnLogin = (Button) findViewById(R.id.btn_login);
 
@@ -100,5 +96,10 @@ public class LoginActivity extends AppCompatActivity{
 
             }
         }); */
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
     }
 }

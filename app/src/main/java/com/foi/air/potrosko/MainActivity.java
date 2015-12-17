@@ -30,8 +30,7 @@ public class MainActivity extends AppCompatActivity {
     // Alert Dialog Manager
     //AlertDialogManager alert = new AlertDialogManager();
 
-    // Session Manager Class
-    SessionManagement session;
+
 
     public MainActivity() {
     }
