@@ -1,48 +1,72 @@
 package com.foi.air.potrosko;
 
+
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import com.foi.air.potrosko.core.ListModel;
+import com.foi.air.potrosko.core.ListViewAdapter;
+import java.util.ArrayList;
 
 public class HomeScreenFragment extends Fragment {
 
+    ListView list;
+    ListViewAdapter customAdapter;
+    public ArrayList<ListModel> CustomListViewValuesArr = new ArrayList<ListModel>();
+
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_screen, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View v = inflater.inflate(R.layout.fragment_home_screen, null);
+        list = (ListView)v.findViewById(R.id.listViewHome);
+        //TODO dohvatiti podatke iz activeAndroida umjesto setListData
+        setListData();
+
+        // get data from the table by the MyListAdapter
+        customAdapter = new ListViewAdapter(this.getActivity(),CustomListViewValuesArr, getResources());
+        list.setAdapter(customAdapter);
+
+        return v;
     }
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        // TODO Srediti listView dummy podatke
-        super.onActivityCreated(savedInstanceState);
-        Log.d("CreatedActivity", "LaunchpadFragment");
-        ListView itemList= (ListView) getActivity().findViewById(R.id.listViewHome);
-        // Gets the ListView from the View list of the parent activity
-        // Gets a CursorAdapter
-        String[] str = {"Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"};
-        ArrayAdapter<String> itemAdapter;
-        itemAdapter= new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1, str);
-        itemList.setAdapter(itemAdapter);
-        // On list item clik show Toast msg with the content of item
-        itemList.setOnItemClickListener(
-                new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String ajs = String.valueOf(parent.getItemAtPosition(position));
-                        Toast.makeText(getActivity(), ajs, Toast.LENGTH_SHORT).show();
-                    }
-                }
-        );
+
+    // Function to set data in ArrayList
+    public void setListData()
+    {
+
+        for (int i = 0; i < 11; i++) {
+
+            final ListModel myList = new ListModel();
+
+            // Firstly take data in model object
+            myList.setCategory("Category " + i);
+            myList.setAmount(100 + i);
+            myList.setDate("01/12/2015");
+            myList.setNote("Bilješka" + i);
+            //myList.setImage("Slika" + i);
+
+            // Take Model Object in ArrayList
+            CustomListViewValuesArr.add( myList );
+        }
 
     }
+
+    //  This function used by adapter
+    public void onItemClick(int mPosition)
+    {
+        ListModel tempValues = ( ListModel ) CustomListViewValuesArr.get(mPosition);
+        //TODO ovdje pozvati activity za editiranje unosa
+        // SHOW ALERT
+        Toast.makeText(getActivity(),""+tempValues.getCategory()+"Amount:"+tempValues.getAmountString(),Toast.LENGTH_SHORT).show();
+    }
+
+
+
 
 }

@@ -18,9 +18,8 @@
 
         <ListView
             android:layout_width="wrap_content"
-            android:layout_height="234dp"
-            android:id="@+id/listViewHome"
-            android:layout_marginLeft="20dp"/>
+            android:layout_height="230dp"
+            android:id="@+id/listViewHome"/>
 
     </LinearLayout>
 

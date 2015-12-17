@@ -3,29 +3,18 @@ package com.foi.air.potrosko;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.internal.view.menu.ActionMenuItemView;
-import android.support.v7.widget.ActionMenuView;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.foi.air.potrosko.db.Category;
-import com.foi.air.potrosko.db.Transaction;
 import com.foi.air.potrosko.db.TransactionType;
-
 import java.util.List;
-
-import com.foi.air.potrosko.core.EditTextDatePicker;
-import com.foi.air.potrosko.core.SetupEvenlyDistributedToolbar;
 
 public class NewTransactionCategory extends AppCompatActivity {
 
