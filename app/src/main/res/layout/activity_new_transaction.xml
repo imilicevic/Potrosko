@@ -28,13 +28,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Trošak"
-                android:id="@+id/btnExpense" />
+                android:id="@+id/btnExpense"
+                android:textColor="@color/red"
+                />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Prihod"
-                android:id="@+id/btnIncome" />
+                android:id="@+id/btnIncome"
+                android:textColor="@color/green"
+                />
 
         </LinearLayout>
 
@@ -49,11 +53,12 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
+                android:inputType="numberSigned|numberDecimal"
                 android:ems="10"
                 android:id="@+id/price"
                 android:layout_below="@+id/linearLayout2"
                 android:layout_centerHorizontal="true"
+
                >
                 <requestFocus/>
                 </EditText>

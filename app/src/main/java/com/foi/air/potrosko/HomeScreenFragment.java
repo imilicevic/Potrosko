@@ -1,6 +1,7 @@
 package com.foi.air.potrosko;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -63,7 +64,8 @@ public class HomeScreenFragment extends Fragment {
         ListModel tempValues = ( ListModel ) CustomListViewValuesArr.get(mPosition);
         //TODO ovdje pozvati activity za editiranje unosa
         // SHOW ALERT
-        Toast.makeText(getActivity(),""+tempValues.getCategory()+"Amount:"+tempValues.getAmountString(),Toast.LENGTH_SHORT).show();
+        
+       // Toast.makeText(getActivity(),""+tempValues.getCategory()+"Amount:"+tempValues.getAmountString(),Toast.LENGTH_SHORT).show();
     }
 
 
