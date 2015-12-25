@@ -1,4 +1,4 @@
-package com.foi.air.potrosko;
+package com.foi.air.potrosko.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.foi.air.potrosko.R;
 import com.foi.air.potrosko.core.ListModel;
 import com.foi.air.potrosko.core.ListViewAdapter;
 import java.util.ArrayList;

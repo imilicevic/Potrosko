@@ -14,7 +14,7 @@
     <fragment
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:name="com.foi.air.potrosko.HomeScreenFragment"
+        android:name="com.foi.air.potrosko.fragments.HomeScreenFragment"
         android:id="@+id/fragmentHome"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -27,7 +27,7 @@
     <fragment
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:name="com.foi.air.potrosko.ChartFragment"
+        android:name="com.foi.air.potrosko.fragments.ChartFragment"
         android:id="@+id/fragmentChart"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"

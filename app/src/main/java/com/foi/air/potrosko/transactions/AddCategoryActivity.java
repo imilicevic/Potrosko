@@ -1,4 +1,4 @@
-package com.foi.air.potrosko;
+package com.foi.air.potrosko.transactions;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +10,9 @@ import android.view.View;
 import android.view.Window;
 import android.widget.RadioButton;
 
-public class AddCategory extends AppCompatActivity {
+import com.foi.air.potrosko.R;
+
+public class AddCategoryActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
 
@@ -45,14 +47,14 @@ public class AddCategory extends AppCompatActivity {
         int id = item.getItemId();
         switch (item.getItemId()) {
             case R.id.action_accept:
-                Intent myIntent = new Intent(this, NewTransactionCategory.class);
+                Intent myIntent = new Intent(this, CategoryActivity.class);
                 startActivity(myIntent);
                 this.finish();
                 return true;
             case R.id.action_cancel:
                 this.finish();
                 /*
-                Intent myIntent2 = new Intent(this, NewTransactionCategory.class);
+                Intent myIntent2 = new Intent(this, CategoryActivity.class);
                 startActivity(myIntent2);
                 */
                 return true;

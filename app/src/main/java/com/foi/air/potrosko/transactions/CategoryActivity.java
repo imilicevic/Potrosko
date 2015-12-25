@@ -1,4 +1,4 @@
-package com.foi.air.potrosko;
+package com.foi.air.potrosko.transactions;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -12,11 +12,15 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.foi.air.potrosko.MainActivity;
+import com.foi.air.potrosko.R;
 import com.foi.air.potrosko.db.Category;
 import com.foi.air.potrosko.db.TransactionType;
+
 import java.util.List;
 
-public class NewTransactionCategory extends AppCompatActivity {
+public class CategoryActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
 
@@ -41,7 +45,7 @@ public class NewTransactionCategory extends AppCompatActivity {
         EditTextDatePicker datepicker = new EditTextDatePicker(this, edittext);
         datepicker.setCurrentDate();
 
-        // Getting data from previous activity (NewTransaction)
+        // Getting data from previous activity (TransactionActivity)
         List<TransactionType> transactionTypes = TransactionType.getAll();
         if(transactionTypes == null || transactionTypes.size() <= 0){
             TransactionType expense = new TransactionType("expense", "amounts spent during time period");
@@ -130,7 +134,7 @@ public class NewTransactionCategory extends AppCompatActivity {
             case R.id.action_cancel:
                 this.finish();
                 /*
-                Intent myIntent2 = new Intent(this, NewTransaction.class);
+                Intent myIntent2 = new Intent(this, TransactionActivity.class);
                 startActivity(myIntent2);
                 */
                 return true;
@@ -143,7 +147,7 @@ public class NewTransactionCategory extends AppCompatActivity {
 
     public void addActivity(View view) {
     // Do something in response to button
-        Intent intent = new Intent(this, AddCategory.class);
+        Intent intent = new Intent(this, AddCategoryActivity.class);
         // TODO startActivityForResult
         startActivity(intent);
 

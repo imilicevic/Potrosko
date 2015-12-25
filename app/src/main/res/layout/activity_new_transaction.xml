@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context="com.foi.air.potrosko.NewTransaction">
+    tools:context="com.foi.air.potrosko.transactions.TransactionActivity">
 
     <LinearLayout
         android:orientation="vertical"

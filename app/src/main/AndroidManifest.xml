@@ -25,17 +25,17 @@
         </activity>
 
         <activity
-            android:name=".TransactionChartActivity"
+            android:name=".transactions.TransactionChartActivity"
             android:theme="@style/AppTheme">
         </activity>
 
         <activity
-            android:name=".NewTransaction"
+            android:name=".transactions.TransactionActivity"
             android:theme="@style/AppTheme" >
         </activity>
 
         <activity
-            android:name=".NewTransactionCategory"
+            android:name=".transactions.CategoryActivity"
             android:theme="@style/AppTheme">
         </activity>
 
@@ -45,7 +45,7 @@
         </activity>
 
         <activity
-            android:name=".AddCategory"
+            android:name=".transactions.AddCategoryActivity"
             android:theme="@style/AppTheme">
         </activity>
 

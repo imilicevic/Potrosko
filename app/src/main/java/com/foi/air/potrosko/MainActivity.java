@@ -16,6 +16,9 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.activeandroid.ActiveAndroid;
+import com.foi.air.potrosko.fragments.ChartFragment;
+import com.foi.air.potrosko.fragments.HomeScreenFragment;
+import com.foi.air.potrosko.transactions.TransactionActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         floatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getBaseContext(), NewTransaction.class));
+                startActivity(new Intent(getBaseContext(), TransactionActivity.class));
             }
         });
 
