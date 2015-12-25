@@ -33,7 +33,7 @@ public class TransactionActivity extends AppCompatActivity  {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_transaction);
+        setContentView(R.layout.activity_transaction);
 
         // Toolbar
         mToolbar = (Toolbar) findViewById(R.id.toolbar);

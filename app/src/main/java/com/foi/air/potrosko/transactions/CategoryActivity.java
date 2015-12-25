@@ -30,7 +30,7 @@ public class CategoryActivity extends AppCompatActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_transaction_category);
+        setContentView(R.layout.activity_category);
 
         // Toolbar
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
