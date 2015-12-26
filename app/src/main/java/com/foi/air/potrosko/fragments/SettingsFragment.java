@@ -1,4 +1,4 @@
-package com.foi.air.potrosko;
+package com.foi.air.potrosko.fragments;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -11,6 +11,8 @@ import android.preference.Preference.OnPreferenceClickListener;
 
 import android.view.MenuItem;
 import android.view.View;
+
+import com.foi.air.potrosko.R;
 
 /**
  * Created by Ivan on 14.11.2015..

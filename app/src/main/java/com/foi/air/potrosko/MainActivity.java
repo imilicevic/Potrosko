@@ -3,7 +3,9 @@ package com.foi.air.potrosko;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -16,6 +18,9 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.activeandroid.ActiveAndroid;
+import com.foi.air.potrosko.fragments.ChartFragment;
+import com.foi.air.potrosko.fragments.HomeScreenFragment;
+import com.foi.air.potrosko.transactions.TransactionActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,16 +46,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ActiveAndroid.initialize(this);
 
-        //TODO srediti button. Nije clickable kad je iznad listView-a
-        // Create FloatingButton
-        floatButton = (ImageButton) findViewById(R.id.imageButtonNewTransaction);
-        floatButton.setOnClickListener(new View.OnClickListener() {
+/*novi btn*/
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getBaseContext(), NewTransaction.class));
+            public void onClick(View view) {
+                startActivity(new Intent(getBaseContext(), TransactionActivity.class));
             }
         });
 
+        //TODO srediti button. Nije clickable kad je iznad listView-a
+        // Create FloatingButton
+/*stari btn        floatButton = (ImageButton) findViewById(R.id.imageButtonNewTransaction);
+        floatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getBaseContext(), TransactionActivity.class));
+            }
+        });
+*/
         // Set a Toolbar to replace the ActionBar.
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -108,6 +122,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.nav_third_fragment:
                 startActivity(new Intent(getBaseContext(), SettingsActivity.class));
+                break;
+            case R.id.nav_fourth_fragment:
+                startActivity(new Intent(getBaseContext(), TransactionActivity.class));
                 break;
             default:
                 fragmentClass = HomeScreenFragment.class;

@@ -1,4 +1,4 @@
-package com.foi.air.potrosko;
+package com.foi.air.potrosko.transactions;
 
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
@@ -13,6 +13,9 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.foi.air.potrosko.MainActivity;
+import com.foi.air.potrosko.R;
 import com.foi.air.potrosko.db.Category;
 import com.foi.air.potrosko.db.Transaction;
 import com.foi.air.potrosko.db.TransactionType;
@@ -22,7 +25,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class NewTransactionCategory extends AppCompatActivity {
+public class CategoryActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
 
@@ -32,7 +35,7 @@ public class NewTransactionCategory extends AppCompatActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_transaction_category);
+        setContentView(R.layout.activity_category);
 
         // Toolbar
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -47,7 +50,7 @@ public class NewTransactionCategory extends AppCompatActivity {
         EditTextDatePicker datepicker = new EditTextDatePicker(this, edittext);
         datepicker.setCurrentDate();
 
-        // Getting data from previous activity (NewTransaction)
+        // Getting data from previous activity (TransactionActivity)
         List<TransactionType> transactionTypes = TransactionType.getAll();
         if(transactionTypes == null || transactionTypes.size() <= 0){
             TransactionType expense = new TransactionType("expense", "amounts spent during time period");
@@ -150,13 +153,13 @@ public class NewTransactionCategory extends AppCompatActivity {
                     transaction.setNote(note);
                     transaction.save();
 
-                    Toast.makeText(getApplicationContext(), "Uspješno dodano.", Toast.LENGTH_SHORT);
+                    Toast.makeText(getApplicationContext(), "Uspješno dodano.", Toast.LENGTH_SHORT).show();
 
                 }
                 catch (Exception ex){
-                    Toast.makeText(getApplicationContext(), "Greška.", Toast.LENGTH_SHORT);
+                    Toast.makeText(getApplicationContext(), "Greška.", Toast.LENGTH_SHORT).show();
                 }finally {
-                    Toast.makeText(getApplicationContext(), transaction.toString(), Toast.LENGTH_SHORT);
+                    Toast.makeText(getApplicationContext(), transaction.toString(), Toast.LENGTH_SHORT).show();
                     //Intent myIntent = new Intent(this, MainActivity.class);
                     //startActivity(myIntent);
                     return true;
@@ -166,7 +169,7 @@ public class NewTransactionCategory extends AppCompatActivity {
             case R.id.action_cancel:
                 this.finish();
                 /*
-                Intent myIntent2 = new Intent(this, NewTransaction.class);
+                Intent myIntent2 = new Intent(this, TransactionActivity.class);
                 startActivity(myIntent2);
                 */
                 return true;
@@ -179,7 +182,7 @@ public class NewTransactionCategory extends AppCompatActivity {
 
     public void addActivity(View view) {
     // Do something in response to button
-        Intent intent = new Intent(this, AddCategory.class);
+        Intent intent = new Intent(this, AddCategoryActivity.class);
         // TODO startActivityForResult
         startActivity(intent);
 

@@ -1,4 +1,4 @@
-package com.foi.air.potrosko;
+package com.foi.air.potrosko.transactions;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
@@ -10,7 +10,7 @@ import java.util.Calendar;
 
 
 /**
- * Created by Marko Plaftarić on 11/29/2015. Class used in NewTransactionCategory for setting up the Date functionality
+ * Created by Marko Plaftarić on 11/29/2015. Class used in CategoryActivity for setting up the Date functionality
  */
 public class EditTextDatePicker implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
     EditText editText;

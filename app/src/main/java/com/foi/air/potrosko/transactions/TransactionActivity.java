@@ -1,12 +1,9 @@
-package com.foi.air.potrosko;
+package com.foi.air.potrosko.transactions;
 
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.renderscript.Double2;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -18,10 +15,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import butterknife.OnClick;
+import com.foi.air.potrosko.MainActivity;
+import com.foi.air.potrosko.R;
 
 
-public class NewTransaction extends AppCompatActivity  {
+public class TransactionActivity extends AppCompatActivity  {
 
     private Toolbar mToolbar;
     Button btnExp, btnInc;
@@ -35,7 +33,7 @@ public class NewTransaction extends AppCompatActivity  {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_transaction);
+        setContentView(R.layout.activity_transaction);
 
         // Toolbar
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -127,8 +125,8 @@ public class NewTransaction extends AppCompatActivity  {
         switch (item.getItemId()) {
             case R.id.action_accept:
 
-                // Sending amount value to next activity (NewTransactionCategory)
-                Intent myIntent = new Intent(this, NewTransactionCategory.class);
+                // Sending amount value to next activity (CategoryActivity)
+                Intent myIntent = new Intent(this, CategoryActivity.class);
                 myIntent.putExtra("myAmount", amount.toString());
 
                 Toast.makeText(getApplicationContext(), amount.toString(), Toast.LENGTH_SHORT).show();
