@@ -1,6 +1,7 @@
 package com.foi.air.potrosko;
 
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -13,7 +14,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.foi.air.potrosko.db.Category;
+import com.foi.air.potrosko.db.Transaction;
 import com.foi.air.potrosko.db.TransactionType;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class NewTransactionCategory extends AppCompatActivity {
@@ -120,13 +126,43 @@ public class NewTransactionCategory extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
+        Transaction transaction = new Transaction();
+
         int id = item.getItemId();
         switch (item.getItemId()) {
             case R.id.action_accept:
+                try {
+                    TextView txtAmount = (TextView) findViewById(R.id.txtAmount);
+                    Double amount = Double.parseDouble((String) txtAmount.getText());
+                    String note = ((TextView) findViewById(R.id.txtNote)).toString();
+                    TransactionType ttype = TransactionType.getAll().get(0);
+                    Category c = Category.getAll().get(0);
+                    String date = ((TextView) findViewById(R.id.txtDate)).toString();
+                    SimpleDateFormat curFormater = new SimpleDateFormat(date);
 
-                Intent myIntent = new Intent(this, MainActivity.class);
-                startActivity(myIntent);
-                return true;
+                    Date d = Calendar.getInstance().getTime();
+
+                    transaction.setCategory(c);
+                    transaction.setTransactionType(ttype);
+                    transaction.setName(c.getName());
+                    transaction.setAmount(amount);
+                    transaction.setNote(note);
+                    transaction.save();
+
+                    Toast.makeText(getApplicationContext(), "Uspješno dodano.", Toast.LENGTH_SHORT);
+
+                }
+                catch (Exception ex){
+                    Toast.makeText(getApplicationContext(), "Greška.", Toast.LENGTH_SHORT);
+                }finally {
+                    Toast.makeText(getApplicationContext(), transaction.toString(), Toast.LENGTH_SHORT);
+                    //Intent myIntent = new Intent(this, MainActivity.class);
+                    //startActivity(myIntent);
+                    return true;
+                }
+
+
             case R.id.action_cancel:
                 this.finish();
                 /*

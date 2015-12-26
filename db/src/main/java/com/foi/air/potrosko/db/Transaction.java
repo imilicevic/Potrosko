@@ -59,6 +59,14 @@ public class Transaction extends Model{
         this.category = category;
     }
 
+    public TransactionType getTransactionType(){
+        return transactionType;
+    }
+
+    public void setTransactionType(TransactionType transactionType){
+        this.transactionType = transactionType;
+    }
+
     public String getName() {
         return name;
     }
@@ -99,4 +107,22 @@ public class Transaction extends Model{
         this.amount = amount;
     }
 
+    // popis svih kategorija
+    public static List<Transaction> getAll() {
+        List<Transaction> transactions = new Select().from(Transaction.class).orderBy("date DESC").execute();
+        return transactions;
+    }
+
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return "Name: "
+                + getName()
+                + " Amount: "
+                + getAmount() +
+                " Transaction type: "
+                + getTransactionType()
+                + " Category" + Category.getAll().get(0).getName()
+                + "\n";
+    }
 }

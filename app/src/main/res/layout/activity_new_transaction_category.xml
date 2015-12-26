@@ -61,7 +61,8 @@
                     android:layout_row="0"
                     android:layout_column="2"
                     android:src="@drawable/ingredients"
-                    android:background="@null"/>
+                    android:background="@null"
+                    />
 
                 <ImageButton
                     android:layout_width="108dp"
