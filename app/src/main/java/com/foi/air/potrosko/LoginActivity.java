@@ -27,6 +27,13 @@ public class LoginActivity extends AppCompatActivity{
         setContentView(R.layout.activity_login);
 
 
+        //dohvacanje SharedPreferences iz ChangePinActivity klase
+        SharedPreferences mSettings = getSharedPreferences("ChangePinActivity", MODE_PRIVATE);
+
+        /*spremanje dohvacenog pina u pin varijablu
+        pin treba staviti umjesto "1234" kod provjere pina nakon sto se stavi provjera je li SharedPreferences
+        prazan i ako je pozvati ChangePinActivity, ako nije pozvati LoginActivity*/
+        String pin = mSettings.getString("etPinString", ChangePinActivity.etPinString);
 
 
         // Pin input text

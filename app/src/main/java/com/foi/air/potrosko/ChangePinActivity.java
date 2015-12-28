@@ -19,6 +19,7 @@ import android.widget.EditText;
  */
 public class ChangePinActivity extends AppCompatActivity {
     private Toolbar mToolbar;
+    public static String etPinString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,8 @@ public class ChangePinActivity extends AppCompatActivity {
 
         //dohvacanje vrijednosti iz edittext i pretvaranje u string
         EditText etPin = (EditText) findViewById(R.id.edittxt_pin);
-        String etPinString= etPin.getEditableText().toString();
+        etPinString = etPin.getEditableText().toString();
+
 
         //stvaranje SharedPreference datoteke
         //SharedPreferences mSettings = PreferenceManager.getDefaultSharedPreferences(this);
