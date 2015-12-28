@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import java.util.Calendar;
+import java.util.Date;
 
 
 /**
@@ -24,6 +25,7 @@ public class EditTextDatePicker implements View.OnClickListener, DatePickerDialo
         this.editText = edit;
         this.editText.setOnClickListener(this);
         this.context = context;
+
     }
 
     @Override
@@ -32,6 +34,7 @@ public class EditTextDatePicker implements View.OnClickListener, DatePickerDialo
         month = monthOfYear;
         day = dayOfMonth;
         updateDisplay();
+
     }
 
     public void onClick(View v) {
@@ -53,6 +56,6 @@ public class EditTextDatePicker implements View.OnClickListener, DatePickerDialo
 
         editText.setText(new StringBuilder()
                 // Month is 0 based so add 1
-                .append(day).append("/").append(month + 1).append("/").append(year).append(" "));
+                .append(day).append("/").append(month + 1).append("/").append(year));
     }
 }

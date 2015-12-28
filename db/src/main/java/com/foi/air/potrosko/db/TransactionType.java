@@ -60,4 +60,11 @@ public class TransactionType extends Model {
                 + getDescription()
                 + "\n";
     }
+
+    public static TransactionType getType(String name) {
+        return new Select()
+                .from(TransactionType.class)
+                .where("name = ?", name)
+                .executeSingle();
+    }
 }

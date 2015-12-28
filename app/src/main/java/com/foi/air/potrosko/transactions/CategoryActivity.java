@@ -1,5 +1,6 @@
 package com.foi.air.potrosko.transactions;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +22,7 @@ import com.foi.air.potrosko.db.Category;
 import com.foi.air.potrosko.db.Transaction;
 import com.foi.air.potrosko.db.TransactionType;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -131,40 +134,66 @@ public class CategoryActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
 
         Transaction transaction = new Transaction();
+        TransactionType ttype;
+        Category c;
+
 
         int id = item.getItemId();
         switch (item.getItemId()) {
             case R.id.action_accept:
                 try {
-                    TextView txtAmount = (TextView) findViewById(R.id.txtAmount);
-                    Double amount = Double.parseDouble((String) txtAmount.getText());
-                    String note = ((TextView) findViewById(R.id.txtNote)).toString();
-                    TransactionType ttype = TransactionType.getAll().get(0);
-                    Category c = Category.getAll().get(0);
-                    String date = ((TextView) findViewById(R.id.txtDate)).toString();
-                    SimpleDateFormat curFormater = new SimpleDateFormat(date);
+                    Intent intent = getIntent();
+                    String s = intent.getStringExtra("myAmount");
+                    Double amount = Double.parseDouble(s);
 
-                    Date d = Calendar.getInstance().getTime();
+                    // setting Transaction type
+                    if (amount > 0) {
+                        ttype = TransactionType.getType("income");
+                       // Toast.makeText(getApplicationContext(), "Prihod", Toast.LENGTH_SHORT).show();
+                    } else {
+                        ttype = TransactionType.getType("expense");
+                       // Toast.makeText(getApplicationContext(), "Trošak", Toast.LENGTH_SHORT).show();
+                    }
+                    String note = ((TextView) findViewById(R.id.txtNote)).getText().toString();
 
-                    transaction.setCategory(c);
-                    transaction.setTransactionType(ttype);
-                    transaction.setName(c.getName());
-                    transaction.setAmount(amount);
-                    transaction.setNote(note);
+
+                    c = Category.getCategory("auto");
+                    if(c == null){
+                        c = Category.getCategory("opće");
+                    }
+                    //Toast.makeText(getApplicationContext(), c.getName(), Toast.LENGTH_SHORT).show();
+                    String dateTxt = ((TextView) findViewById(R.id.txtDate)).getText().toString();
+                    Date date = Calendar.getInstance().getTime();
+                    Toast.makeText(getApplicationContext(), dateTxt, Toast.LENGTH_SHORT).show();
+
+                    DateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy");
+                    DateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    String inputDateStr = dateTxt;
+                    Date datet = inputFormat.parse(inputDateStr);
+                    String outputDateStr = outputFormat.format(datet);
+
+                    Toast.makeText(getApplicationContext(), outputDateStr.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), datet.toString(), Toast.LENGTH_SHORT).show();
+
+
+                    // Saving to db
+                    transaction = new Transaction(ttype, c, c.getName(), datet, note, null, amount);
                     transaction.save();
 
-                    Toast.makeText(getApplicationContext(), "Uspješno dodano.", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), c.getName()+ttype.getName()+amount.toString()+note.toString(), Toast.LENGTH_LONG).show();
 
+
+                    Toast.makeText(getApplicationContext(), "Uspješno dodano.", Toast.LENGTH_SHORT).show();
                 }
-                catch (Exception ex){
-                    Toast.makeText(getApplicationContext(), "Greška.", Toast.LENGTH_SHORT).show();
-                }finally {
+                catch (Exception ex) {
+                    Toast.makeText(getApplicationContext(), ex.toString(), Toast.LENGTH_LONG).show();
+                }
+                finally {
                     Toast.makeText(getApplicationContext(), transaction.toString(), Toast.LENGTH_SHORT).show();
                     //Intent myIntent = new Intent(this, MainActivity.class);
                     //startActivity(myIntent);
                     return true;
                 }
-
 
             case R.id.action_cancel:
                 this.finish();

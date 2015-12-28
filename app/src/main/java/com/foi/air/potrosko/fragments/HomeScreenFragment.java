@@ -14,7 +14,12 @@ import android.widget.Toast;
 import com.foi.air.potrosko.R;
 import com.foi.air.potrosko.core.ListModel;
 import com.foi.air.potrosko.core.ListViewAdapter;
+import com.foi.air.potrosko.db.Transaction;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 public class HomeScreenFragment extends Fragment {
 
@@ -28,7 +33,9 @@ public class HomeScreenFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_home_screen, null);
         list = (ListView)v.findViewById(R.id.listViewHome);
+
         //TODO dohvatiti podatke iz activeAndroida umjesto setListData
+        List<Transaction> transactions = Transaction.getAll();
         setListData();
 
         // get data from the table by the MyListAdapter
@@ -43,19 +50,34 @@ public class HomeScreenFragment extends Fragment {
     public void setListData()
     {
 
-        for (int i = 0; i < 11; i++) {
+        List<Transaction> transactions = Transaction.getAll();
+        for (int i = 0; i < transactions.size(); i++) {
 
             final ListModel myList = new ListModel();
+            Transaction t = transactions.get(i);
 
             // Firstly take data in model object
-            myList.setCategory("Category " + i);
-            myList.setAmount(100 + i);
-            myList.setDate("01/12/2015");
-            myList.setNote("Bilješka" + i);
+            try {
+                myList.setCategory(t.getCategory().getName());
+            }catch (Exception ex){
+                myList.setCategory("Opće");
+            }
+            myList.setAmount(t.getAmount());
+
+            SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy.");
+            String date = "";
+            try {
+                date = sdf.format(t.getDate());
+            }catch (Exception ex){
+                date = sdf.format(Calendar.getInstance().getTime());
+            }finally {
+                myList.setDate(date);
+            }
+            myList.setNote(t.getNote());
             //myList.setImage("Slika" + i);
 
             // Take Model Object in ArrayList
-            CustomListViewValuesArr.add( myList );
+            CustomListViewValuesArr.add(myList);
         }
 
     }
@@ -67,7 +89,7 @@ public class HomeScreenFragment extends Fragment {
         //TODO ovdje pozvati activity za editiranje unosa
         // SHOW ALERT
         
-       // Toast.makeText(getActivity(),""+tempValues.getCategory()+"Amount:"+tempValues.getAmountString(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(),""+tempValues.getCategory()+"Amount:"+tempValues.getAmountString(),Toast.LENGTH_SHORT).show();
     }
 
 

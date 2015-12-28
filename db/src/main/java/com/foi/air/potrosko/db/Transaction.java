@@ -119,10 +119,13 @@ public class Transaction extends Model{
         return "Name: "
                 + getName()
                 + " Amount: "
-                + getAmount() +
-                " Transaction type: "
+                + getAmount()
+                + " Note: "
+                + getNote()
+                +" Transaction type: "
                 + getTransactionType()
-                + " Category" + Category.getAll().get(0).getName()
+                + " Datum: " + getDate()
+                + " Category" + Category.getCategory("car")
                 + "\n";
     }
 }

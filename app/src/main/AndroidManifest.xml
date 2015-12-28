@@ -6,7 +6,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light" >
+        android:theme="@style/Theme.AppCompat.Light">
 
         <activity
             android:name=".SplashScreenActivity"
@@ -58,6 +58,10 @@
             android:name=".ChangePinActivity"
             android:theme="@style/AppTheme">
         </activity>
+
+
+
+
 
     </application>
 

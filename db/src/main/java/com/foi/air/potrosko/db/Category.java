@@ -87,6 +87,13 @@ public class Category extends Model {
                 + "\n";
     }
 
+    public static Category getCategory(String name){
+        return new Select()
+                .from(Category.class)
+                .where("name = ?", name)
+                .executeSingle();
+    }
+
 
 
 }
