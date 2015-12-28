@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:inputType="numberPassword"
             android:ems="10"
-            android:id="@+id/txtNote"
+            android:id="@+id/edittxt_pin"
             android:gravity="center" />
     </LinearLayout>
 
