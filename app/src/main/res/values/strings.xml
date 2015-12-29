@@ -27,5 +27,11 @@
     <string name="curr_title">Valuta</string>
     <string name="lang_title">Jezik</string>
 
+    <string name="yes">Da</string>
+    <string name="no">Ne</string>
+    <string name="delete_transaction">Jeste li sigurni da želite obrisati unos?</string>
+    <string name="transaction_options">Odaberite funkcionalnost koju želite izvršiti:</string>
+    <string name="edit">Izmjeni</string>
+    <string name="delete">Obriši</string>
 
 </resources>

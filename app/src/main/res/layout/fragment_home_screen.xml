@@ -19,7 +19,8 @@
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="230dp"
-            android:id="@+id/listViewHome"/>
+            android:id="@+id/listViewHome"
+            android:longClickable="true" />
 
     </LinearLayout>
 
