@@ -18,8 +18,6 @@ public class LoginActivity extends AppCompatActivity{
     // Pin edittext
     EditText txtPin;
 
-    // login button
-    Button btnLogin;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,7 +31,7 @@ public class LoginActivity extends AppCompatActivity{
         /*spremanje dohvacenog pina u pin varijablu
         pin treba staviti umjesto "1234" kod provjere pina nakon sto se stavi provjera je li SharedPreferences
         prazan i ako je pozvati ChangePinActivity, ako nije pozvati LoginActivity*/
-        String pin = mSettings.getString("etPinString", ChangePinActivity.etPinString);
+        final String pin2 = mSettings.getString("etPinString", ChangePinActivity.etPinString);
 
 
         // Pin input text
@@ -48,65 +46,30 @@ public class LoginActivity extends AppCompatActivity{
                     // Get pin from EditText
                     String pin = txtPin.getText().toString();
 
-                    // Check if pin is filled
-                    if(pin.trim().length() > 0){
-                        // For testing pin is checked with sample data
-                        // pin = 1234
-                        if(pin.equals("1234")){
-                            // Starting MainActivity
-                            Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(i);
-                            finish();
+                        // Check if pin is filled
+                        if(pin.trim().length() > 0){
+                            // For testing pin is checked with sample data
+                            // pin = 1234
+                            if(pin.equals(pin2)){
+                                // Starting MainActivity
+                                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                                startActivity(i);
+                                finish();
 
+                            }else{
+                                // pin doesn't match
+                                txtPin.setError("PIN is incorrect");
+                            }
                         }else{
-                            // pin doesn't match
-                            txtPin.setError("PIN is incorrect");
+                            // user didn't entered pin
+                            // Show alert asking him to enter the details
+                            txtPin.setError("Please enter PIN");
                         }
-                    }else{
-                        // user didn't entered pin
-                        // Show alert asking him to enter the details
-                        txtPin.setError("Please enter PIN");
-                    }
+
                 }
                 return false;
             }
         });
-
-
-
-        // Login button
-      /*  btnLogin = (Button) findViewById(R.id.btn_login);
-
-        // Login button click event
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-                // Get pin from EditText
-                String pin = txtPin.getText().toString();
-
-                // Check if pin is filled
-                if(pin.trim().length() > 0){
-                    // For testing pin is checked with sample data
-                    // pin = 1234
-                    if(pin.equals("1234")){
-                        // Starting MainActivity
-                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(i);
-                        finish();
-
-                    }else{
-                        // pin doesn't match
-                        txtPin.setError("PIN is incorrect");
-                    }
-                }else{
-                    // user didn't entered pin
-                    // Show alert asking him to enter the details
-                    txtPin.setError("Please enter PIN");
-                }
-
-            }
-        }); */
     }
 
     @Override

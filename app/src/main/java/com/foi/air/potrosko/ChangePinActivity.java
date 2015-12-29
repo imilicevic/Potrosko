@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.widget.EditText;
 
+import com.foi.air.potrosko.transactions.SetupEvenlyDistributedToolbar;
+
 
 /**
  * Created by Andrej on 15.11.2015..
@@ -26,11 +28,11 @@ public class ChangePinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_pin);
 
-        //Toolbar
-        //mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        // Toolbar
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
-        //SetupEvenlyDistributedToolbar.setupEvenlyDistributedToolbar(getWindowManager().getDefaultDisplay(), mToolbar, R.menu.menu_new_transaction); // Calling new method for distributing icons
-        //setSupportActionBar(mToolbar);                   // Setting toolbar as the ActionBar with setSupportActionBar() call
+        SetupEvenlyDistributedToolbar.setupEvenlyDistributedToolbar(getWindowManager().getDefaultDisplay(), mToolbar, R.menu.menu_new_transaction); // Calling new method for distributing icons
+        setSupportActionBar(mToolbar);                   // Setting toolbar as the ActionBar with setSupportActionBar() call
 
 
         //dohvacanje vrijednosti iz edittext i pretvaranje u string
@@ -46,9 +48,13 @@ public class ChangePinActivity extends AppCompatActivity {
         //pohranjivanje vrijednosti iz EditTexta u SharedPreferences
         editor.putString("etPinString", etPinString);
         editor.commit();
+    }
 
-
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_new_transaction, menu);
+        return true;
     }
 
 }

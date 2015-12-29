@@ -56,13 +56,9 @@
 
         <activity
             android:name=".ChangePinActivity"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysVisible">
         </activity>
-
-
-
-
-
     </application>
 
 </manifest>
