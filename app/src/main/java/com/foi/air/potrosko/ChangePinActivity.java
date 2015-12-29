@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.widget.EditText;
 
+import com.foi.air.potrosko.transactions.CategoryActivity;
 import com.foi.air.potrosko.transactions.SetupEvenlyDistributedToolbar;
 
 
@@ -55,6 +56,27 @@ public class ChangePinActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_new_transaction, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // stavio sam za sad da šalje na MainActivity kad se kliknu kvačića i ikisić samo
+        // da bi se mogla aplikacija koristiti, to naravno poslije treba promijeniti
+        int id = item.getItemId();
+        switch (item.getItemId()) {
+            case R.id.action_accept:
+                Intent myIntent = new Intent(this, MainActivity.class);
+                startActivity(myIntent);
+                this.finish();
+                return true;
+            case R.id.action_cancel:
+                Intent myIntent2 = new Intent(this, MainActivity.class);
+                startActivity(myIntent2);
+                this.finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 }
