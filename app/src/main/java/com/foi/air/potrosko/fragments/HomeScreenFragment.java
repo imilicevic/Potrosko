@@ -55,7 +55,6 @@ public class HomeScreenFragment extends Fragment {
             public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
 
                 try{
-
                     //transaction dialogs
                     AlertDialog.Builder dialogBuilderMain = new AlertDialog.Builder(getActivity());
                     dialogBuilderMain.setMessage(getActivity().getResources().getString(R.string.transaction_options))

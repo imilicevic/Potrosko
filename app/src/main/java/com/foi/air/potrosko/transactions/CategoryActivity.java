@@ -172,16 +172,9 @@ public class CategoryActivity extends AppCompatActivity {
                     Date datet = inputFormat.parse(inputDateStr);
                     String outputDateStr = outputFormat.format(datet);
 
-                    Toast.makeText(getApplicationContext(), outputDateStr.toString(), Toast.LENGTH_SHORT).show();
-                    Toast.makeText(getApplicationContext(), datet.toString(), Toast.LENGTH_SHORT).show();
-
-
                     // Saving to db
                     transaction = new Transaction(ttype, c, c.getName(), datet, note, null, amount);
                     transaction.save();
-
-                    //Toast.makeText(getApplicationContext(), c.getName()+ttype.getName()+amount.toString()+note.toString(), Toast.LENGTH_LONG).show();
-
 
                     Toast.makeText(getApplicationContext(), "Uspješno dodano.", Toast.LENGTH_SHORT).show();
                 }
@@ -189,10 +182,11 @@ public class CategoryActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), ex.toString(), Toast.LENGTH_LONG).show();
                 }
                 finally {
-                    Toast.makeText(getApplicationContext(), transaction.toString(), Toast.LENGTH_SHORT).show();
-                    //Intent myIntent = new Intent(this, MainActivity.class);
-                    //startActivity(myIntent);
+                    Intent myIntent = new Intent(this, MainActivity.class);
+                    startActivity(myIntent);
+                    this.finish();
                     return true;
+
                 }
 
             case R.id.action_cancel:

@@ -31,7 +31,7 @@
     <string name="no">Ne</string>
     <string name="delete_transaction">Jeste li sigurni da želite obrisati unos?</string>
     <string name="transaction_options">Odaberite funkcionalnost koju želite izvršiti:</string>
-    <string name="edit">Izmjeni</string>
+    <string name="edit">Uredi</string>
     <string name="delete">Obriši</string>
 
 </resources>
