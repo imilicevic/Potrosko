@@ -10,7 +10,7 @@ public class ListModel {
     private String note="";
     private double amount=0;
     private String date="";
-
+    private int id=0;
     //public String getImage() {return image;}
 
     public String getCategory() {
@@ -29,9 +29,9 @@ public class ListModel {
         return String.valueOf(amount);
     }
 
-    public String getDate() {
-        return date;
-    }
+    public String getDate() {  return date;  }
+
+    public int getId(){ return  id;}
 
     //public void setImage(String image) {this.image = image;}
 
@@ -47,8 +47,8 @@ public class ListModel {
         this.amount = amount;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
+    public void setDate(String date) { this.date = date;  }
+
+    public void setId(Integer id) {this.id = id; }
 
 }

@@ -12,8 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TableRow;
 import android.widget.Toast;
 
+import com.activeandroid.DatabaseHelper;
 import com.activeandroid.query.Delete;
 import com.foi.air.potrosko.R;
 import com.foi.air.potrosko.core.ListModel;
@@ -34,6 +36,7 @@ public class HomeScreenFragment extends Fragment {
     ListViewAdapter customAdapter;
     public ArrayList<ListModel> CustomListViewValuesArr = new ArrayList<ListModel>();
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,8 +55,7 @@ public class HomeScreenFragment extends Fragment {
         // long click listener implementation
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
-
+            public boolean onItemLongClick(AdapterView<?> parent, View v, final int position, final long id) {
                 try{
                     //transaction dialogs
                     AlertDialog.Builder dialogBuilderMain = new AlertDialog.Builder(getActivity());
@@ -83,6 +85,12 @@ public class HomeScreenFragment extends Fragment {
 
                                                                     //propagate changes
 
+                                                                    CustomListViewValuesArr.remove(position);
+                                                                    customAdapter.notifyDataSetChanged();
+
+
+                                                                    new Delete().from(Transaction.class).where("  amount  = ?",  "5" ).execute();
+
                                                                     break;
                                                             }
                                                         }
@@ -100,6 +108,8 @@ public class HomeScreenFragment extends Fragment {
 
                                     // TODO Logika za izmjenu podataka se poziva ovdje
 
+
+
                                     Toast.makeText(getActivity(), "Izmjena podataka", Toast.LENGTH_SHORT).show();
                                 }
                             })
@@ -112,6 +122,9 @@ public class HomeScreenFragment extends Fragment {
                 }finally {
                     //Toast.makeText(getActivity().getBaseContext(), "Long click je uspješan", Toast.LENGTH_SHORT).show();
                 }
+
+
+
                 return true;
             }
         });
@@ -156,6 +169,9 @@ public class HomeScreenFragment extends Fragment {
         }
 
     }
+
+
+
 
     //  This function used by adapter
     public void onItemClick(int mPosition)
