@@ -33,5 +33,6 @@
     <string name="transaction_options">Odaberite funkcionalnost koju želite izvršiti:</string>
     <string name="edit">Uredi</string>
     <string name="delete">Obriši</string>
+    <string name="delete_successful">Unos je obrisan</string>
 
 </resources>

@@ -115,7 +115,6 @@ public class Transaction extends Model{
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
         return "Name: "
                 + getName()
                 + " Amount: "
@@ -128,4 +127,17 @@ public class Transaction extends Model{
                 + " Category" + Category.getCategory("car")
                 + "\n";
     }
+/*
+    public static Transaction getTr(String textCategory, String textAmount, String textNote, String textDate){
+        return new Select()
+                .from(Transaction.class)
+                .where("  category  = ?", textCategory)
+                .and("  amount  = ?", textAmount)
+                .and("  note  = ?", textNote)
+                .and("  date  = ?",  textDate )
+                .executeSingle();
+
+    }
+*/
+
 }
