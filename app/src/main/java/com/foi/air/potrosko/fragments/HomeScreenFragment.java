@@ -79,6 +79,9 @@ public class HomeScreenFragment extends Fragment {
 
                                                                     String textCategoty = ((TextView) v.findViewById(R.id.text_category)).getText().toString();
                                                                     //Toast.makeText(getActivity(), textCategoty, Toast.LENGTH_SHORT).show();
+                                                                    //list.getSelectedItem();
+
+                                                                    //Toast.makeText(getActivity(), ((list.getItemAtPosition(position).toString())), Toast.LENGTH_SHORT).show();
 
                                                                     String textAmount = ((TextView) v.findViewById(R.id.text_amount)).getText().toString();
                                                                     Float ftxt = Float.parseFloat(textAmount);

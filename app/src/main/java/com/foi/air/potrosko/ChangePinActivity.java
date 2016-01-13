@@ -23,6 +23,7 @@ import com.foi.air.potrosko.transactions.SetupEvenlyDistributedToolbar;
 public class ChangePinActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     public static String etPinString;
+    EditText etPin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,18 +38,8 @@ public class ChangePinActivity extends AppCompatActivity {
 
 
         //dohvacanje vrijednosti iz edittext i pretvaranje u string
-        EditText etPin = (EditText) findViewById(R.id.edittxt_pin);
-        etPinString = etPin.getEditableText().toString();
+        etPin = (EditText) findViewById(R.id.edittxt_pin);
 
-
-        //stvaranje SharedPreference datoteke
-        //SharedPreferences mSettings = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences mSettings = this.getSharedPreferences("Settings", 0);
-        SharedPreferences.Editor editor = mSettings.edit();
-
-        //pohranjivanje vrijednosti iz EditTexta u SharedPreferences
-        editor.putString("etPinString", etPinString);
-        editor.commit();
     }
 
     @Override
@@ -65,6 +56,17 @@ public class ChangePinActivity extends AppCompatActivity {
         int id = item.getItemId();
         switch (item.getItemId()) {
             case R.id.action_accept:
+                etPinString = etPin.getEditableText().toString();
+
+
+                //stvaranje SharedPreference datoteke
+                //SharedPreferences mSettings = PreferenceManager.getDefaultSharedPreferences(this);
+                SharedPreferences mSettings = this.getSharedPreferences("Settings", 0);
+                SharedPreferences.Editor editor = mSettings.edit();
+
+                //pohranjivanje vrijednosti iz EditTexta u SharedPreferences
+                editor.putString("etPinString", etPinString);
+                editor.apply();
                 Intent myIntent = new Intent(this, MainActivity.class);
                 startActivity(myIntent);
                 this.finish();

@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity{
 
 
         //dohvacanje SharedPreferences iz ChangePinActivity klase
-        SharedPreferences mSettings = getSharedPreferences("ChangePinActivity", MODE_PRIVATE);
+        SharedPreferences mSettings = getSharedPreferences("Settings", MODE_PRIVATE);
 
         /*spremanje dohvacenog pina u pin varijablu
         pin treba staviti umjesto "1234" kod provjere pina nakon sto se stavi provjera je li SharedPreferences
