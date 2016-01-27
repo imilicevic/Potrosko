@@ -3,25 +3,20 @@
     android:layout_height="match_parent" tools:context="com.foi.air.potrosko.fragments.HomeScreenFragment">
 
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:id="@+id/homeChart"
-        android:src="@drawable/chart2" />
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:baselineAligned="false"
-        android:layout_marginTop="200dp">
-
-        <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="230dp"
-            android:id="@+id/listViewHome"
-            android:longClickable="true" />
+        android:layout_gravity="center_horizontal|top">
 
     </LinearLayout>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="427dp"
+        android:id="@+id/listViewHome"
+        android:longClickable="true"
+        android:layout_gravity="left|top" />
 
 </FrameLayout>

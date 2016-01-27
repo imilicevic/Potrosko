@@ -10,6 +10,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.foi.air.potrosko.db.Transaction;
+
 import java.util.ArrayList;
 
 /**
@@ -23,7 +25,8 @@ public class ListViewAdapter extends BaseAdapter {
     private ArrayList data;
     private static LayoutInflater inflater=null;
     public Resources res;
-    ListModel tempValues=null;
+    //ListModel tempValues=null;
+    Transaction tempValuesT=null;
     int i=0;
 
     //CustomAdapter Constructor
@@ -98,14 +101,17 @@ public class ListViewAdapter extends BaseAdapter {
         else
         {
             // Get each Model object from Arraylist
-            tempValues=null;
-            tempValues = ( ListModel ) data.get( position );
+            //tempValues=null;
+            //tempValues = ( ListModel ) data.get( position );
+
+            tempValuesT=null;
+            tempValuesT = (Transaction) data.get(position);
 
             // Set Model values in Holder elements
-            holder.textCategory.setText(tempValues.getCategory());
-            holder.textNote.setText(tempValues.getNote());
-            holder.textAmount.setText(tempValues.getAmountString());
-            holder.textDate.setText(tempValues.getDate());
+            holder.textCategory.setText(tempValuesT.getCategoryName());
+            holder.textNote.setText(tempValuesT.getNote());
+            holder.textAmount.setText(tempValuesT.getAmountString());
+            holder.textDate.setText(tempValuesT.getDate());
             //holder.image.setImageDrawable(activity.getResources().getDrawable(R.drawable.car));
             //TODO srediti dohvacanje ikona
 /*
@@ -116,7 +122,7 @@ public class ListViewAdapter extends BaseAdapter {
 
             //Set Item Click Listner for LayoutInflater for each row
 
- */           vi.setOnClickListener(new OnItemClickListener( tempValues, activity));
+ */           vi.setOnClickListener(new OnItemClickListener( tempValuesT, activity));
         }
         return vi;
     }

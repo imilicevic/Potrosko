@@ -3,7 +3,6 @@ package com.foi.air.potrosko.fragments;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,20 +11,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.activeandroid.DatabaseHelper;
 import com.activeandroid.query.Delete;
-import com.activeandroid.query.Select;
 import com.foi.air.potrosko.R;
-import com.foi.air.potrosko.core.ListModel;
-import com.foi.air.potrosko.core.ListViewAdapter;
-import com.foi.air.potrosko.core.OnItemClickListener;
 import com.foi.air.potrosko.db.Category;
 import com.foi.air.potrosko.db.Transaction;
-import com.foi.air.potrosko.db.TransactionType;
+import com.foi.air.potrosko.core.ListViewAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -36,7 +29,7 @@ public class HomeScreenFragment extends Fragment {
 
     ListView list;
     ListViewAdapter customAdapter;
-    public ArrayList<ListModel> CustomListViewValuesArr = new ArrayList<ListModel>();
+    public ArrayList<Transaction> CustomListViewValuesArr = new ArrayList<Transaction>();
 
 
     @Nullable
@@ -47,7 +40,7 @@ public class HomeScreenFragment extends Fragment {
         list = (ListView)v.findViewById(R.id.listViewHome);
 
         // dohvatiti podatke iz activeAndroida
-        final List<Transaction> transactions = Transaction.getAll();
+        final List<com.foi.air.potrosko.db.Transaction> transactions = com.foi.air.potrosko.db.Transaction.getAll();
         setListData();
 
         // get data from the table by the MyListAdapter
@@ -105,7 +98,7 @@ public class HomeScreenFragment extends Fragment {
                                                                     */
 
                                                                     //TODO Doraditi logiku za brisanje
-                                                                    new Delete().from(Transaction.class).where("  amount  = ?",  itxt ).and(" note = ?", textNote).execute();
+                                                                    new Delete().from(com.foi.air.potrosko.db.Transaction.class).where("  amount  = ?",  itxt ).and(" note = ?", textNote).execute();
                                                                     CustomListViewValuesArr.remove(position);
                                                                     customAdapter.notifyDataSetChanged();
 
@@ -157,16 +150,20 @@ public class HomeScreenFragment extends Fragment {
     {
 
         List<Transaction> transactions = Transaction.getAll();
+        List<Category> categories = Category.getAll();
         for (int i = 0; i < transactions.size(); i++) {
 
-            final ListModel myList = new ListModel();
+            final Transaction myList = new Transaction();
             Transaction t = transactions.get(i);
+
+            // TODO srediti imena kategorija
+            Category c = categories.get(1);
 
             // Firstly take data in model object
             try {
-                myList.setCategory(t.getCategory().getName());
+                myList.setCategory(t.getCategory());
             }catch (Exception ex){
-                myList.setCategory("Opće");
+                myList.setCategory(c);
             }
             myList.setAmount(t.getAmount());
 
@@ -194,7 +191,7 @@ public class HomeScreenFragment extends Fragment {
     //  This function used by adapter
     public void onItemClick(int mPosition)
     {
-        ListModel tempValues = ( ListModel ) CustomListViewValuesArr.get(mPosition);
+        Transaction tempValues = (Transaction) CustomListViewValuesArr.get(mPosition);
         //TODO ovdje pozvati activity za editiranje unosa
         // SHOW ALERT
         

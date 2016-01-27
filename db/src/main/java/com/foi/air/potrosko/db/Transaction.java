@@ -25,13 +25,10 @@ public class Transaction extends Model{
     private String name;
 
     @Column(name = "date")
-    private Date date;
+    private String date;
 
     @Column(name = "note")
     private String note;
-
-    @Column(name = "attachment")
-    private String attachment;
 
     @Column(name = "amount")
     private double amount;
@@ -40,19 +37,22 @@ public class Transaction extends Model{
         super();
     }
 
-    public Transaction(TransactionType transactionType, Category category, String name, Date date, String note, String attachment, double amount) {
+    public Transaction(TransactionType transactionType, Category category, String name, String date, String note, String attachment, double amount) {
         super();
         this.transactionType = transactionType;
         this.category = category;
         this.name = name;
         this.date = date;
         this.note = note;
-        this.attachment = attachment;
         this.amount = amount;
     }
 
     public Category getCategory() {
         return category;
+    }
+
+    public String getCategoryName() {
+        return category.getName();
     }
 
     public void setCategory(Category category) {
@@ -75,11 +75,9 @@ public class Transaction extends Model{
         this.name = name;
     }
 
-    public Date getDate() {
-        return date;
-    }
+    public String getDate() { return date;}
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -91,16 +89,12 @@ public class Transaction extends Model{
         this.note = note;
     }
 
-    public String getAttachment() {
-        return attachment;
-    }
-
-    public void setAttachment(String attachment) {
-        this.attachment = attachment;
-    }
-
     public double getAmount() {
         return amount;
+    }
+
+    public String getAmountString() {
+        return String.valueOf(amount);
     }
 
     public void setAmount(double amount) {
