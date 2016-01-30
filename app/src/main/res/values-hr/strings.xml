@@ -5,8 +5,13 @@
 
     <string name="title_activity_main">Glavni ekran</string>
 
+    <!-- chart button -->
     <string name="btnIncomeText">Prihod</string>
     <string name="btnExpenseText">Trošak</string>
+
+    <!-- change and set new pin -->
+    <string name="change_pin">UNESITE NOVI PIN</string>
+
 
     <!-- Drawer  TODO izmjeniti ili maknuti potrosko@gmail.com -->
     <string name="header">potrosko@gmail.com</string>
@@ -14,9 +19,20 @@
     <string name="drawer2">Grafovi</string>
     <string name="drawer3">Postavke</string>
     <string name="drawer4">Novi unos</string>
+
     <!-- ne prevoditi -->
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
+
+    <!-- login screen -->
+    <string name="logintext">Unesite PIN</string>
+
+    <!-- nova transakcija vrsta -->
+    <string name="newtr_prihod">Prihod</string>
+    <string name="newtr_trosak">Trošak</string>
+
+    <!-- toolbar -->
+    <string name="toolbar_title">Glavni pregled</string>
 
     <!-- settings stringovi -->
     <string name="pass_title">PIN</string>
@@ -25,10 +41,10 @@
     <string name="setpass_summary">Postavite PIN za zaštitu podataka</string>
     <string name="changepass_title">Promijenite PIN</string>
     <string name="changepass_summary">Promijenite trenutni PIN</string>
-
     <string name="curr_title">Valuta</string>
-    <string name="lang_title">Jezik</string>
 
+
+    <!-- longclick edit i delete -->
     <string name="yes">Da</string>
     <string name="no">Ne</string>
     <string name="delete_transaction">Jeste li sigurni da želite obrisati unos?</string>
@@ -39,40 +55,3 @@
 
 </resources>
 
-    <!-- kod koji je za engleski jezik - treba biti default vrijednost u postojećem UI jer values folder se smatra defaultnim folderom
-    za engleske stringove
-
-     <string name="app_name">Potroško</string>
-
-    <string name="title_activity_main">Main screen</string>
-
-    <string name="btnIncomeText">Income</string>
-    <string name="btnExpenseText">Expense</string>
-
-     <string name="header">potrosko@gmail.com</string>
-    <string name="drawer1">Overview</string>
-    <string name="drawer2">Charts</string>
-    <string name="drawer3">Settings</string>
-    <string name="drawer4">New transaction</string>
-
-    <string name="drawer_open">Open navigation drawer</string>
-    <string name="drawer_close">Close navigation drawer</string>
-
-    <string name="pass_title">PIN</string>
-    <string name="pass_summary">Setting and changing PIN</string>
-    <string name="setpass_title">Set your PIN</string>
-    <string name="setpass_summary">Set PIN to protect your data</string>
-    <string name="changepass_title">Change PIN</string>
-    <string name="changepass_summary">Change your existing PIN</string>
-
-     <string name="curr_title">Currency</string>
-    <string name="lang_title">Language</string>
-
-     <string name="yes">Yes</string>
-    <string name="no">No</string>
-    <string name="delete_transaction">Are you sure you want to delete the transaction?</string>
-    <string name="transaction_options">Choose action you want to execute:</string>
-    <string name="edit">Edit</string>
-    <string name="delete">Delete</string>
-    <string name="delete_successful">Transaction is deleted</string>
-     -->

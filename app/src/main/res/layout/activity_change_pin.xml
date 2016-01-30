@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="ENTER NEW PIN"
+            android:text="@string/change_pin"
             android:id="@+id/textView2"
             android:textSize="32dp"
             android:layout_above="@+id/txtNote"

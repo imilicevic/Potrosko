@@ -27,7 +27,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Trošak"
+                android:text="@string/newtr_trosak"
                 android:id="@+id/btnExpense"
                 android:textColor="@color/red"
                 />
@@ -35,7 +35,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Prihod"
+                android:text="@string/newtr_prihod"
                 android:id="@+id/btnIncome"
                 android:textColor="@color/green"
                 />
