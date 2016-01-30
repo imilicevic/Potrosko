@@ -37,14 +37,13 @@ public class Transaction extends Model{
         super();
     }
 
-    public Transaction(TransactionType transactionType, Category category, String name, String date, String note, String attachment, double amount) {
+    public Transaction(TransactionType transactionType, Category category, String name, String date, String note, double amount) {
         super();
         this.transactionType = transactionType;
         this.category = category;
         this.name = name;
         this.date = date;
         this.note = note;
-        this.amount = amount;
     }
 
     public Category getCategory() {

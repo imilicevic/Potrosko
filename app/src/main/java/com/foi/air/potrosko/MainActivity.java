@@ -5,7 +5,6 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -18,7 +17,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.activeandroid.ActiveAndroid;
-import com.foi.air.potrosko.fragments.ChartFragment;
+import com.foi.air.potrosko.fragments.ChartScreenFragment;
 import com.foi.air.potrosko.fragments.HomeScreenFragment;
 import com.foi.air.potrosko.transactions.TransactionActivity;
 
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ActiveAndroid.initialize(this);
 
-/*novi btn*/
+        //floating button
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,16 +54,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //TODO srediti button. Nije clickable kad je iznad listView-a
-        // Create FloatingButton
-/*stari btn        floatButton = (ImageButton) findViewById(R.id.imageButtonNewTransaction);
-        floatButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getBaseContext(), TransactionActivity.class));
-            }
-        });
-*/
         // Set a Toolbar to replace the ActionBar.
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -118,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                 fragmentClass = HomeScreenFragment.class;
                 break;
             case R.id.nav_second_fragment:
-                fragmentClass = ChartFragment.class;
+                fragmentClass = ChartScreenFragment.class;
                 break;
             case R.id.nav_third_fragment:
                 startActivity(new Intent(getBaseContext(), SettingsActivity.class));

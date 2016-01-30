@@ -173,7 +173,7 @@ public class CategoryActivity extends AppCompatActivity {
                     String outputDateStr = outputFormat.format(datet);
 
                     // TODO Saving to db
-                   transaction = new Transaction(ttype, c, c.getName(), outputDateStr, note, null, amount);
+                   transaction = new Transaction(ttype, c, c.getName(), outputDateStr, note, amount);
                    transaction.save();
 
                     Toast.makeText(getApplicationContext(), "Uspješno dodano.", Toast.LENGTH_SHORT).show();

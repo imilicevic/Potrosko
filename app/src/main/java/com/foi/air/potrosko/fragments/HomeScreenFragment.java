@@ -1,6 +1,5 @@
 package com.foi.air.potrosko.fragments;
 
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -13,13 +12,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.activeandroid.query.Delete;
 import com.foi.air.potrosko.R;
 import com.foi.air.potrosko.db.Category;
 import com.foi.air.potrosko.db.Transaction;
 import com.foi.air.potrosko.core.ListViewAdapter;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -40,7 +37,7 @@ public class HomeScreenFragment extends Fragment {
         list = (ListView)v.findViewById(R.id.listViewHome);
 
         // dohvatiti podatke iz activeAndroida
-        final List<com.foi.air.potrosko.db.Transaction> transactions = com.foi.air.potrosko.db.Transaction.getAll();
+        final List<Transaction> transactions = Transaction.getAll();
         setListData();
 
         // get data from the table by the MyListAdapter
@@ -97,8 +94,12 @@ public class HomeScreenFragment extends Fragment {
                                                                     Toast.makeText(getActivity(), transactionID.toString(), Toast.LENGTH_LONG).show(); // ne radi
                                                                     */
 
+                                                                    Toast.makeText(getActivity(), String.valueOf(id), Toast.LENGTH_LONG).show();
                                                                     //TODO Doraditi logiku za brisanje
-                                                                    new Delete().from(com.foi.air.potrosko.db.Transaction.class).where("  amount  = ?",  itxt ).and(" note = ?", textNote).execute();
+
+                                                                    //new Delete().from(Transaction.class).where("  Id  = ?", list.getCount()).execute();
+
+                                                                    new Delete().from(Transaction.class).where("  amount  = ?", itxt).and(" note = ?", textNote).execute();
                                                                     CustomListViewValuesArr.remove(position);
                                                                     customAdapter.notifyDataSetChanged();
 
