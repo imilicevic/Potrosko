@@ -8,13 +8,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.foi.air.potrosko.R;
+import com.foi.air.potrosko.db.Category;
+import com.foi.air.potrosko.db.TransactionType;
 
 public class AddCategoryActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
+    EditText editTextkat = (EditText) findViewById(R.id.txtnamec);
+    String imekat = editTextkat.getText().toString();
+    EditText editTextopis = (EditText) findViewById(R.id.txtdescrip);
+    String opiskat = editTextopis.getText().toString();
+
+    Category category=new Category();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +48,7 @@ public class AddCategoryActivity extends AppCompatActivity {
         return true;
     }
 
-
+    TransactionType ttype;
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -49,6 +59,10 @@ public class AddCategoryActivity extends AppCompatActivity {
             case R.id.action_accept:
                 Intent myIntent = new Intent(this, CategoryActivity.class);
                 startActivity(myIntent);
+                category = new Category(imekat, opiskat,ttype);
+                category.save();
+
+                Toast.makeText(getApplicationContext(), "Uspješno dodano.", Toast.LENGTH_SHORT).show();
                 this.finish();
                 return true;
             case R.id.action_cancel:
@@ -71,12 +85,14 @@ public class AddCategoryActivity extends AppCompatActivity {
         switch(view.getId()) {
             case R.id.radio_income:
                 if (checked)
+                    ttype = TransactionType.getType("income");
 
-                    break;
+                break;
             case R.id.radio_expence:
                 if (checked)
+                    ttype = TransactionType.getType("expense");
 
-                    break;
+                break;
         }
     }
 

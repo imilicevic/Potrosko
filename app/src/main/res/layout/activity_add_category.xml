@@ -25,13 +25,13 @@
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText3"
+            android:id="@+id/txtnamec"
             android:hint="Name of a new category"/>
 
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText5"
+            android:id="@+id/txtdescrip"
             android:hint="Description of a new category"/>
 
         <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
