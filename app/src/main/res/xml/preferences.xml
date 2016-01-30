@@ -45,12 +45,4 @@
         android:defaultValue=""
         />
 
-    <ListPreference
-        android:key="pref_key_lang_title"
-        android:title="@string/lang_title"
-        android:entries="@array/languages"
-        android:entryValues="@array/languages_values"
-        android:defaultValue=""
-        />
-
     </PreferenceScreen>

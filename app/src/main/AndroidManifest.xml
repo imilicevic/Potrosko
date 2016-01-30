@@ -20,7 +20,7 @@
 
         <activity
             android:name=".MainActivity"
-            android:label="Glavni pregled"
+            android:label="@string/toolbar_title"
             android:theme="@style/AppTheme" >
         </activity>
 
