@@ -183,18 +183,17 @@ public class CategoryActivity extends AppCompatActivity {
                 }
                 finally {
                     Intent myIntent = new Intent(this, MainActivity.class);
+                    myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(myIntent);
                     this.finish();
                     return true;
-
                 }
 
             case R.id.action_cancel:
+                Intent myIntent = new Intent(this, MainActivity.class);
+                myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(myIntent);
                 this.finish();
-                /*
-                Intent myIntent2 = new Intent(this, TransactionActivity.class);
-                startActivity(myIntent2);
-                */
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

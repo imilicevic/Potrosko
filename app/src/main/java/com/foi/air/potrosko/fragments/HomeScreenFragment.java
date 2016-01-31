@@ -34,7 +34,6 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
     private String name = "Overview";
 
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
@@ -114,7 +113,7 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
                                 public void onClick(DialogInterface dialog, int which) {
                                     // edit transactions
 
-                                    // TODO Logika za izmjenu podataka se poziva ovdje
+                                    //TODO ovdje pozvati activity za editiranje unosa
 
                                     Toast.makeText(getActivity(), "Izmjena podataka", Toast.LENGTH_SHORT).show();
                                 }
@@ -207,6 +206,7 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
 
     }
 
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -216,16 +216,6 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
 
 
 
-
-    //  This function used by adapter
-    public void onItemClick(int mPosition)
-    {
-        Transaction tempValues = (Transaction) CustomListViewValuesArr.get(mPosition);
-        //TODO ovdje pozvati activity za editiranje unosa
-        // SHOW ALERT
-        
-        Toast.makeText(getActivity(),""+tempValues.getCategory()+"Amount:"+tempValues.getAmountString(),Toast.LENGTH_SHORT).show();
-    }
 
 
 }

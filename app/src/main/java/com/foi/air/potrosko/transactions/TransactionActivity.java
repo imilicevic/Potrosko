@@ -129,7 +129,7 @@ public class TransactionActivity extends AppCompatActivity  {
                 Intent myIntent = new Intent(this, CategoryActivity.class);
                 myIntent.putExtra("myAmount", amount.toString());
 
-                Toast.makeText(getApplicationContext(), amount.toString(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), amount.toString(), Toast.LENGTH_SHORT).show();
                 startActivity(myIntent);
                 return true;
             case R.id.action_cancel:
@@ -139,9 +139,11 @@ public class TransactionActivity extends AppCompatActivity  {
                     InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                 }
-                this.finish();
+
                 Intent myIntent2 = new Intent(this, MainActivity.class);
+                myIntent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(myIntent2);
+                this.finish();
 
                 return true;
             default:
