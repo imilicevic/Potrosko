@@ -31,7 +31,7 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
     ListViewAdapter customAdapter;
     public ArrayList<Transaction> CustomListViewValuesArr = new ArrayList<Transaction>();
     private int position;
-    private String name = "OverviewKas";
+    private String name = "Overview";
     private ArrayList<Category> categories;
     private ArrayList<Transaction> transactions;
 

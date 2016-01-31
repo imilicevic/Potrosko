@@ -13,12 +13,19 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.foi.air.potrosko.R;
+import com.foi.air.potrosko.core.NavigationItem;
+import com.foi.air.potrosko.db.Category;
+import com.foi.air.potrosko.db.Transaction;
+
+import java.util.ArrayList;
 
 /**
  * Created by Ivan on 14.11.2015..
  */
-public class SettingsFragment extends PreferenceFragment {
+public class SettingsFragment extends PreferenceFragment implements NavigationItem {
     private Class fragmentClass;
+    private String name = "Settings";
+    private int position;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,11 +38,29 @@ public class SettingsFragment extends PreferenceFragment {
     }
 
 
+    @Override
+    public String getItemName() {
+        return name;
+    }
 
+    @Override
+    public int getPosition() {
+        return position;
+    }
 
+    @Override
+    public void setPosition(int position) {
+        this.position = position;
+    }
 
+    @Override
+    public android.app.Fragment getFragment() {
+        return this;
+    }
 
-
+    @Override
+    public void loadData(ArrayList<Category> categories, ArrayList<Transaction> transactions) {
 
     }
+}
 

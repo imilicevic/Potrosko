@@ -23,6 +23,8 @@ import com.foi.air.potrosko.db.Category;
 import com.foi.air.potrosko.db.Transaction;
 import com.foi.air.potrosko.fragments.ChartScreenFragment;
 import com.foi.air.potrosko.fragments.HomeScreenFragment;
+import com.foi.air.potrosko.fragments.SettingsFragment;
+import com.foi.air.potrosko.transactions.AddCategoryActivity;
 import com.foi.air.potrosko.transactions.TransactionActivity;
 
 import java.util.ArrayList;
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements android.app.Fragm
     private android.app.FragmentManager mFm;
     NavigationManager nm;
     private HomeScreenFragment hsf;
-
+    private SettingsFragment sf;
     // Alert Dialog Manager
     //AlertDialogManager alert = new AlertDialogManager();
 
@@ -93,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements android.app.Fragm
             // add the modules, only once, only here
             nm.addItem(new HomeScreenFragment());
             nm.addItem(new ChartScreenFragment());
+            nm.addItem(new SettingsFragment());
             nm.loadDefaultFragment();
 
         } else {  // running to reuse existing fragments

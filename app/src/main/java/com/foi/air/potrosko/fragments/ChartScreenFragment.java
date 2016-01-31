@@ -33,7 +33,7 @@ public class ChartScreenFragment extends Fragment implements NavigationItem{
 
     private PieChart pChart;
     private int position;
-    private String name = "ChartsKas";
+    private String name = "Charts";
 
     // premješteno u ChartAdapter klasu
     //private float[] yData = { 5, 10, 15, 30, 40 };

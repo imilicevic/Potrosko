@@ -18,24 +18,24 @@ public class DbDataLoader extends DataLoader {
     public void LoadData(Activity activity) {
         super.LoadData(activity); // setup the event listener (MainActivity)
 
-        List<Category> storesFromDb = null ;
-        List<Transaction> discountsFromDb = null;
+        List<Category> categoriesFromDb = null ;
+        List<Transaction> transactionsFromDb = null;
 
         boolean databaseQuerySuccessful = false;
 
         try{
-            storesFromDb = new Select().all().from(Category.class).execute();
-            discountsFromDb = new Select().all().from(Transaction.class).execute();
+            categoriesFromDb = new Select().all().from(Category.class).execute();
+            transactionsFromDb = new Select().all().from(Transaction.class).execute();
 
             databaseQuerySuccessful = true;
         }catch (NullPointerException e){
             e.printStackTrace();
         }
 
-        if(databaseQuerySuccessful == true && storesFromDb.size() > 0 ){
+        if(databaseQuerySuccessful == true && categoriesFromDb.size() > 0 ){
 
-            categories = (ArrayList<Category>) storesFromDb;
-            transactions = (ArrayList<Transaction>) discountsFromDb;
+            categories = (ArrayList<Category>) categoriesFromDb;
+            transactions = (ArrayList<Transaction>) transactionsFromDb;
 
             dataLoaded(); // raise the event
         }
