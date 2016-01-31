@@ -4,7 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +13,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.activeandroid.query.Delete;
+import com.foi.air.potrosko.Loaders.DbDataLoader;
 import com.foi.air.potrosko.R;
+import com.foi.air.potrosko.core.DataLoader;
+import com.foi.air.potrosko.core.NavigationItem;
 import com.foi.air.potrosko.db.Category;
 import com.foi.air.potrosko.db.Transaction;
 import com.foi.air.potrosko.core.ListViewAdapter;
@@ -22,11 +25,15 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class HomeScreenFragment extends Fragment {
+public class HomeScreenFragment extends Fragment implements NavigationItem{
 
     ListView list;
     ListViewAdapter customAdapter;
     public ArrayList<Transaction> CustomListViewValuesArr = new ArrayList<Transaction>();
+    private int position;
+    private String name = "OverviewKas";
+    private ArrayList<Category> categories;
+    private ArrayList<Transaction> transactions;
 
 
     @Nullable
@@ -144,6 +151,34 @@ public class HomeScreenFragment extends Fragment {
         return v;
     }
 
+    @Override
+    public String getItemName() {
+        return name;
+    }
+
+
+    @Override
+    public int getPosition() {
+        return position;
+    }
+
+
+    @Override
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
+
+    @Override
+    public android.app.Fragment getFragment() {
+        return this;
+    }
+
+    @Override
+    public void loadData(ArrayList<Category> categories, ArrayList<Transaction> transactions) {
+
+    }
+
 
 
     // Function to set data in ArrayList
@@ -184,6 +219,14 @@ public class HomeScreenFragment extends Fragment {
             CustomListViewValuesArr.add(myList);
         }
 
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        DataLoader dl = null;
+        dl = new DbDataLoader();
+        dl.LoadData(getActivity());
     }
 
 

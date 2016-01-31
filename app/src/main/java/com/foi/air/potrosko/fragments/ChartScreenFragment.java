@@ -3,12 +3,15 @@ package com.foi.air.potrosko.fragments;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.foi.air.potrosko.ChartAdapter;
 import com.foi.air.potrosko.R;
+import com.foi.air.potrosko.core.NavigationItem;
+import com.foi.air.potrosko.db.Category;
+import com.foi.air.potrosko.db.Transaction;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.Entry;
@@ -22,13 +25,15 @@ import java.util.ArrayList;
  * Created by Marko Plaftarić on 30-Jan-16.
  */
 
-public class ChartScreenFragment extends Fragment{
+public class ChartScreenFragment extends Fragment implements NavigationItem{
 
     public static Fragment newInstance() {
         return new ChartScreenFragment();
     }
 
     private PieChart pChart;
+    private int position;
+    private String name = "ChartsKas";
 
     // premješteno u ChartAdapter klasu
     //private float[] yData = { 5, 10, 15, 30, 40 };
@@ -73,6 +78,34 @@ public class ChartScreenFragment extends Fragment{
         });
 */
         return v;
+
+    }
+
+    @Override
+    public String getItemName() {
+        return name;
+    }
+
+
+    @Override
+    public int getPosition() {
+        return position;
+    }
+
+
+    @Override
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
+
+    @Override
+    public android.app.Fragment getFragment() {
+        return this;
+    }
+
+    @Override
+    public void loadData(ArrayList<Category> categories, ArrayList<Transaction> transactions) {
 
     }
 
