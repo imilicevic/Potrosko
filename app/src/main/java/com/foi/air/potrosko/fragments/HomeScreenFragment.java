@@ -13,7 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.activeandroid.query.Delete;
-import com.foi.air.potrosko.Loaders.DbDataLoader;
+import com.foi.air.potrosko.loaders.DbDataLoader;
 import com.foi.air.potrosko.R;
 import com.foi.air.potrosko.core.DataLoader;
 import com.foi.air.potrosko.core.NavigationItem;
@@ -32,8 +32,7 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
     public ArrayList<Transaction> CustomListViewValuesArr = new ArrayList<Transaction>();
     private int position;
     private String name = "Overview";
-    private ArrayList<Category> categories;
-    private ArrayList<Transaction> transactions;
+
 
 
     @Nullable
@@ -74,11 +73,8 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
                                                             switch (which){
                                                                 case DialogInterface.BUTTON_POSITIVE:
 
-                                                                    String textCategoty = ((TextView) v.findViewById(R.id.text_category)).getText().toString();
+                                                                    //String textCategoty = ((TextView) v.findViewById(R.id.text_category)).getText().toString();
                                                                     //Toast.makeText(getActivity(), textCategoty, Toast.LENGTH_SHORT).show();
-                                                                    //list.getSelectedItem();
-
-                                                                    //Toast.makeText(getActivity(), ((list.getItemAtPosition(position).toString())), Toast.LENGTH_SHORT).show();
 
                                                                     String textAmount = ((TextView) v.findViewById(R.id.text_amount)).getText().toString();
                                                                     Float ftxt = Float.parseFloat(textAmount);
@@ -88,20 +84,11 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
                                                                     String textNote = ((TextView) v.findViewById(R.id.text_note)).getText().toString();
                                                                     //Toast.makeText(getActivity(), textNote, Toast.LENGTH_SHORT).show();
 
-                                                                    String textDate = ((TextView) v.findViewById(R.id.text_date)).getText().toString();
+                                                                    //String textDate = ((TextView) v.findViewById(R.id.text_date)).getText().toString();
                                                                     //Toast.makeText(getActivity(), textDate, Toast.LENGTH_SHORT).show();
 
-                                                                    /*
-                                                                    Integer selectedFromList = (Integer)(list.getItemAtPosition(position));
-                                                                    String s = String.valueOf(selectedFromList);
-                                                                    Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show(); //ispisuje poziciju u listviewu
+                                                                    //Toast.makeText(getActivity(), String.valueOf(id), Toast.LENGTH_LONG).show();
 
-                                                                    Transaction tr = Transaction.getTr(textCategoty, textAmount, textNote, textDate);
-                                                                    Integer transactionID = Integer.parseInt(tr.getId().toString());
-                                                                    Toast.makeText(getActivity(), transactionID.toString(), Toast.LENGTH_LONG).show(); // ne radi
-                                                                    */
-
-                                                                    Toast.makeText(getActivity(), String.valueOf(id), Toast.LENGTH_LONG).show();
                                                                     //TODO Doraditi logiku za brisanje
 
                                                                     //new Delete().from(Transaction.class).where("  Id  = ?", list.getCount()).execute();
@@ -141,7 +128,6 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
                 }finally {
                     //Toast.makeText(getActivity().getBaseContext(), "Long click je uspješan", Toast.LENGTH_SHORT).show();
                 }
-
 
 
                 return true;
@@ -224,8 +210,7 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        DataLoader dl = null;
-        dl = new DbDataLoader();
+        DataLoader dl = new DbDataLoader();
         dl.LoadData(getActivity());
     }
 
@@ -241,8 +226,6 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
         
         Toast.makeText(getActivity(),""+tempValues.getCategory()+"Amount:"+tempValues.getAmountString(),Toast.LENGTH_SHORT).show();
     }
-
-
 
 
 }

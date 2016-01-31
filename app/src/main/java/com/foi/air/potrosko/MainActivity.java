@@ -5,9 +5,6 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,7 +13,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-
 import com.activeandroid.ActiveAndroid;
 import com.foi.air.potrosko.core.OnDataLoadedListener;
 import com.foi.air.potrosko.db.Category;
@@ -24,7 +20,6 @@ import com.foi.air.potrosko.db.Transaction;
 import com.foi.air.potrosko.fragments.ChartScreenFragment;
 import com.foi.air.potrosko.fragments.HomeScreenFragment;
 import com.foi.air.potrosko.fragments.SettingsFragment;
-import com.foi.air.potrosko.transactions.AddCategoryActivity;
 import com.foi.air.potrosko.transactions.TransactionActivity;
 
 import java.util.ArrayList;

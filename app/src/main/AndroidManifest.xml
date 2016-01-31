@@ -20,7 +20,6 @@
 
         <activity
             android:name=".MainActivity"
-            android:label="@string/toolbar_title"
             android:theme="@style/AppTheme" >
         </activity>
 

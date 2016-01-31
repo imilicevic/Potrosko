@@ -1,4 +1,4 @@
-package com.foi.air.potrosko.Loaders;
+package com.foi.air.potrosko.loaders;
 
 import android.app.Activity;
 
