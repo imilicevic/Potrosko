@@ -72,19 +72,19 @@ public class CategoryActivity extends AppCompatActivity {
             if(categories == null || categories.size() <= 0) {
 
                 // expense categories
-                Category general = new Category("opće", "Općenite transakcije, nesvrstane.", expense);
-                Category food = new Category("hrana", "Izdavanja na hranu.", expense);
-                Category car = new Category("auto", "Sva izdavanja za automobil.", expense);
-                Category travel = new Category("putovanja", "Sva izdavanja za putovanja.", expense);
-                Category home = new Category("kućanstvo", "Izdavanja vezana uz kućanstvo.", expense);
-                Category shopping = new Category("shopping", "Izdavanja vezana uz shopping", expense);
-                Category transport = new Category("prijevoz", "Izdavanja za prijevoz.", expense);
-                Category other = new Category("drugo", "Ostala nesvrstana plaćanja.", expense);
+                Category general = new Category("General", "Općenite transakcije, nesvrstane.", expense);
+                Category food = new Category("Food", "Izdavanja na hranu.", expense);
+                Category car = new Category("Car", "Sva izdavanja za automobil.", expense);
+                Category travel = new Category("Travel", "Sva izdavanja za putovanja.", expense);
+                Category home = new Category("House", "Izdavanja vezana uz kućanstvo.", expense);
+                Category shopping = new Category("Shopping", "Izdavanja vezana uz shopping", expense);
+                Category transport = new Category("Transport", "Izdavanja za prijevoz.", expense);
+                Category other = new Category("Other", "Ostala nesvrstana plaćanja.", expense);
 
                 // income categories
-                Category salary = new Category("plaća", "Mjesečna naknada za rad.", income);
-                Category secondIncome = new Category("drugi dohodak", "Drugi ostvareni dohodak u mjesecu.", income);
-                Category gift = new Category("poklon", "Novac primljen kao poklon.", income);
+                Category salary = new Category("Salary", "Mjesečna naknada za rad.", income);
+                Category secondIncome = new Category("Other income", "Drugi ostvareni dohodak u mjesecu.", income);
+                Category gift = new Category("Gift", "Novac primljen kao poklon.", income);
 
                 general.save();
                 food.save();

@@ -30,48 +30,75 @@
             android:textIsSelectable="false"
             android:paddingRight="15dp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select a category:"
+            android:id="@+id/textView"
+            android:textSize="20dp"
+            android:textColorLink="@color/green" />
+
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/spinner"
-            android:spinnerMode="dropdown" />
+            android:spinnerMode="dropdown"
+            android:contextClickable="false" />
 
-        <Button
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nova kategorija"
-            android:id="@+id/addcategory"
-            android:onClick="addActivity"/>
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="70dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Bilješke"
-            android:id="@+id/textView3" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add new category"
+                android:id="@+id/addcategory"
+                android:onClick="addActivity"
+                android:layout_gravity="center_horizontal" />
+        </LinearLayout>
 
-        <EditText
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtNote"
-            android:focusable="true"
-            android:focusableInTouchMode="true"/>
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Datum"
-            android:id="@+id/textView4" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Notes"
+                android:id="@+id/textView3"
+                android:paddingTop="90dp" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="date"
-            android:ems="10"
-            android:id="@+id/txtDate"
-            android:focusable="false"
-            android:focusableInTouchMode="false"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtNote"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:paddingBottom="20dp"
+                android:layout_marginBottom="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Date"
+                android:id="@+id/textView4" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:ems="10"
+                android:id="@+id/txtDate"
+                android:focusable="false"
+                android:focusableInTouchMode="false" />
+        </LinearLayout>
 
     </LinearLayout>
 
