@@ -34,6 +34,10 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
     public ArrayList<Transaction> CustomListViewValuesArr = new ArrayList<Transaction>();
     private int position;
     private String name = "Overview";
+    private String strCategory;
+    private String strDate;
+    private String strAmount;
+    private String strNote;
 
 
     @Nullable
@@ -44,8 +48,6 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
 
         list = (ListView)v.findViewById(R.id.listViewHome);
 
-        // dohvatiti podatke iz activeAndroida
-        //final List<Transaction> transactions = Transaction.getAll();
         setListData();
 
         // get data from the table by the MyListAdapter
@@ -57,6 +59,19 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
             @Override
             public boolean onItemLongClick(AdapterView<?> parent,final View v, final int position, final long id) {
                 try{
+                    //dohvacam sve iz liste
+                    strCategory = ((TextView) v.findViewById(R.id.text_category)).getText().toString();
+                    //Toast.makeText(getActivity(), textCategoty, Toast.LENGTH_SHORT).show();
+                    String textAmount = ((TextView) v.findViewById(R.id.text_amount)).getText().toString();
+                    Float ftxt = Float.parseFloat(textAmount);
+                    Integer itxt = Math.round(ftxt);
+                    strAmount = itxt.toString();
+                    //Toast.makeText(getActivity(), String.valueOf(itxt), Toast.LENGTH_SHORT).show();
+                    strNote = ((TextView) v.findViewById(R.id.text_note)).getText().toString();
+                    //Toast.makeText(getActivity(), textNote, Toast.LENGTH_SHORT).show();
+                    strDate = ((TextView) v.findViewById(R.id.text_date)).getText().toString();
+                    //Toast.makeText(getActivity(), textDate, Toast.LENGTH_SHORT).show();
+
                     //transaction dialogs
                     AlertDialog.Builder dialogBuilderMain = new AlertDialog.Builder(getActivity());
                     dialogBuilderMain.setMessage(getActivity().getResources().getString(R.string.transaction_options))
@@ -75,27 +90,8 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
                                                             switch (which){
                                                                 case DialogInterface.BUTTON_POSITIVE:
 
-                                                                    //String textCategoty = ((TextView) v.findViewById(R.id.text_category)).getText().toString();
-                                                                    //Toast.makeText(getActivity(), textCategoty, Toast.LENGTH_SHORT).show();
-
-                                                                    String textAmount = ((TextView) v.findViewById(R.id.text_amount)).getText().toString();
-                                                                    Float ftxt = Float.parseFloat(textAmount);
-                                                                    Integer itxt = Math.round(ftxt);
-                                                                    //Toast.makeText(getActivity(), String.valueOf(itxt), Toast.LENGTH_SHORT).show();
-
-                                                                    String textNote = ((TextView) v.findViewById(R.id.text_note)).getText().toString();
-                                                                    //Toast.makeText(getActivity(), textNote, Toast.LENGTH_SHORT).show();
-
-                                                                    //String textDate = ((TextView) v.findViewById(R.id.text_date)).getText().toString();
-                                                                    //Toast.makeText(getActivity(), textDate, Toast.LENGTH_SHORT).show();
-
-                                                                    //Toast.makeText(getActivity(), String.valueOf(id), Toast.LENGTH_LONG).show();
-
-                                                                    //TODO Doraditi logiku za brisanje
-
-                                                                    //new Delete().from(Transaction.class).where("  Id  = ?", list.getCount()).execute();
-
-                                                                    new Delete().from(Transaction.class).where("  amount  = ?", itxt).and(" note = ?", textNote).execute();
+                                                                    // brisanje preko id-a
+                                                                    new Delete().from(Transaction.class).where("  id  = ?", getMyId()).execute();
                                                                     CustomListViewValuesArr.remove(position);
                                                                     customAdapter.notifyDataSetChanged();
 
@@ -117,14 +113,9 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
                                     // edit transactions
 
                                     //TODO ovdje pozvati activity za editiranje unosa
-                                    List<Transaction> t = SQLiteUtils.rawQuery(Transaction.class,
-                                                    "SELECT id from Transactions where note = ?", new String[]{"kuca poso"});
-                                    String idToEdit = "";
-                                    for(int i=0; i<t.size(); i++){
-                                        idToEdit = t.get(i).getId().toString();
-                                    }
-                                    Toast.makeText(getActivity(), "Id: " + idToEdit, Toast.LENGTH_SHORT).show();
-                                    //Toast.makeText(getActivity(), "Izmjena podataka", Toast.LENGTH_SHORT).show();
+
+                                    Toast.makeText(getActivity(), "Id: " + getMyId(), Toast.LENGTH_SHORT).show();
+
                                 }
                             })
                             .show();
@@ -171,6 +162,21 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
     @Override
     public void loadData(ArrayList<Category> categories, ArrayList<Transaction> transactions) {
 
+    }
+
+
+    public String getMyId(){
+
+        List<Transaction> t = SQLiteUtils.rawQuery(Transaction.class,
+                "SELECT Transactions.id from Transactions join Categories on Transactions.Category = Categories.id " +
+                        "where note = ? and amount = ? and date = ? and Categories.name = ?"
+                , new String[]{strNote,strAmount,strDate,strCategory});
+        String idToEdit = "";
+        for(int i=0; i<t.size(); i++){
+            idToEdit = t.get(i).getId().toString();
+        }
+
+        return idToEdit;
     }
 
     // Function to set data in ArrayList
