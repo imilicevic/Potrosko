@@ -1,5 +1,7 @@
 package com.foi.air.potrosko;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,12 +9,15 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.support.v4.app.Fragment;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.Window;
 import android.widget.EditText;
 
+
+import com.foi.air.potrosko.fragments.HomeScreenFragment;
 import com.foi.air.potrosko.transactions.CategoryActivity;
 import com.foi.air.potrosko.transactions.SetupEvenlyDistributedToolbar;
 
@@ -68,11 +73,13 @@ public class ChangePinActivity extends AppCompatActivity {
                 editor.putString("etPinString", etPinString);
                 editor.apply();
                 Intent myIntent = new Intent(this, MainActivity.class);
+                myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(myIntent);
                 this.finish();
                 return true;
             case R.id.action_cancel:
                 Intent myIntent2 = new Intent(this, MainActivity.class);
+                myIntent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(myIntent2);
                 this.finish();
                 return true;

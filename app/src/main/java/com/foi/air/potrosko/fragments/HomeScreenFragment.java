@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.zip.Inflater;
 
 public class HomeScreenFragment extends Fragment implements NavigationItem{
 
@@ -237,14 +238,14 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
         CustomListViewValuesArr.clear();
     }
 
-    /*
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         DataLoader dl = new DbDataLoader();
         dl.LoadData(getActivity());
     }
-*/
+
 
 
 

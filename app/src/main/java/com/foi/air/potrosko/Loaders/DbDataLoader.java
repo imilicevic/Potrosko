@@ -1,8 +1,10 @@
 package com.foi.air.potrosko.loaders;
 
 import android.app.Activity;
+import android.widget.Toast;
 
 import com.activeandroid.query.Select;
+import com.foi.air.potrosko.R;
 import com.foi.air.potrosko.core.DataLoader;
 import com.foi.air.potrosko.db.Category;
 import com.foi.air.potrosko.db.Transaction;
@@ -33,7 +35,7 @@ public class DbDataLoader extends DataLoader {
         }
 
         if(databaseQuerySuccessful == true && categoriesFromDb.size() > 0 ){
-
+            Toast.makeText(activity, "Podaci se loadaju", Toast.LENGTH_SHORT).show();
             categories = (ArrayList<Category>) categoriesFromDb;
             transactions = (ArrayList<Transaction>) transactionsFromDb;
 
