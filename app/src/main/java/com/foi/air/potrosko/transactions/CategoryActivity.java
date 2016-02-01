@@ -11,8 +11,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +26,7 @@ import com.foi.air.potrosko.db.TransactionType;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -117,6 +120,64 @@ public class CategoryActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Smeće", Toast.LENGTH_SHORT).show();
         }
 
+
+        //kreiranje spinnera i dodavanje item-a
+        Spinner spinner;
+
+        spinner = (Spinner)findViewById(R.id.spinner);
+        ArrayList<String> list = new ArrayList<String>();
+
+
+        List<Category> AllCategorie ;
+        AllCategorie =  (List<Category>) Category.getAll();
+        String type = "";
+
+
+
+    TextView txtAmount = (TextView) findViewById(R.id.txtAmount);
+    String value = txtAmount.getText().toString();
+        try{ Double amount = Double.parseDouble(value);
+
+        if (amount < 0) {
+            type = "expense";
+            for (int i = 0; i < AllCategorie.size(); i++) {
+                String val = AllCategorie.get(i).getName().toString();
+                String ttype = AllCategorie.get(i).getTransactionType().getName().toString();
+                if (ttype.equals(type))
+                    list.add(new String(val));
+            }
+        } else {
+            type = "income";
+            for (int i = 0; i < AllCategorie.size(); i++) {
+                String val = AllCategorie.get(i).getName().toString();
+                String ttype = AllCategorie.get(i).getTransactionType().getName().toString();
+                if (ttype.equals(type))
+                    list.add(new String(val));
+            }
+
+        }
+
+
+        ArrayAdapter arrayAdapter;
+        arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, list);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(arrayAdapter);
+
+
+    }
+
+
+    catch (Exception ex){
+
+        Toast.makeText(getApplicationContext(), "Smeće", Toast.LENGTH_SHORT).show();
+    }
+
+
+
+
+
+
+
     }
 
 
@@ -156,8 +217,10 @@ public class CategoryActivity extends AppCompatActivity {
                     }
                     String note = ((TextView) findViewById(R.id.txtNote)).getText().toString();
 
+                    Spinner spinner = (Spinner)findViewById(R.id.spinner);
+                    String value = spinner.getSelectedItem().toString();
 
-                    c = Category.getCategory("auto");
+                    c = Category.getCategory(value);
                     if(c == null){
                         c = Category.getCategory("opće");
                     }

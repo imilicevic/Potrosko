@@ -19,12 +19,7 @@ import com.foi.air.potrosko.db.TransactionType;
 public class AddCategoryActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
-    EditText editTextkat = (EditText) findViewById(R.id.txtnamec);
-    String imekat = editTextkat.getText().toString();
-    EditText editTextopis = (EditText) findViewById(R.id.txtdescrip);
-    String opiskat = editTextopis.getText().toString();
 
-    Category category=new Category();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,15 +49,24 @@ public class AddCategoryActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
+        EditText editTextkat = (EditText) findViewById(R.id.txtnamec);
+        String imekat = editTextkat.getText().toString();
+        EditText editTextopis = (EditText) findViewById(R.id.txtdescrip);
+        String opiskat = editTextopis.getText().toString();
+
+        Category category=new Category();
+
         int id = item.getItemId();
         switch (item.getItemId()) {
             case R.id.action_accept:
-                Intent myIntent = new Intent(this, CategoryActivity.class);
-                startActivity(myIntent);
+
                 category = new Category(imekat, opiskat,ttype);
                 category.save();
 
                 Toast.makeText(getApplicationContext(), "Uspješno dodano.", Toast.LENGTH_SHORT).show();
+                Intent myIntent = new Intent(this, CategoryActivity.class);
+                startActivity(myIntent);
                 this.finish();
                 return true;
             case R.id.action_cancel:
