@@ -23,6 +23,7 @@ import com.foi.air.potrosko.core.ListViewAdapter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class HomeScreenFragment extends Fragment implements NavigationItem{
@@ -187,11 +188,12 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
             }
             myList.setAmount(t.getAmount());
 
-            SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy.");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy.");
             String date = "";
+
             try {
-                date = sdf.format(t.getDate());
-            }catch (Exception ex){
+                date = t.getDate();
+            } catch (Exception ex) {
                 date = sdf.format(Calendar.getInstance().getTime());
             }finally {
                 myList.setDate(date);

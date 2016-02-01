@@ -163,7 +163,9 @@ public class CategoryActivity extends AppCompatActivity {
                     }
                     //Toast.makeText(getApplicationContext(), c.getName(), Toast.LENGTH_SHORT).show();
                     String dateTxt = ((TextView) findViewById(R.id.txtDate)).getText().toString();
+                    /*
                     Date date = Calendar.getInstance().getTime();
+
                     Toast.makeText(getApplicationContext(), dateTxt, Toast.LENGTH_SHORT).show();
 
                     DateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -171,9 +173,9 @@ public class CategoryActivity extends AppCompatActivity {
                     String inputDateStr = dateTxt;
                     Date datet = inputFormat.parse(inputDateStr);
                     String outputDateStr = outputFormat.format(datet);
-
+                    */
                     // TODO Saving to db
-                   transaction = new Transaction(ttype, c, c.getName(), outputDateStr, note, amount);
+                   transaction = new Transaction(ttype, c, c.getName(), dateTxt, note, amount);
                    transaction.save();
 
                     Toast.makeText(getApplicationContext(), "Uspješno dodano.", Toast.LENGTH_SHORT).show();
