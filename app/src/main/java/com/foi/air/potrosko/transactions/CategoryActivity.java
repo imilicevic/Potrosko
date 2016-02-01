@@ -110,6 +110,7 @@ public class CategoryActivity extends AppCompatActivity {
 
 
         try {
+            /*
             Intent intent = getIntent();
             String s = intent.getStringExtra("myAmount");
             Double amount = Double.parseDouble(s);
@@ -118,6 +119,25 @@ public class CategoryActivity extends AppCompatActivity {
             TextView txtAmount = (TextView) findViewById(R.id.txtAmount);
             txtAmount.setText(amount.toString());
             // Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+            */
+
+            Intent myIntent = getIntent();
+            if (myIntent.hasExtra("amount")){
+                TextView mText = (TextView)findViewById(R.id.txtAmount);
+                mText.setText(myIntent.getStringExtra("amount"));
+            }
+            if (myIntent.hasExtra("category")){
+                Spinner mSpin = (Spinner)findViewById(R.id.spinner);
+                //TODO srediti postavljanje kategorije
+            }
+            if (myIntent.hasExtra("note")){
+                TextView mText = (TextView)findViewById(R.id.txtNote);
+                mText.setText(myIntent.getStringExtra("note"));
+            }
+            if (myIntent.hasExtra("date")){
+                TextView mText = (TextView)findViewById(R.id.txtDate);
+                mText.setText(myIntent.getStringExtra("date"));
+            }
 
         }catch (Exception ex){
             Toast.makeText(getApplicationContext(), "Smeće", Toast.LENGTH_SHORT).show();

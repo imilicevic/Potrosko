@@ -2,6 +2,7 @@ package com.foi.air.potrosko.fragments;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.app.Fragment;
@@ -21,6 +22,8 @@ import com.foi.air.potrosko.core.NavigationItem;
 import com.foi.air.potrosko.db.Category;
 import com.foi.air.potrosko.db.Transaction;
 import com.foi.air.potrosko.core.ListViewAdapter;
+import com.foi.air.potrosko.transactions.CategoryActivity;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -114,7 +117,15 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
 
                                     //TODO ovdje pozvati activity za editiranje unosa
 
-                                    Toast.makeText(getActivity(), "Id: " + getMyId(), Toast.LENGTH_SHORT).show();
+
+                                    Intent myIntent = new Intent( getActivity(), CategoryActivity.class);
+                                    myIntent.putExtra("amount",strAmount);
+                                    myIntent.putExtra("category",strCategory);
+                                    myIntent.putExtra("date",strDate);
+                                    myIntent.putExtra("note", strNote);
+                                    startActivity(myIntent);
+
+                                    //Toast.makeText(getActivity(), "Id: " + getMyId(), Toast.LENGTH_SHORT).show();
 
                                 }
                             })
