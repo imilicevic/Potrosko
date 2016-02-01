@@ -216,7 +216,6 @@ public class CategoryActivity extends AppCompatActivity {
                        // Toast.makeText(getApplicationContext(), "Prihod", Toast.LENGTH_SHORT).show();
                     } else {
                         ttype = TransactionType.getType("expense");
-                        amount *= -1;
                        // Toast.makeText(getApplicationContext(), "Trošak", Toast.LENGTH_SHORT).show();
                     }
                     String note = ((TextView) findViewById(R.id.txtNote)).getText().toString();

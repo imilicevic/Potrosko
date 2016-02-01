@@ -72,7 +72,7 @@ public class TransactionActivity extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 //click the button
-                EditText amount = (EditText)findViewById(R.id.price) ;
+                EditText amount = (EditText)findViewById(R.id.price);
                 String toCompare = amount.getText().toString();
 
                 if (toCompare.trim().length() == 0){

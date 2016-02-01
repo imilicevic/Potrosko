@@ -73,11 +73,13 @@ public class ChangePinActivity extends AppCompatActivity {
                 editor.putString("etPinString", etPinString);
                 editor.apply();
                 Intent myIntent = new Intent(this, MainActivity.class);
+                myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(myIntent);
                 this.finish();
                 return true;
             case R.id.action_cancel:
                 Intent myIntent2 = new Intent(this, MainActivity.class);
+                myIntent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(myIntent2);
                 this.finish();
                 return true;
