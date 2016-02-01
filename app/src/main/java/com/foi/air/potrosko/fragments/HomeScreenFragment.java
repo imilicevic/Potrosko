@@ -27,8 +27,8 @@ import java.util.List;
 
 public class HomeScreenFragment extends Fragment implements NavigationItem{
 
-    ListView list;
-    ListViewAdapter customAdapter;
+    private ListView list;
+    private ListViewAdapter customAdapter;
     public ArrayList<Transaction> CustomListViewValuesArr = new ArrayList<Transaction>();
     private int position;
     private String name = "Overview";
@@ -39,10 +39,11 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_home_screen, null);
+
         list = (ListView)v.findViewById(R.id.listViewHome);
 
         // dohvatiti podatke iz activeAndroida
-        final List<Transaction> transactions = Transaction.getAll();
+        //final List<Transaction> transactions = Transaction.getAll();
         setListData();
 
         // get data from the table by the MyListAdapter
@@ -164,8 +165,6 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
 
     }
 
-
-
     // Function to set data in ArrayList
     public void setListData()
     {
@@ -206,14 +205,20 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
 
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        CustomListViewValuesArr.clear();
+    }
 
+    /*
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         DataLoader dl = new DbDataLoader();
         dl.LoadData(getActivity());
     }
-
+*/
 
 
 

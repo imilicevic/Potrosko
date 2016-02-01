@@ -44,6 +44,7 @@ public class Transaction extends Model{
         this.name = name;
         this.date = date;
         this.note = note;
+        this.amount = amount;
     }
 
     public Category getCategory() {

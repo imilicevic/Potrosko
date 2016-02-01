@@ -21,7 +21,6 @@ import com.foi.air.potrosko.fragments.ChartScreenFragment;
 import com.foi.air.potrosko.fragments.HomeScreenFragment;
 import com.foi.air.potrosko.fragments.SettingsFragment;
 import com.foi.air.potrosko.transactions.TransactionActivity;
-
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements android.app.FragmentManager.OnBackStackChangedListener, OnDataLoadedListener {
