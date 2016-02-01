@@ -25,7 +25,6 @@ public class NavigationManager {
     private NavigationView mNavigationView;
     private DrawerLayout mDrawerLayout;
     private NavigationItem activeItem;
-
     private ArrayList<Category> categories;
     private ArrayList<Transaction> transactions;
 
@@ -53,6 +52,7 @@ public class NavigationManager {
         fragmentManager.beginTransaction()
                 .replace(R.id.flContent, clickedItem.getFragment())
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .addToBackStack("")
                 .commit();
 
         clickedItem.loadData(categories, transactions); // load data, only when the module is about to be shown
@@ -105,10 +105,10 @@ public class NavigationManager {
         mNavigationView.getMenu().add(0, newItem.getPosition(), 0, newItem.getItemName());
     }
 
-    public void makeDataChange(ArrayList<Category> stores, ArrayList<Transaction> discounts){
-        this.categories = stores;
-        this.transactions = discounts;
-        activeItem.loadData(stores, discounts);  // load data to initial object
+    public void makeDataChange(ArrayList<Category> categories, ArrayList<Transaction> transactions){
+        this.categories = categories;
+        this.transactions = transactions;
+        activeItem.loadData(categories, transactions);  // load data to initial object
     }
 
 }

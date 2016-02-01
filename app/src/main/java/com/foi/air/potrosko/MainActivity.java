@@ -1,10 +1,12 @@
 package com.foi.air.potrosko;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -23,7 +25,7 @@ import com.foi.air.potrosko.fragments.SettingsFragment;
 import com.foi.air.potrosko.transactions.TransactionActivity;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements android.app.FragmentManager.OnBackStackChangedListener, OnDataLoadedListener {
+public class MainActivity extends AppCompatActivity implements android.app.FragmentManager.OnBackStackChangedListener, OnDataLoadedListener{
 
     private DrawerLayout dlDrawer;
     private Toolbar toolbar;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements android.app.Fragm
     NavigationManager nm;
     private HomeScreenFragment hsf;
     private SettingsFragment sf;
+    private ChartScreenFragment csf;
     // Alert Dialog Manager
     //AlertDialogManager alert = new AlertDialogManager();
 
@@ -73,17 +76,12 @@ public class MainActivity extends AppCompatActivity implements android.app.Fragm
         // Tie DrawerLayout events to the ActionBarToggle
         dlDrawer.setDrawerListener(drawerToggle);
 
-        mFm = getFragmentManager();
-        mFm.addOnBackStackChangedListener(this);
-
-        toolbar.setNavigationOnClickListener(navigationClick);
-
         nm = NavigationManager.getInstance();
         nm.setDependencies(this, dlDrawer, (NavigationView) findViewById(R.id.nvView));
 
         if(savedInstanceState == null){  // running this for the first time
             mFm = getFragmentManager();
-            mFm.addOnBackStackChangedListener((android.app.FragmentManager.OnBackStackChangedListener) this);
+            mFm.addOnBackStackChangedListener(this);
             toolbar.setNavigationOnClickListener(navigationClick);
 
             // add the modules, only once, only here
@@ -166,8 +164,29 @@ public class MainActivity extends AppCompatActivity implements android.app.Fragm
 
     }*/
 
-    // Make sure this is the method with just `Bundle` as the signature
     @Override
+    public void onBackPressed() {
+        if(getFragmentManager().getBackStackEntryCount() != 0){
+            // there is something on the stack, I'm in the fragment
+            if(dlDrawer.isDrawerOpen(GravityCompat.START)){
+                dlDrawer.closeDrawer(GravityCompat.START);
+            }
+            else{
+                getFragmentManager().popBackStack();
+            }
+        } else {
+            // I'm on the landing page, close the drawer or exit
+            if(dlDrawer.isDrawerOpen(GravityCompat.START)){
+                dlDrawer.closeDrawer(GravityCompat.START);
+            }
+            else{
+                super.onBackPressed();
+            }
+        }
+    }
+
+    // Make sure this is the method with just `Bundle` as the signature
+   @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         // Sync the toggle state after onRestoreInstanceState has occurred.
@@ -181,20 +200,25 @@ public class MainActivity extends AppCompatActivity implements android.app.Fragm
         drawerToggle.onConfigurationChanged(newConfig);
     }
 
-    @Override
+    /*@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
         return super.onOptionsItemSelected(item);
 
-    }
+    }*/
 
     @Override
     public void onBackStackChanged() {
         drawerToggle.setDrawerIndicatorEnabled(mFm.getBackStackEntryCount() == 0);
         getSupportActionBar().setDisplayHomeAsUpEnabled(mFm.getBackStackEntryCount() > 0);
         drawerToggle.syncState();
+    }
+
+    @Override
+    public void onDataLoaded(ArrayList<Category> categories, ArrayList<Transaction> transactions) {
+        nm.makeDataChange(categories, transactions);
     }
 
     @Override
@@ -216,7 +240,7 @@ public class MainActivity extends AppCompatActivity implements android.app.Fragm
     EVENT HANDLERS
     */
 
-    View.OnClickListener navigationClick = new View.OnClickListener() {
+   View.OnClickListener navigationClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if(getFragmentManager().getBackStackEntryCount() == 0) {
@@ -228,8 +252,5 @@ public class MainActivity extends AppCompatActivity implements android.app.Fragm
         }
     };
 
-    @Override
-    public void onDataLoaded(ArrayList<Category> categories, ArrayList<Transaction> transactions) {
-        nm.makeDataChange(categories, transactions);
-    }
+
 }
