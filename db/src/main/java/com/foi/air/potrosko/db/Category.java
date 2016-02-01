@@ -30,11 +30,12 @@ public class Category extends Model {
         super();
     }
 
-    public Category(String name, String description, TransactionType transactionType) {
+    public Category(String name, String description, TransactionType transactionType, String categoryImg) {
         super();
         this.name = name;
         this.description = description;
         this.transactionType = transactionType;
+        this.categoryImg = categoryImg;
     }
 
     public String getName() {
@@ -53,7 +54,7 @@ public class Category extends Model {
         this.description = description;
     }
 
-    public void setCategoryImg(String description) {
+    public void setCategoryImg(String categoryImg) {
         this.categoryImg = categoryImg;
     }
 

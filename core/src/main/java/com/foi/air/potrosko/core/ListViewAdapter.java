@@ -3,12 +3,14 @@ package com.foi.air.potrosko.core;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.foi.air.potrosko.db.Transaction;
 
@@ -57,6 +59,8 @@ public class ListViewAdapter extends BaseAdapter {
     public long getItemId(int position) {
         return position;
     }
+
+
 
     // Create a holder Class to contain inflated xml file elements
     public static class ViewHolder{
@@ -112,21 +116,34 @@ public class ListViewAdapter extends BaseAdapter {
             holder.textNote.setText(tempValuesT.getNote());
             holder.textAmount.setText(tempValuesT.getAmountString());
             holder.textDate.setText(tempValuesT.getDate());
-            //holder.image.setImageDrawable(activity.getResources().getDrawable(R.drawable.car));
+
             //TODO srediti dohvacanje ikona
-/*
+            /*
+            try{
+                String mDrawableName = tempValuesT.getCategory().getCategoryImg();
+                Toast.makeText(activity.getApplicationContext(), mDrawableName, Toast.LENGTH_SHORT).show();
+                int resID = res.getIdentifier(mDrawableName , "drawable", activity.getPackageName());
+                holder.image.setImageResource(resID);
+            }catch (Exception ex){
+                Toast.makeText(activity.getApplicationContext(), tempValuesT.getCategory().getCategoryImg(), Toast.LENGTH_SHORT).show();
+                ex.printStackTrace();
+            }
+            */
+
+            //String tempImg = tempValuesT.getCategory().getCategoryImg();
+            //holder.image.setImageDrawable(activity.getResources().getDrawable(R.drawable.car));
+
+            /*
             holder.image.setImageResource(
                     res.getIdentifier(
-                            "com.foi.air.potrosko.app:drawable/"+tempValues.getImage()
-                            ,null,null));
-
+                            "com.foi.air.potrosko.app:drawable/"+image,null,null));
+            */
             //Set Item Click Listner for LayoutInflater for each row
 
- */           vi.setOnClickListener(new OnItemClickListener( tempValuesT, activity));
+           vi.setOnClickListener(new OnItemClickListener( tempValuesT, activity));
         }
         return vi;
     }
-
 
 
 

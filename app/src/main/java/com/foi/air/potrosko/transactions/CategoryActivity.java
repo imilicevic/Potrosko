@@ -72,25 +72,28 @@ public class CategoryActivity extends AppCompatActivity {
             if(categories == null || categories.size() <= 0) {
 
                 // expense categories
-                Category general = new Category("General", "Općenite transakcije, nesvrstane.", expense);
-                Category food = new Category("Food", "Izdavanja na hranu.", expense);
-                Category car = new Category("Car", "Sva izdavanja za automobil.", expense);
-                Category travel = new Category("Travel", "Sva izdavanja za putovanja.", expense);
-                Category home = new Category("House", "Izdavanja vezana uz kućanstvo.", expense);
-                Category shopping = new Category("Shopping", "Izdavanja vezana uz shopping", expense);
-                Category transport = new Category("Transport", "Izdavanja za prijevoz.", expense);
-                Category other = new Category("Other", "Ostala nesvrstana plaćanja.", expense);
+                Category general = new Category("General", "Općenite transakcije, nesvrstane.", expense, "barbershop");
+                Category food = new Category("Food", "Izdavanja na hranu.", expense, "food");
+                Category car = new Category("Car", "Sva izdavanja za automobil.", expense, "car");
+                Category travel = new Category("Travel", "Sva izdavanja za putovanja.", expense, "car");
+                Category home = new Category("House", "Izdavanja vezana uz kućanstvo.", expense, "ingredients");
+                Category shopping = new Category("Shopping", "Izdavanja vezana uz shopping", expense, "clothes");
+                Category transport = new Category("Transport", "Izdavanja za prijevoz.", expense, "car");
+                Category other = new Category("Other", "Ostala nesvrstana plaćanja.", expense, "mobile");
 
                 // income categories
-                Category salary = new Category("Salary", "Mjesečna naknada za rad.", income);
-                Category secondIncome = new Category("Other income", "Drugi ostvareni dohodak u mjesecu.", income);
-                Category gift = new Category("Gift", "Novac primljen kao poklon.", income);
+                Category salary = new Category("Salary", "Mjesečna naknada za rad.", income, "party");
+                Category secondIncome = new Category("Other income", "Drugi ostvareni dohodak u mjesecu.", income, "car");
+                Category gift = new Category("Gift", "Novac primljen kao poklon.", income, "mobile");
 
+                general.setCategoryImg("barbershop");
                 general.save();
+                food.setCategoryImg("food");
                 food.save();
                 car.save();
                 travel.save();
                 home.save();
+                shopping.setCategoryImg("shopping");
                 shopping.save();
                 transport.save();
                 other.save();
@@ -213,6 +216,7 @@ public class CategoryActivity extends AppCompatActivity {
                        // Toast.makeText(getApplicationContext(), "Prihod", Toast.LENGTH_SHORT).show();
                     } else {
                         ttype = TransactionType.getType("expense");
+                        amount *= -1;
                        // Toast.makeText(getApplicationContext(), "Trošak", Toast.LENGTH_SHORT).show();
                     }
                     String note = ((TextView) findViewById(R.id.txtNote)).getText().toString();

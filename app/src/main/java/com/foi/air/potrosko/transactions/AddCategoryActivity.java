@@ -55,13 +55,13 @@ public class AddCategoryActivity extends AppCompatActivity {
         EditText editTextopis = (EditText) findViewById(R.id.txtdescrip);
         String opiskat = editTextopis.getText().toString();
 
-        Category category=new Category();
+        Category category = new Category();
 
         int id = item.getItemId();
         switch (item.getItemId()) {
             case R.id.action_accept:
 
-                category = new Category(imekat, opiskat,ttype);
+                category = new Category(imekat, opiskat,ttype, "shopping");
                 category.save();
 
                 Toast.makeText(getApplicationContext(), "Uspješno dodano.", Toast.LENGTH_SHORT).show();

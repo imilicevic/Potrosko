@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.activeandroid.query.Delete;
+import com.activeandroid.util.SQLiteUtils;
 import com.foi.air.potrosko.loaders.DbDataLoader;
 import com.foi.air.potrosko.R;
 import com.foi.air.potrosko.core.DataLoader;
@@ -116,8 +117,14 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
                                     // edit transactions
 
                                     //TODO ovdje pozvati activity za editiranje unosa
-
-                                    Toast.makeText(getActivity(), "Izmjena podataka", Toast.LENGTH_SHORT).show();
+                                    List<Transaction> t = SQLiteUtils.rawQuery(Transaction.class,
+                                                    "SELECT id from Transactions where note = ?", new String[]{"kuca poso"});
+                                    String idToEdit = "";
+                                    for(int i=0; i<t.size(); i++){
+                                        idToEdit = t.get(i).getId().toString();
+                                    }
+                                    Toast.makeText(getActivity(), "Id: " + idToEdit, Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(getActivity(), "Izmjena podataka", Toast.LENGTH_SHORT).show();
                                 }
                             })
                             .show();
