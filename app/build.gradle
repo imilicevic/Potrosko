@@ -29,4 +29,5 @@ dependencies {
     compile project (':db')
     compile project (':core')
     compile project (':chart')
+
 }
