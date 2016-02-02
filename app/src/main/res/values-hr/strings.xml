@@ -16,6 +16,7 @@
 
     <!-- change and set new pin -->
     <string name="change_pin">UNESITE NOVI PIN</string>
+    <string name="old_pin">UNESITE STARI PIN</string>
 
 
     <!-- Drawer  TODO izmjeniti ili maknuti potrosko@gmail.com -->

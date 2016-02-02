@@ -13,9 +13,9 @@
     <string name="pvalute_rbutton1">Dollar</string>
     <string name="pvalute_rbutton2">Kuna</string>
 
-    <!-- change and set new pin -->
-    <string name="change_pin">ENTER NEW PIN</string>
-
+   <!-- change and set new pin -->
+   <string name="change_pin">ENTER NEW PIN</string>
+   <string name="old_pin">ENTER OLD PIN</string>
 
     <!-- Drawer  TODO izmjeniti ili maknuti potrosko@gmail.com -->
     <string name="header">potrosko@gmail.com</string>
@@ -35,16 +35,19 @@
     <string name="newtr_prihod">Income</string>
     <string name="newtr_trosak">Expense</string>
 
+
     <!-- toolbar -->
     <string name="toolbar_title">Overview</string>
 
     <!-- settings stringovi -->
     <string name="pass_title">PIN</string>
     <string name="pass_summary">Setting and changing PIN</string>
-    <string name="setpass_title">Set your PIN</string>
+    <string name="setpass_title">Enable/Disable</string>
     <string name="setpass_summary">Set PIN to protect your data</string>
     <string name="changepass_title">Change PIN</string>
     <string name="changepass_summary">Change your existing PIN</string>
+
+
     <string name="curr_title">Currency</string>
 
 

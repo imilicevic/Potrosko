@@ -41,10 +41,18 @@
         <activity
             android:name=".ChangePinActivity"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateAlwaysVisible"></activity>
+            android:windowSoftInputMode="stateAlwaysVisible">
+        </activity>
         <activity
-            android:name=".ChooseCurrency">
-            </activity>
+            android:name=".ChooseCurrency"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity
+            android:name=".OldPinActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysVisible">
+        </activity>
+
     </application>
 
 </manifest>

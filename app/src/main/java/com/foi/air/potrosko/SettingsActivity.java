@@ -2,6 +2,7 @@ package com.foi.air.potrosko;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 
 import com.foi.air.potrosko.fragments.SettingsFragment;
 
@@ -16,6 +17,8 @@ public class SettingsActivity extends Activity {
 
         // Display the fragment as the main content.
         getFragmentManager().beginTransaction().replace(android.R.id.content, new SettingsFragment()).commit();
+
+        PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
     }
 
     @Override

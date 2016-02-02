@@ -21,19 +21,18 @@ import com.foi.air.potrosko.fragments.HomeScreenFragment;
 import com.foi.air.potrosko.transactions.CategoryActivity;
 import com.foi.air.potrosko.transactions.SetupEvenlyDistributedToolbar;
 
-
 /**
- * Created by Andrej on 15.11.2015..
+ * Created by Andrej on 2.2.2016..
  */
-public class ChangePinActivity extends AppCompatActivity {
+public class OldPinActivity extends AppCompatActivity {
     private Toolbar mToolbar;
-    public static String etPinString;
-    EditText etPin;
+    public static String PinString;
+    EditText Pin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_change_pin);
+        setContentView(R.layout.activity_old_pin);
 
         // Toolbar
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -42,8 +41,10 @@ public class ChangePinActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);                   // Setting toolbar as the ActionBar with setSupportActionBar() call
 
 
+
+
         //dohvacanje vrijednosti iz edittext i pretvaranje u string
-        etPin = (EditText) findViewById(R.id.edittxt_pin);
+        Pin = (EditText) findViewById(R.id.edittxt_pin);
 
     }
 
@@ -56,32 +57,33 @@ public class ChangePinActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // stavio sam za sad da šalje na MainActivity kad se kliknu kvačića i ikisić samo
-        // da bi se mogla aplikacija koristiti, to naravno poslije treba promijeniti
+
+        //dohvacanje SharedPreferences iz ChangePinActivity klase
+        SharedPreferences mSettings = getSharedPreferences("Settings", MODE_PRIVATE);
+
+
+        final String pin2 = mSettings.getString("etPinString", ChangePinActivity.etPinString);
+
+        PinString = Pin.getEditableText().toString();
+
         int id = item.getItemId();
         switch (item.getItemId()) {
             case R.id.action_accept:
 
-                etPinString = etPin.getEditableText().toString();
+                    if(!PinString.equals(pin2)){
+                        Pin.setError("PIN doesn't match old PIN");
+                        return false;
 
-                if(etPinString.trim().length() < 4){
-                    etPin.setError("Please enter 4-digits PIN");
-                    return false;
-                }else{
-                    SharedPreferences mSettings = this.getSharedPreferences("Settings", 0);
-                    SharedPreferences.Editor editor = mSettings.edit();
+                    }else{
+                        Intent myIntent = new Intent(this, ChangePinActivity.class);
+                        myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(myIntent);
+                        this.finish();
+                        return true;
+                    }
 
-                    //pohranjivanje vrijednosti iz EditTexta u SharedPreferences
-                    editor.putString("etPinString", etPinString);
-                    editor.apply();
-                    Intent myIntent = new Intent(this, MainActivity.class);
-                    myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(myIntent);
-                    this.finish();
-                    return true;
-                }
-                //stvaranje SharedPreference datoteke
-                //SharedPreferences mSettings = PreferenceManager.getDefaultSharedPreferences(this);
+
+
             case R.id.action_cancel:
                 this.finish();
                 return true;
@@ -89,5 +91,4 @@ public class ChangePinActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
 }
