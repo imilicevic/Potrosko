@@ -187,7 +187,7 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
         String idToEdit = "";
                 for(int i=0; i<t.size(); i++){
                     idToEdit = t.get(i).getId().toString();
-                   }
+                }
 
         return idToEdit;
 

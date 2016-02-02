@@ -7,6 +7,8 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import com.foi.air.potrosko.ChartAdapter;
 import com.foi.air.potrosko.R;
 import com.foi.air.potrosko.core.NavigationItem;
@@ -118,9 +120,9 @@ public class ChartScreenFragment extends Fragment implements NavigationItem{
         String[] xData = ch.getStringValue();
 
         ArrayList<Entry> yVals1 = new ArrayList<Entry>();
-
-        for (int i = 0; i < yData.length; i++)
+        for (int i = 0; i < yData.length; i++) {
             yVals1.add(new Entry(yData[i], i));
+        }
 
         ArrayList<String> xVals = new ArrayList<String>();
 
