@@ -19,7 +19,7 @@ public class ChartAdapter {
     //private List<Transaction> transactions;
     //private List<Category> categories;
 
-    //novo
+
     private ArrayList<Transaction> chartTransactions;
     private ArrayList<Category> chartCategories;
 

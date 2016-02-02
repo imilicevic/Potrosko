@@ -25,6 +25,9 @@ import com.foi.air.potrosko.fragments.SettingsFragment;
 import com.foi.air.potrosko.transactions.TransactionActivity;
 import java.util.ArrayList;
 
+/**
+ *Implementacija drawera
+ */
 public class MainActivity extends AppCompatActivity implements android.app.FragmentManager.OnBackStackChangedListener, OnDataLoadedListener{
 
     private DrawerLayout dlDrawer;
@@ -236,9 +239,7 @@ public class MainActivity extends AppCompatActivity implements android.app.Fragm
         super.onDestroy();
     }
 
-    /*
-    EVENT HANDLERS
-    */
+
 
    View.OnClickListener navigationClick = new View.OnClickListener() {
         @Override

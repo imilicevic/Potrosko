@@ -16,6 +16,9 @@ import com.foi.air.potrosko.R;
 import com.foi.air.potrosko.db.Category;
 import com.foi.air.potrosko.db.TransactionType;
 
+/**
+ * Kreiranje nove kategorije
+ */
 public class AddCategoryActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
@@ -23,32 +26,41 @@ public class AddCategoryActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //Remove title bar
+
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_category);
 
-        // Toolbar
+
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
         SetupEvenlyDistributedToolbar.setupEvenlyDistributedToolbar(getWindowManager().getDefaultDisplay(), mToolbar, R.menu.menu_new_transaction); // Calling new method for distributing icons
-        setSupportActionBar(mToolbar);                   // Setting toolbar as the ActionBar with setSupportActionBar() call
+        setSupportActionBar(mToolbar);
     }
 
+    /**
+     * Inflate the menu; this adds items to the action bar if it is present.
+     * @param menu
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_new_transaction, menu);
         return true;
     }
 
+
     TransactionType ttype;
+
+    /**
+     * Handle action bar item clicks here. The action bar will
+     * automatically handle clicks on the Home/Up button, so long
+     * as you specify a parent activity in AndroidManifest.xml.
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
 
         EditText editTextkat = (EditText) findViewById(R.id.txtnamec);
         String imekat = editTextkat.getText().toString();
@@ -57,7 +69,6 @@ public class AddCategoryActivity extends AppCompatActivity {
 
         Category category = new Category();
 
-        int id = item.getItemId();
         switch (item.getItemId()) {
             case R.id.action_accept:
 
@@ -71,21 +82,20 @@ public class AddCategoryActivity extends AppCompatActivity {
                 return true;
             case R.id.action_cancel:
                 this.finish();
-                /*
-                Intent myIntent2 = new Intent(this, CategoryActivity.class);
-                startActivity(myIntent2);
-                */
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
+    /**
+     * Provjera radio button-a jesu li i koji je oznacen
+     * @param view
+     */
     public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
+
         boolean checked = ((RadioButton) view).isChecked();
 
-        // Check which radio button was clicked
         switch(view.getId()) {
             case R.id.radio_income:
                 if (checked)

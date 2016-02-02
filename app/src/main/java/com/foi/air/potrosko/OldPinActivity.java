@@ -22,7 +22,8 @@ import com.foi.air.potrosko.transactions.CategoryActivity;
 import com.foi.air.potrosko.transactions.SetupEvenlyDistributedToolbar;
 
 /**
- * Created by Andrej on 2.2.2016..
+ * Created by Andrej on 2.2.2016.
+ *
  */
 public class OldPinActivity extends AppCompatActivity {
     private Toolbar mToolbar;
@@ -34,18 +35,12 @@ public class OldPinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_old_pin);
 
-        // Toolbar
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
         SetupEvenlyDistributedToolbar.setupEvenlyDistributedToolbar(getWindowManager().getDefaultDisplay(), mToolbar, R.menu.menu_new_transaction); // Calling new method for distributing icons
         setSupportActionBar(mToolbar);                   // Setting toolbar as the ActionBar with setSupportActionBar() call
 
-
-
-
-        //dohvacanje vrijednosti iz edittext i pretvaranje u string
         Pin = (EditText) findViewById(R.id.edittxt_pin);
-
     }
 
     @Override
@@ -60,7 +55,6 @@ public class OldPinActivity extends AppCompatActivity {
 
         //dohvacanje SharedPreferences iz ChangePinActivity klase
         SharedPreferences mSettings = getSharedPreferences("Settings", MODE_PRIVATE);
-
 
         final String pin2 = mSettings.getString("etPinString", ChangePinActivity.etPinString);
 
@@ -81,8 +75,6 @@ public class OldPinActivity extends AppCompatActivity {
                         this.finish();
                         return true;
                     }
-
-
 
             case R.id.action_cancel:
                 this.finish();
