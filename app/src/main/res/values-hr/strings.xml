@@ -9,6 +9,11 @@
     <string name="btnIncomeText">Prihod</string>
     <string name="btnExpenseText">Trošak</string>
 
+    <!-- promjena valute activity -->
+    <string name="pvalute_txtview">Odaberite valutu</string>
+    <string name="pvalute_rbutton1">Dolar</string>
+    <string name="pvalute_rbutton2">Kuna</string>
+
     <!-- change and set new pin -->
     <string name="change_pin">UNESITE NOVI PIN</string>
 

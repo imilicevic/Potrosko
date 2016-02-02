@@ -3,6 +3,7 @@ package com.foi.air.potrosko;
 import com.foi.air.potrosko.db.Category;
 import com.foi.air.potrosko.db.Transaction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,6 +14,14 @@ public class ChartAdapter {
     //private List<Transaction> transactions;
     //private List<Category> categories;
 
+    //novo
+    private ArrayList<Transaction> chartTransactions;
+    private ArrayList<Category> chartCategories;
+
+
+
+
+
     private float[] yData;
     private String[] xData ;
 
@@ -22,6 +31,7 @@ public class ChartAdapter {
         this.yData = f;
         this.xData = s;
     }
+
 
     public float[] getFloatValue(){yData = new float[]{ 5, 10, 15, 30, 40 }; return yData;}
 
