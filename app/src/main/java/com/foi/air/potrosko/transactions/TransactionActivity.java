@@ -110,33 +110,41 @@ public class TransactionActivity extends AppCompatActivity  {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        EditText price = (EditText) findViewById(R.id.price);
-        Double amount = 0.0;
-        try{
-            amount = Double.parseDouble(price.getText().toString());
-        }catch (Exception ex)
-        {
-            amount = 0.0;
-        }finally {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
+
         int id = item.getItemId();
-        switch (item.getItemId()) {
+        switch (id) {
             case R.id.action_accept:
 
-                // Sending amount value to next activity (CategoryActivity)
-                Intent myIntent = new Intent(this, CategoryActivity.class);
-                myIntent.putExtra("myAmount", amount.toString());
+                EditText price = (EditText) findViewById(R.id.price);
+                String priceStr = price.getText().toString();
 
-                //Toast.makeText(getApplicationContext(), amount.toString(), Toast.LENGTH_SHORT).show();
-                startActivity(myIntent);
-                return true;
+                if(!isValidInput(priceStr)){
+                    Toast.makeText(this, "Unesite broj sa max 6 znamenki molim!", Toast.LENGTH_LONG).show();
+                    return false;
+                }
+
+                    Double amount = 0.0;
+                    try {
+                        amount = Double.parseDouble(price.getText().toString());
+                    } catch (Exception ex) {
+                        amount = 0.0;
+                    }
+
+                    // Sending amount value to next activity (CategoryActivity)
+                    Intent myIntent = new Intent(this, CategoryActivity.class);
+                    myIntent.putExtra("myAmount", amount.toString());
+
+                    //Toast.makeText(getApplicationContext(), amount.toString(), Toast.LENGTH_SHORT).show();
+                    startActivity(myIntent);
+                    return true;
+
+
             case R.id.action_cancel:
                 // Check if no view has focus & hides keyboard
                 View view = this.getCurrentFocus();
                 if (view != null) {
-                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                 }
 
@@ -149,7 +157,9 @@ public class TransactionActivity extends AppCompatActivity  {
             default:
                 return super.onOptionsItemSelected(item);
         }
-        }
+
+
+
     }
 
     @Override
@@ -158,7 +168,13 @@ public class TransactionActivity extends AppCompatActivity  {
         super.onBackPressed();
     }
 
-
+    // validacija unosa
+    private boolean isValidInput(String input) {
+        if (input.length() > 6 || input.isEmpty()) { //input == null || input.isEmpty()
+            return false;
+        }
+        return true;
+    }
 
 
 }
