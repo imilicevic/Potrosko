@@ -10,6 +10,10 @@ import java.util.ArrayList;
 /**
  * Created by Andrej on 31.1.2016..
  */
+
+/**
+ * Klasa pomoću koje se učitavaju podaci
+ */
 public abstract class DataLoader {
 
     public ArrayList<Transaction> transactions;
@@ -21,6 +25,10 @@ public abstract class DataLoader {
             dataLoadedListener = (OnDataLoadedListener) activity;
     }
 
+    /**
+     * Kad podaci stignu iz baze poziva se metoda {@code dataLoaded()}
+     * @return true or false
+     */
     public boolean dataLoaded(){
         if(categories == null || transactions == null){
             return false;

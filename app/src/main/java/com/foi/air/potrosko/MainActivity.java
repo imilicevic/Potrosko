@@ -29,20 +29,9 @@ public class MainActivity extends AppCompatActivity implements android.app.Fragm
 
     private DrawerLayout dlDrawer;
     private Toolbar toolbar;
-    private NavigationView nvDrawer;
-    private Class fragmentClass;
     private ActionBarDrawerToggle drawerToggle;
-    private Intent intent;
-    private ImageButton floatButton;
     private android.app.FragmentManager mFm;
     NavigationManager nm;
-    private HomeScreenFragment hsf;
-    private SettingsFragment sf;
-    private ChartScreenFragment csf;
-    // Alert Dialog Manager
-    //AlertDialogManager alert = new AlertDialogManager();
-
-
 
     public MainActivity() {
     }
@@ -53,7 +42,9 @@ public class MainActivity extends AppCompatActivity implements android.app.Fragm
         setContentView(R.layout.activity_main);
         ActiveAndroid.initialize(this);
 
-        //floating button
+        /**
+         * Floating button
+         */
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,18 +53,14 @@ public class MainActivity extends AppCompatActivity implements android.app.Fragm
             }
         });
 
-        // Set a Toolbar to replace the ActionBar.
+        /**
+         * Seting toolbar and drawer
+         */
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        // Find our drawer view
-        dlDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        // Find our drawer view
-        //nvDrawer = (NavigationView) findViewById(R.id.nvView);
-        // Setup drawer view
-        //setupDrawerContent(nvDrawer);
 
+        dlDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerToggle = setupDrawerToggle();
-        // Tie DrawerLayout events to the ActionBarToggle
         dlDrawer.setDrawerListener(drawerToggle);
 
         nm = NavigationManager.getInstance();
@@ -84,86 +71,32 @@ public class MainActivity extends AppCompatActivity implements android.app.Fragm
             mFm.addOnBackStackChangedListener(this);
             toolbar.setNavigationOnClickListener(navigationClick);
 
-            // add the modules, only once, only here
+            /**
+             * Adding new modules to Navigation Drawer
+             */
             nm.addItem(new HomeScreenFragment());
             nm.addItem(new ChartScreenFragment());
             nm.addItem(new SettingsFragment());
             nm.loadDefaultFragment();
 
         } else {  // running to reuse existing fragments
-            nm.reloadItems(); // do not add modules again, reuse existing ones
+            nm.reloadItems();
         }
-        // Postavljam pocetni fragment kod startanja
-        /*if(savedInstanceState == null) {
-            FragmentManager manager = getSupportFragmentManager();
-            FragmentTransaction transaction = manager.beginTransaction();
-            fragmentClass = HomeScreenFragment.class;
-            Fragment fragmento = null;
-            try {
-                fragmento = (Fragment) fragmentClass.newInstance();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            transaction.replace(R.id.flContent, fragmento).commit();
-        }*/
-
     }
 
+    /**
+     * Metoda za postavljanje hamburgera
+     * @return hamurger ikona u toolbaru
+     */
     private ActionBarDrawerToggle setupDrawerToggle() {
         return new ActionBarDrawerToggle(this, dlDrawer, toolbar, R.string.drawer_open,  R.string.drawer_close);
     }
 
-    /*private void setupDrawerContent(NavigationView navigationView) {
-        navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        selectDrawerItem(menuItem);
-                        return true;
-                    }
-                });
-    }*/
-
-    /*public void selectDrawerItem(MenuItem menuItem) {
-        // Create a new fragment and specify the planet to show based on position
-        Fragment fragment = null;
-
-        switch(menuItem.getItemId()) {
-            case R.id.nav_first_fragment:
-                fragmentClass = HomeScreenFragment.class;
-                break;
-            case R.id.nav_second_fragment:
-                fragmentClass = ChartScreenFragment.class;
-                break;
-            case R.id.nav_third_fragment:
-                startActivity(new Intent(getBaseContext(), SettingsActivity.class));
-                break;
-            case R.id.nav_fourth_fragment:
-                startActivity(new Intent(getBaseContext(), TransactionActivity.class));
-                break;
-            default:
-                fragmentClass = HomeScreenFragment.class;
-
-        }
-
-        try {
-            fragment = (Fragment) fragmentClass.newInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-        // Insert the fragment by replacing any existing fragment
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
-
-        // Highlight the selected item, update the title, and close the drawer
-        menuItem.setChecked(true);
-        setTitle(menuItem.getTitle());
-        dlDrawer.closeDrawers();
-
-    }*/
-
+    /**
+     * Metoda za upravljanje kod korištenja Back buttona.
+     * Provjerava ima li fragmenata u stacku.
+     * Ako ima vraća na njih, ako nema izlazi iz aplikacije.
+     */
     @Override
     public void onBackPressed() {
         if(getFragmentManager().getBackStackEntryCount() != 0){
@@ -185,7 +118,12 @@ public class MainActivity extends AppCompatActivity implements android.app.Fragm
         }
     }
 
-    // Make sure this is the method with just `Bundle` as the signature
+    /**
+     * Sinkronizira stanje hamburger ikone te ga prikazuje.
+     * @param savedInstanceState - kad se aplikacija pokrene prvi put bundle je null.
+     *                           Ako se promijeni orijentacija šalje se {@code onPostCretae()}
+     *                           metodi kako se ne bi izgubili podaci jer se tad aplikacija ponovo pokreće.
+     */
    @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -193,6 +131,10 @@ public class MainActivity extends AppCompatActivity implements android.app.Fragm
         drawerToggle.syncState();
     }
 
+    /**
+     * Pazi na Drawer toggle button ako se promijeni orijentacija ekrana.
+     * @param newConfig nova konfiguracija, npr. vodoravni prikaz
+     */
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
@@ -200,15 +142,21 @@ public class MainActivity extends AppCompatActivity implements android.app.Fragm
         drawerToggle.onConfigurationChanged(newConfig);
     }
 
-    /*@Override
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
         return super.onOptionsItemSelected(item);
 
-    }*/
+    }
 
+    /**
+     * Upravlja prikazom Hamburger ikone i strelice(arrow icon).
+     * Kad je back stack prazan prikazuje Hamburger ikonu.
+     * Kad nije prazan prikazuje arrow icon.
+     * Klikom na arrow icon se vraća na fragment u stacku.
+     */
     @Override
     public void onBackStackChanged() {
         drawerToggle.setDrawerIndicatorEnabled(mFm.getBackStackEntryCount() == 0);
@@ -239,7 +187,10 @@ public class MainActivity extends AppCompatActivity implements android.app.Fragm
     /*
     EVENT HANDLERS
     */
-
+    /**
+     * Listener koji klikom na ikonicu zove prikladno ponašanje.
+     * Ako se nalazi na landing pageu prikazuje navigation drawer, inače press back.
+     */
    View.OnClickListener navigationClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {

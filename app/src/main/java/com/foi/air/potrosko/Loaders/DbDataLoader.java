@@ -15,6 +15,7 @@ import java.util.List;
 /**
  * Created by Andrej on 31.1.2016..
  */
+
 public class DbDataLoader extends DataLoader {
     @Override
     public void LoadData(Activity activity) {
@@ -39,7 +40,7 @@ public class DbDataLoader extends DataLoader {
             categories = (ArrayList<Category>) categoriesFromDb;
             transactions = (ArrayList<Transaction>) transactionsFromDb;
 
-            dataLoaded(); // raise the event
+            dataLoaded();
         }
     }
 }

@@ -11,6 +11,10 @@ import java.util.ArrayList;
 /**
  * Created by Andrej on 31.1.2016..
  */
+
+/**
+ * Interface s metodama koje se implementiraju u fragmentima
+ */
 public interface NavigationItem {
     public String getItemName();
     public int getPosition();
