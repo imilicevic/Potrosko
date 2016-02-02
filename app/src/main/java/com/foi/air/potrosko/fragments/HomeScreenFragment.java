@@ -117,13 +117,14 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
                                     // edit transactions
 
                                     //TODO ovdje pozvati activity za editiranje unosa
-
+                                    String id = getMyId();
 
                                     Intent myIntent = new Intent( getActivity(), CategoryActivity.class);
                                     myIntent.putExtra("amount",strAmount);
                                     myIntent.putExtra("category",strCategory);
                                     myIntent.putExtra("date",strDate);
                                     myIntent.putExtra("note", strNote);
+                                    myIntent.putExtra("id", id);
                                     startActivity(myIntent);
 
                                     //Toast.makeText(getActivity(), "Id: " + getMyId(), Toast.LENGTH_SHORT).show();
@@ -184,11 +185,12 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
                         "where note = ? and amount = ? and date = ? and Categories.name = ?"
                 , new String[]{strNote,strAmount,strDate,strCategory});
         String idToEdit = "";
-        for(int i=0; i<t.size(); i++){
-            idToEdit = t.get(i).getId().toString();
-        }
+                for(int i=0; i<t.size(); i++){
+                    idToEdit = t.get(i).getId().toString();
+                   }
 
         return idToEdit;
+
     }
 
     // Function to set data in ArrayList

@@ -107,40 +107,50 @@ public class CategoryActivity extends AppCompatActivity {
 
             }
         }
-
-
+        int id= 0;
+        Intent inte = getIntent();
+        String str = inte.getStringExtra("id");
         try {
-            /*
-            Intent intent = getIntent();
-            String s = intent.getStringExtra("myAmount");
-            Double amount = Double.parseDouble(s);
+            id = Integer.parseInt(str);
+        }
+        catch (Exception ex){}
 
-            //String amount = bundle.getString("amount");
-            TextView txtAmount = (TextView) findViewById(R.id.txtAmount);
-            txtAmount.setText(amount.toString());
-            // Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
-            */
+        if(id > 0){
 
             Intent myIntent = getIntent();
-            if (myIntent.hasExtra("amount")){
-                TextView mText = (TextView)findViewById(R.id.txtAmount);
+            if (myIntent.hasExtra("amount")) {
+                TextView mText = (TextView) findViewById(R.id.txtAmount);
                 mText.setText(myIntent.getStringExtra("amount"));
             }
-            if (myIntent.hasExtra("category")){
-                Spinner mSpin = (Spinner)findViewById(R.id.spinner);
+            if (myIntent.hasExtra("category")) {
+                Spinner mSpin = (Spinner) findViewById(R.id.spinner);
                 //TODO srediti postavljanje kategorije
             }
-            if (myIntent.hasExtra("note")){
-                TextView mText = (TextView)findViewById(R.id.txtNote);
+            if (myIntent.hasExtra("note")) {
+                TextView mText = (TextView) findViewById(R.id.txtNote);
                 mText.setText(myIntent.getStringExtra("note"));
             }
-            if (myIntent.hasExtra("date")){
-                TextView mText = (TextView)findViewById(R.id.txtDate);
+            if (myIntent.hasExtra("date")) {
+                TextView mText = (TextView) findViewById(R.id.txtDate);
                 mText.setText(myIntent.getStringExtra("date"));
             }
 
-        }catch (Exception ex){
-            Toast.makeText(getApplicationContext(), "Smeće", Toast.LENGTH_SHORT).show();
+        }
+       else {
+            try {
+                Intent intent = getIntent();
+                String s = intent.getStringExtra("myAmount");
+                Double amount = Double.parseDouble(s);
+
+                //String amount = bundle.getString("amount");
+                TextView txtAmount = (TextView) findViewById(R.id.txtAmount);
+                txtAmount.setText(amount.toString());
+                // Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+            }
+
+            catch (Exception ex){
+                            }
+
         }
 
 
@@ -156,7 +166,7 @@ public class CategoryActivity extends AppCompatActivity {
         String type = "";
 
 
-
+ //Sortiranje spinnera u odnosnu na odabir Income/Expense
     TextView txtAmount = (TextView) findViewById(R.id.txtAmount);
     String value = txtAmount.getText().toString();
         try{ Double amount = Double.parseDouble(value);
@@ -185,14 +195,8 @@ public class CategoryActivity extends AppCompatActivity {
         arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, list);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
-
-
     }
-
-
     catch (Exception ex){
-
-        Toast.makeText(getApplicationContext(), "Smeće", Toast.LENGTH_SHORT).show();
     }
 
 
