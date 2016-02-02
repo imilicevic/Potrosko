@@ -1,4 +1,4 @@
-package com.foi.air.potrosko.chart;
+package com.foi.air.chart;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

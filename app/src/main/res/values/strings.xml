@@ -2,54 +2,62 @@
 
     <string name="app_name">Potroško</string>
 
-   <string name="title_activity_main">Main screen</string>
+    <string name="title_activity_main">Main screen</string>
 
-   <!-- chart button -->
-   <string name="btnIncomeText">Income</string>
-   <string name="btnExpenseText">Expense</string>
+    <!-- chart button -->
+    <string name="btnIncomeText">Income</string>
+    <string name="btnExpenseText">Expense</string>
+
+    <!-- promjena valute activity -->
+    <string name="pvalute_txtview">Choose currency</string>
+    <string name="pvalute_rbutton1">Dollar</string>
+    <string name="pvalute_rbutton2">Kuna</string>
 
    <!-- change and set new pin -->
    <string name="change_pin">ENTER NEW PIN</string>
+   <string name="old_pin">ENTER OLD PIN</string>
+
+    <!-- Drawer  TODO izmjeniti ili maknuti potrosko@gmail.com -->
+    <string name="header">potrosko@gmail.com</string>
+    <string name="drawer1">Overview</string>
+    <string name="drawer2">Charts</string>
+    <string name="drawer3">Settings</string>
+    <string name="drawer4">New transaction</string>
+
+    <!-- ne prevoditi -->
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
+    <!-- login screen -->
+    <string name="logintext">Enter PIN</string>
+
+    <!-- nova transakcija vrsta -->
+    <string name="newtr_prihod">Income</string>
+    <string name="newtr_trosak">Expense</string>
 
 
-   <!-- Drawer  TODO izmjeniti ili maknuti potrosko@gmail.com -->
-   <string name="header">potrosko@gmail.com</string>
-   <string name="drawer1">Overview</string>
-   <string name="drawer2">Charts</string>
-   <string name="drawer3">Settings</string>
-   <string name="drawer4">New transaction</string>
+    <!-- toolbar -->
+    <string name="toolbar_title">Overview</string>
 
-   <!-- ne prevoditi -->
-   <string name="drawer_open">Open navigation drawer</string>
-   <string name="drawer_close">Close navigation drawer</string>
+    <!-- settings stringovi -->
+    <string name="pass_title">PIN</string>
+    <string name="pass_summary">Setting and changing PIN</string>
+    <string name="setpass_title">Enable/Disable</string>
+    <string name="setpass_summary">Set PIN to protect your data</string>
+    <string name="changepass_title">Change PIN</string>
+    <string name="changepass_summary">Change your existing PIN</string>
 
-   <!-- login screen -->
-   <string name="logintext">Enter PIN</string>
 
-   <!-- nova transakcija vrsta -->
-   <string name="newtr_prihod">Income</string>
-   <string name="newtr_trosak">Expense</string>
-
-   <!-- toolbar -->
-   <string name="toolbar_title">Overview</string>
-
-   <!-- settings stringovi -->
-   <string name="pass_title">PIN</string>
-   <string name="pass_summary">Setting and changing PIN</string>
-   <string name="setpass_title">Set your PIN</string>
-   <string name="setpass_summary">Set PIN to protect your data</string>
-   <string name="changepass_title">Change PIN</string>
-   <string name="changepass_summary">Change your existing PIN</string>
     <string name="curr_title">Currency</string>
 
 
-   <!-- longclick edit i delete -->
-   <string name="yes">Yes</string>
-   <string name="no">No</string>
-   <string name="delete_transaction">Are you sure you want to delete the transaction?</string>
-   <string name="transaction_options">Choose action you want to execute:</string>
-   <string name="edit">Edit</string>
-   <string name="delete">Delete</string>
-   <string name="delete_successful">Transaction is deleted</string>
+    <!-- longclick edit i delete -->
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="delete_transaction">Are you sure you want to delete the transaction?</string>
+    <string name="transaction_options">Choose action you want to execute:</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="delete_successful">Transaction is deleted</string>
 
 </resources>

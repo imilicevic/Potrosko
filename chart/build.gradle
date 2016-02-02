@@ -25,5 +25,4 @@ dependencies {
     compile 'com.github.PhilJay:MPAndroidChart:v2.2.0'
     compile project (':db')
     compile project (':core')
-
 }
