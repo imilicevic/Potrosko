@@ -252,6 +252,7 @@ public class CategoryActivity extends AppCompatActivity {
                     }
                     else {
                         ttype = TransactionType.getType("expense");
+                        amount *= -1;
                     }
                     String note = ((TextView) findViewById(R.id.txtNote)).getText().toString();
 

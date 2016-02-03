@@ -48,8 +48,8 @@ public class ChooseCurrency extends AppCompatActivity {
                 if (checked) {
 
                     //error zbog setText metode
-                    //textViewToChange.setText("USD");
-                    //textViewToChangeTransaction.setText("USD");
+                    textViewToChange.setText("USD");
+                    textViewToChangeTransaction.setText("USD");
                     Intent i = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(i);
                     finish();
@@ -57,8 +57,8 @@ public class ChooseCurrency extends AppCompatActivity {
                 }
             case R.id.radio_kune:
                 if (checked){
-                    //textViewToChange.setText("HRK");
-                    //textViewToChangeTransaction.setText("HRK");
+                    textViewToChange.setText("HRK");
+                    textViewToChangeTransaction.setText("HRK");
                     Intent i2 = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(i2);
                     finish();

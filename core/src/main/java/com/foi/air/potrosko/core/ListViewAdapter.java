@@ -145,7 +145,7 @@ public class ListViewAdapter extends BaseAdapter {
 
             //TODO srediti ostatak ikona
 
-           vi.setOnClickListener(new OnItemClickListener(tempValuesT, activity));
+            vi.setOnClickListener(new OnItemClickListener(tempValuesT, activity));
         }
         return vi;
     }

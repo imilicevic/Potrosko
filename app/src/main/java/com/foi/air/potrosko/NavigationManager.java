@@ -121,6 +121,7 @@ public class NavigationManager {
         fragmentManager.beginTransaction()
                 .replace(R.id.flContent, activeItem.getFragment())
                 .commit();
+
     }
 
     /**

@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements android.app.Fragm
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) { //check if savedDistance is null
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ActiveAndroid.initialize(this);
