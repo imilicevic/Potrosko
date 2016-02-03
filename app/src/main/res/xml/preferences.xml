@@ -17,7 +17,6 @@
             android:summary="@string/changepass_summary"
             android:dependency="pref_key_setpass_title"
             android:defaultValue="">
-
         <intent
             android:action="android.intent.action.MAIN"
             android:targetPackage="com.foi.air.potrosko"

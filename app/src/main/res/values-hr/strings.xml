@@ -18,6 +18,8 @@
     <string name="change_pin">UNESITE NOVI PIN</string>
     <string name="old_pin">UNESITE STARI PIN</string>
 
+    <!-- currency -->
+    <string name="currency">HRK</string>
 
     <!-- Drawer  TODO izmjeniti ili maknuti potrosko@gmail.com -->
     <string name="header">potrosko@gmail.com</string>

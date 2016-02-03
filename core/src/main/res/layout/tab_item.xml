@@ -63,7 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="HRK"
+                    android:text="@string/currency"
                     android:id="@+id/text_valute"
                     android:padding="5dp" />
             </LinearLayout>

@@ -9,6 +9,7 @@
         android:theme="@style/Theme.AppCompat.Light">
         <activity
             android:name=".SplashScreenActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name"
             android:launchMode="singleTask">
             <intent-filter>
@@ -19,38 +20,48 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".transactions.TransactionChartActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".transactions.TransactionActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".transactions.CategoryActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".transactions.AddCategoryActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".SettingsActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".ChangePinActivity"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateAlwaysVisible">
+            android:windowSoftInputMode="stateAlwaysVisible"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".ChooseCurrency"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".OldPinActivity"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateAlwaysVisible">
+            android:windowSoftInputMode="stateAlwaysVisible"
+            android:screenOrientation="portrait">
         </activity>
 
     </application>

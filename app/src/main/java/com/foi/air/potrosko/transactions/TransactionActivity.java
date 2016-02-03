@@ -3,6 +3,8 @@ package com.foi.air.potrosko.transactions;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 
 import com.foi.air.potrosko.MainActivity;
 import com.foi.air.potrosko.R;
+import android.preference.PreferenceManager;
 
 /**
  * Unos iznosa transakcije i odabir vrste (Income/Expense)

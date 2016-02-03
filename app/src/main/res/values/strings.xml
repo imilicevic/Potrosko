@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <string name="app_name">Potroško</string>
@@ -16,6 +17,9 @@
    <!-- change and set new pin -->
    <string name="change_pin">ENTER NEW PIN</string>
    <string name="old_pin">ENTER OLD PIN</string>
+
+    <!-- currency -->
+    <string name="currency">USD</string>
 
     <!-- Drawer  TODO izmjeniti ili maknuti potrosko@gmail.com -->
     <string name="header">potrosko@gmail.com</string>

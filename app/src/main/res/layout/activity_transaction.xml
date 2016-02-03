@@ -67,7 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="HRK"
+                android:text="@string/currency"
                 android:id="@+id/valute"
                 android:layout_alignBottom="@+id/valute"
                 android:layout_toRightOf="@+id/valute"
