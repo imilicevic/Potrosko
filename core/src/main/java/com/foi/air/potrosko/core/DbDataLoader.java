@@ -42,7 +42,7 @@ public class DbDataLoader extends DataLoader {
         }
 
         if(databaseQuerySuccessful == true && categoriesFromDb.size() > 0 ){
-            Toast.makeText(activity, "Podaci se loadaju", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "Podaci su uspješno učitani", Toast.LENGTH_SHORT).show();
             categories = (ArrayList<Category>) categoriesFromDb;
             transactions = (ArrayList<Transaction>) transactionsFromDb;
 

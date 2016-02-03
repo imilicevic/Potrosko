@@ -1,4 +1,4 @@
-package com.foi.air.potrosko.fragments;
+package com.foi.air.potrosko.home;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -21,7 +21,6 @@ import com.foi.air.potrosko.core.DataLoader;
 import com.foi.air.potrosko.core.NavigationItem;
 import com.foi.air.potrosko.db.Category;
 import com.foi.air.potrosko.db.Transaction;
-import com.foi.air.potrosko.core.ListViewAdapter;
 import com.foi.air.potrosko.transactions.CategoryActivity;
 
 import java.text.SimpleDateFormat;
@@ -42,6 +41,12 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
     private String strAmount;
     private String strNote;
 
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+    }
 
     @Nullable
     @Override
@@ -198,6 +203,8 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
      */
     @Override
     public void loadData(ArrayList<Category> categories, ArrayList<Transaction> transactions) {
+
+
 
     }
 

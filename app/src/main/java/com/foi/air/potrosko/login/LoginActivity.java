@@ -1,4 +1,4 @@
-package com.foi.air.potrosko;
+package com.foi.air.potrosko.login;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -6,9 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.foi.air.potrosko.MainActivity;
+import com.foi.air.potrosko.R;
+import com.foi.air.potrosko.login.ChangePinActivity;
 
 
 /**

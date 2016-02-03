@@ -1,4 +1,4 @@
-package com.foi.air.potrosko.core;
+package com.foi.air.potrosko.home;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.foi.air.potrosko.db.Transaction;
 import java.util.ArrayList;
 
@@ -78,15 +79,15 @@ public class ListViewAdapter extends BaseAdapter {
         if(convertView==null){
 
             //Inflate tabitem.xml file for each row ( Defined below )
-            vi = inflater.inflate(R.layout.tab_item, null);
+            vi = inflater.inflate(com.foi.air.potrosko.core.R.layout.tab_item, null);
 
             //View Holder Object to contain tabitem.xml file elements
             holder = new ViewHolder();
-            holder.textCategory = (TextView) vi.findViewById(R.id.text_category);
-            holder.textNote =(TextView)vi.findViewById(R.id.text_note);
-            holder.textAmount =(TextView)vi.findViewById(R.id.text_amount);
-            holder.textDate =(TextView)vi.findViewById(R.id.text_date);
-            holder.image=(ImageView)vi.findViewById(R.id.imageView2);
+            holder.textCategory = (TextView) vi.findViewById(com.foi.air.potrosko.core.R.id.text_category);
+            holder.textNote =(TextView)vi.findViewById(com.foi.air.potrosko.core.R.id.text_note);
+            holder.textAmount =(TextView)vi.findViewById(com.foi.air.potrosko.core.R.id.text_amount);
+            holder.textDate =(TextView)vi.findViewById(com.foi.air.potrosko.core.R.id.text_date);
+            holder.image=(ImageView)vi.findViewById(com.foi.air.potrosko.core.R.id.imageView2);
 
             // Set holder with LayoutInflater
             vi.setTag( holder );
@@ -115,28 +116,28 @@ public class ListViewAdapter extends BaseAdapter {
 
 
             if (tempValuesT.getCategoryName().equals("General")) {
-                holder.image.setImageDrawable(activity.getResources().getDrawable(R.drawable.barbershop));
+                holder.image.setImageDrawable(activity.getResources().getDrawable(com.foi.air.potrosko.core.R.drawable.barbershop));
             }
             else if (tempValuesT.getCategoryName().equals("Food")){
-                holder.image.setImageDrawable(activity.getResources().getDrawable(R.drawable.food));
+                holder.image.setImageDrawable(activity.getResources().getDrawable(com.foi.air.potrosko.core.R.drawable.food));
             }
             else if (tempValuesT.getCategoryName().equals("Car")){
-                holder.image.setImageDrawable(activity.getResources().getDrawable(R.drawable.car));
+                holder.image.setImageDrawable(activity.getResources().getDrawable(com.foi.air.potrosko.core.R.drawable.car));
             }
             else if (tempValuesT.getCategoryName().equals("Travel")) {
-                holder.image.setImageDrawable(activity.getResources().getDrawable(R.drawable.party));
+                holder.image.setImageDrawable(activity.getResources().getDrawable(com.foi.air.potrosko.core.R.drawable.party));
             }
             else if (tempValuesT.getCategoryName().equals("House")) {
-                holder.image.setImageDrawable(activity.getResources().getDrawable(R.drawable.ingredients));
+                holder.image.setImageDrawable(activity.getResources().getDrawable(com.foi.air.potrosko.core.R.drawable.ingredients));
             }
             else if (tempValuesT.getCategoryName().equals("Shopping")) {
-                holder.image.setImageDrawable(activity.getResources().getDrawable(R.drawable.clothes));
+                holder.image.setImageDrawable(activity.getResources().getDrawable(com.foi.air.potrosko.core.R.drawable.clothes));
             }
             else if (tempValuesT.getCategoryName().equals("Transport")) {
-                holder.image.setImageDrawable(activity.getResources().getDrawable(R.drawable.car));
+                holder.image.setImageDrawable(activity.getResources().getDrawable(com.foi.air.potrosko.core.R.drawable.car));
             }
             else
-                holder.image.setImageDrawable(activity.getResources().getDrawable(R.drawable.mobile));
+                holder.image.setImageDrawable(activity.getResources().getDrawable(com.foi.air.potrosko.core.R.drawable.mobile));
 
 
             //TODO srediti ostatak ikona

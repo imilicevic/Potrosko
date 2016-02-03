@@ -19,8 +19,8 @@ import com.foi.air.potrosko.core.OnDataLoadedListener;
 import com.foi.air.potrosko.db.Category;
 import com.foi.air.potrosko.db.Transaction;
 import com.foi.air.potrosko.chart.ExpenseChartFragment;
-import com.foi.air.potrosko.fragments.HomeScreenFragment;
-import com.foi.air.potrosko.fragments.SettingsFragment;
+import com.foi.air.potrosko.home.HomeScreenFragment;
+import com.foi.air.potrosko.settings.SettingsFragment;
 import com.foi.air.potrosko.transactions.TransactionActivity;
 import java.util.ArrayList;
 
