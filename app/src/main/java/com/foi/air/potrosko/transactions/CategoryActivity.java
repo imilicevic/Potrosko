@@ -74,12 +74,12 @@ public class CategoryActivity extends AppCompatActivity {
             TransactionType income = new TransactionType("income", "amounts received during time period");
 
             expense.save();
-            Toast.makeText(getApplicationContext(), expense.toString(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), expense.toString(), Toast.LENGTH_SHORT).show();
             income.save();
-            Toast.makeText(getApplicationContext(), income.toString(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), income.toString(), Toast.LENGTH_SHORT).show();
 
             List<Category> categories = Category.getAll();
-            Toast.makeText(getApplicationContext(), categories.toString(), Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(), categories.toString(), Toast.LENGTH_LONG).show();
             if (categories == null || categories.size() <= 0) {
 
                 /**
@@ -117,8 +117,8 @@ public class CategoryActivity extends AppCompatActivity {
                 secondIncome.save();
                 gift.save();
 
-                Toast.makeText(getApplicationContext(), gift.toString(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(), "Kategorije dodane.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), gift.toString(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Kategorije dodane.", Toast.LENGTH_SHORT).show();
 
             }
         }
@@ -262,11 +262,10 @@ public class CategoryActivity extends AppCompatActivity {
                     /**
                      * setting Transaction type
                      */
-                    if (amount > 0) {
-                        ttype = TransactionType.getType("income");
-                    } else {
+                    if (amount < 0) {
                         ttype = TransactionType.getType("expense");
-                        amount *= -1;
+                    } else {
+                        ttype = TransactionType.getType("income");
                     }
                     String note = ((TextView) findViewById(R.id.txtNote)).getText().toString();
 

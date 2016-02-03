@@ -54,13 +54,21 @@ public class ChartAdapter {
 
         yData = new float[t.size()];
 
-        double sum = 0;
+        double sum = 0, amount = 0;
         for(int i=0; i<t.size(); i++){
-            sum += t.get(i).getAmount();
+            amount = t.get(i).getAmount();
+
+            if(amount < 0)
+                amount = amount * -1;
+
+            sum += amount;
         }
         DecimalFormat df = new DecimalFormat("###.##");
         for(int i=0; i<t.size(); i++){
-            yData[i] = (float) ((t.get(i).getAmount()/sum)*100);
+            amount = t.get(i).getAmount();
+            if(amount < 0)
+                amount = amount * -1;
+            yData[i] = (float) ((amount/sum)*100);
             //yData[i] = Float.parseFloat(df.format(t.get(i).getAmount()).toString());
         }
 
