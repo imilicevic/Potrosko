@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.activeandroid.query.Delete;
 import com.activeandroid.util.SQLiteUtils;
-import com.foi.air.potrosko.loaders.DbDataLoader;
+import com.foi.air.potrosko.core.DbDataLoader;
 import com.foi.air.potrosko.R;
 import com.foi.air.potrosko.core.DataLoader;
 import com.foi.air.potrosko.core.NavigationItem;
@@ -27,9 +27,7 @@ import com.foi.air.potrosko.transactions.CategoryActivity;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.zip.Inflater;
 
 
 public class HomeScreenFragment extends Fragment implements NavigationItem{

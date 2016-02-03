@@ -1,4 +1,4 @@
-package com.foi.air.potrosko;
+package com.foi.air.potrosko.chart;
 
 import android.widget.Toast;
 

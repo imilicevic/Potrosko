@@ -1,6 +1,5 @@
 package com.foi.air.potrosko;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -14,12 +13,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
+
 import com.activeandroid.ActiveAndroid;
 import com.foi.air.potrosko.core.OnDataLoadedListener;
 import com.foi.air.potrosko.db.Category;
 import com.foi.air.potrosko.db.Transaction;
-import com.foi.air.potrosko.fragments.ChartScreenFragment;
+import com.foi.air.potrosko.chart.ChartScreenFragment;
 import com.foi.air.potrosko.fragments.HomeScreenFragment;
 import com.foi.air.potrosko.fragments.SettingsFragment;
 import com.foi.air.potrosko.transactions.TransactionActivity;
