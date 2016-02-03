@@ -17,6 +17,11 @@ import java.util.ArrayList;
 /**
  * Created by Andrej on 31.1.2016..
  */
+
+/**
+ * Klasa upravlja dinamičkim dodavanjem modula u Navigation Drawer.
+ *
+ */
 public class NavigationManager {
 
     public ArrayList<NavigationItem> navigationItems;
@@ -28,6 +33,12 @@ public class NavigationManager {
     private ArrayList<Category> categories;
     private ArrayList<Transaction> transactions;
 
+    /**
+     * Dependencies prenijeti do {@code }NavigationManager()} metode
+     * @param handlerActivity se koristi za pristup {@code FragmentManager()}
+     * @param drawerLayout se koristi za punjenje s {@code }NavigationItem}
+     * @param navigationView sadrži listu menu itema
+     */
     public void setDependencies(Activity handlerActivity, DrawerLayout drawerLayout, NavigationView navigationView){
         this.mHandlerActivity = handlerActivity;
         this.mNavigationView = navigationView;
@@ -44,8 +55,13 @@ public class NavigationManager {
         });
     }
 
+    /**
+     * Klikom na item se radi transkacija.
+     * Dohvaća id itema i klikom na određeni item se otvara njegov fragment i postavlja se u Back stack.
+     * Kad se fragment otvori učitavaju se podaci(kategorije i transakcije).
+     * @param menuItem
+     */
     private void selectItem(MenuItem menuItem) {
-        // uses the menu item to find the NavigationItem (interface implementator)
         NavigationItem clickedItem = navigationItems.get(menuItem.getItemId());
 
         FragmentManager fragmentManager = mHandlerActivity.getFragmentManager();
@@ -55,13 +71,13 @@ public class NavigationManager {
                 .addToBackStack("")
                 .commit();
 
-        clickedItem.loadData(categories, transactions); // load data, only when the module is about to be shown
+        clickedItem.loadData(categories, transactions);
 
         menuItem.setChecked(true);
         mDrawerLayout.closeDrawer(GravityCompat.START);
     }
 
-    // private constructor
+
     private NavigationManager(){
         navigationItems = new ArrayList<NavigationItem>();
     }
@@ -72,6 +88,10 @@ public class NavigationManager {
         return instance;
     }
 
+    /**
+     *
+     * @return listu stringova od itema koji se nalaze u Navigation Draweru
+     */
     public ArrayList<String> getNavigationItemsAsStrings(){
         ArrayList<String> navigationItemStrings = new ArrayList<String>();
         for (NavigationItem item : navigationItems) {
@@ -80,17 +100,21 @@ public class NavigationManager {
         return navigationItemStrings;
     }
 
+    /**
+     * Metoda koja ponovo učitava iteme kad su već jednom učitani.
+     * Omogućuje da se ne dodaju svaki put isti itemi.
+     */
     public void reloadItems() {
         for (NavigationItem item : this.navigationItems) {
             mNavigationView.getMenu().add(0, item.getPosition(), 0, item.getItemName());
         }
     }
 
-    public void clearItems()
-    {
-        navigationItems.clear();
-    }
-
+    /**
+     * Metoda za učitavanje zadanog fragmenta.
+     * Učitava se kod samog pokretanja aplikacije.
+     * U našem slučaju je to 0. ti fragment, HomeScreenFragment.
+     */
     public void loadDefaultFragment() {
         activeItem =navigationItems.get(0);
         FragmentManager fragmentManager = mHandlerActivity.getFragmentManager();
@@ -99,16 +123,25 @@ public class NavigationManager {
                 .commit();
     }
 
+    /**
+     * Metoda za dodavanje novih itema u Navigation Drawer.
+     * @param newItem novi item
+     */
     public void addItem(NavigationItem newItem){
         newItem.setPosition(navigationItems.size());
         navigationItems.add(newItem);
         mNavigationView.getMenu().add(0, newItem.getPosition(), 0, newItem.getItemName());
     }
 
+    /**
+     * Učitavanje podataka u aktivnom fragmentu.
+     * @param categories kategorije
+     * @param transactions transakcije
+     */
     public void makeDataChange(ArrayList<Category> categories, ArrayList<Transaction> transactions){
         this.categories = categories;
         this.transactions = transactions;
-        activeItem.loadData(categories, transactions);  // load data to initial object
+        activeItem.loadData(categories, transactions);
     }
 
 }

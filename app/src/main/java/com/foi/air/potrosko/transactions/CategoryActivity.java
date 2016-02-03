@@ -18,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.activeandroid.query.Update;
 import com.foi.air.potrosko.MainActivity;
 import com.foi.air.potrosko.R;
 import com.foi.air.potrosko.db.Category;
@@ -31,32 +32,39 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Odabir željene kategorije, upis datuma i bilješke.
+ * Spremanje transakcije u bazu.
+ */
 public class CategoryActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //Remove title bar
+
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-        // Toolbar
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
         SetupEvenlyDistributedToolbar.setupEvenlyDistributedToolbar(getWindowManager().getDefaultDisplay(), mToolbar, R.menu.menu_new_transaction); // Calling new method for distributing icons
-        setSupportActionBar(mToolbar);                   // Setting toolbar as the ActionBar with setSupportActionBar() call
+
+        setSupportActionBar(mToolbar);
 
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
-        // Date handling
+
         EditText edittext = (EditText) findViewById(R.id.txtDate);
         EditTextDatePicker datepicker = new EditTextDatePicker(this, edittext);
         datepicker.setCurrentDate();
 
-        // Getting data from previous activity (TransactionActivity)
+
+        /**
+         * Getting data from previous activity (TransactionActivity)
+         */
         List<TransactionType> transactionTypes = TransactionType.getAll();
         if(transactionTypes == null || transactionTypes.size() <= 0){
             TransactionType expense = new TransactionType("expense", "amounts spent during time period");
@@ -71,7 +79,9 @@ public class CategoryActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), categories.toString(), Toast.LENGTH_LONG).show();
             if(categories == null || categories.size() <= 0) {
 
-                // expense categories
+                /**
+                 *  expense categories
+                 */
                 Category general = new Category("General", "Općenite transakcije, nesvrstane.", expense, "barbershop");
                 Category food = new Category("Food", "Izdavanja na hranu.", expense, "food");
                 Category car = new Category("Car", "Sva izdavanja za automobil.", expense, "car");
@@ -81,7 +91,9 @@ public class CategoryActivity extends AppCompatActivity {
                 Category transport = new Category("Transport", "Izdavanja za prijevoz.", expense, "car");
                 Category other = new Category("Other", "Ostala nesvrstana plaćanja.", expense, "mobile");
 
-                // income categories
+                /**
+                 * income categories
+                 */
                 Category salary = new Category("Salary", "Mjesečna naknada za rad.", income, "party");
                 Category secondIncome = new Category("Other income", "Drugi ostvareni dohodak u mjesecu.", income, "car");
                 Category gift = new Category("Gift", "Novac primljen kao poklon.", income, "mobile");
@@ -114,7 +126,9 @@ public class CategoryActivity extends AppCompatActivity {
             id = Integer.parseInt(str);
         }
         catch (Exception ex){}
-
+        /**
+         * Dohvaćanje podataka item-a kojeg se zeli izmjeniti
+         */
         if(id > 0){
 
             Intent myIntent = getIntent();
@@ -136,111 +150,108 @@ public class CategoryActivity extends AppCompatActivity {
             }
 
         }
-       else {
+        else {
             try {
-                Intent intent = getIntent();
-                String s = intent.getStringExtra("myAmount");
-                Double amount = Double.parseDouble(s);
+                   Intent intent = getIntent();
+                   String s = intent.getStringExtra("myAmount");
+                   Double amount = Double.parseDouble(s);
 
-                //String amount = bundle.getString("amount");
-                TextView txtAmount = (TextView) findViewById(R.id.txtAmount);
-                txtAmount.setText(amount.toString());
-                // Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+                   TextView txtAmount = (TextView) findViewById(R.id.txtAmount);
+                   txtAmount.setText(amount.toString());
+                    }
+
+                    catch (Exception ex){}
             }
 
-            catch (Exception ex){
-                            }
 
-        }
-
-
-        //kreiranje spinnera i dodavanje item-a
+        /**
+         * Kreiranje spinnera i dodavanje item-a
+         * Sortiranje kategorija unutar spinnera u odnosnu na prethodni odabir Income/Expense
+         */
         Spinner spinner;
 
         spinner = (Spinner)findViewById(R.id.spinner);
         ArrayList<String> list = new ArrayList<String>();
 
-
         List<Category> AllCategorie ;
         AllCategorie =  (List<Category>) Category.getAll();
         String type = "";
 
+        TextView txtAmount = (TextView) findViewById(R.id.txtAmount);
+        String value = txtAmount.getText().toString();
+            try{ Double amount = Double.parseDouble(value);
 
- //Sortiranje spinnera u odnosnu na odabir Income/Expense
-    TextView txtAmount = (TextView) findViewById(R.id.txtAmount);
-    String value = txtAmount.getText().toString();
-        try{ Double amount = Double.parseDouble(value);
+                if (amount < 0) {
+                    type = "expense";
+                    for (int i = 0; i < AllCategorie.size(); i++) {
+                        String val = AllCategorie.get(i).getName().toString();
+                        String ttype = AllCategorie.get(i).getTransactionType().getName().toString();
+                        if (ttype.equals(type))
+                            list.add(new String(val));
+                    }
+                }
+                else {
+                    type = "income";
+                    for (int i = 0; i < AllCategorie.size(); i++) {
+                        String val = AllCategorie.get(i).getName().toString();
+                        String ttype = AllCategorie.get(i).getTransactionType().getName().toString();
+                        if (ttype.equals(type))
+                            list.add(new String(val));
+                    }
+                }
 
-        if (amount < 0) {
-            type = "expense";
-            for (int i = 0; i < AllCategorie.size(); i++) {
-                String val = AllCategorie.get(i).getName().toString();
-                String ttype = AllCategorie.get(i).getTransactionType().getName().toString();
-                if (ttype.equals(type))
-                    list.add(new String(val));
-            }
-        } else {
-            type = "income";
-            for (int i = 0; i < AllCategorie.size(); i++) {
-                String val = AllCategorie.get(i).getName().toString();
-                String ttype = AllCategorie.get(i).getTransactionType().getName().toString();
-                if (ttype.equals(type))
-                    list.add(new String(val));
-            }
-
+            ArrayAdapter arrayAdapter;
+            arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, list);
+            arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(arrayAdapter);
         }
-
-
-        ArrayAdapter arrayAdapter;
-        arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, list);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(arrayAdapter);
-    }
-    catch (Exception ex){
-    }
-
-
-
-
-
-
-
-    }
+            catch (Exception ex){}
+     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_new_transaction, menu);
         return true;
     }
 
+    /**
+     *  Handle action bar item clicks here. The action bar will
+     *  automatically handle clicks on the Home/Up button, so long
+     *  as you specify a parent activity in AndroidManifest.xml.
+     * @param item
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
 
         Transaction transaction = new Transaction();
         TransactionType ttype;
         Category c;
 
-
-        int id = item.getItemId();
         switch (item.getItemId()) {
             case R.id.action_accept:
-                try {
-                    Intent intent = getIntent();
+                //Spremanje editiranog item-a
+                /*int id = 0;
+                    Intent inte = getIntent();
+                    int str =Integer.parseInt(inte.getStringExtra("id"));
+                    id = str;
+                    String dTxt = ((TextView) findViewById(R.id.txtDate)).getText().toString();
+                    String deTxt = ((TextView) findViewById(R.id.txtdescrip)).getText().toString();
+
+                    new Update(Transaction.class).set(dTxt, deTxt).where("id = ?", id).execute();*/
+
+                try {  Intent intent = getIntent();
                     String s = intent.getStringExtra("myAmount");
                     Double amount = Double.parseDouble(s);
 
-                    // setting Transaction type
+                    /**
+                     * setting Transaction type
+                     */
                     if (amount > 0) {
                         ttype = TransactionType.getType("income");
-                       // Toast.makeText(getApplicationContext(), "Prihod", Toast.LENGTH_SHORT).show();
-                    } else {
+                    }
+                    else {
                         ttype = TransactionType.getType("expense");
-                       // Toast.makeText(getApplicationContext(), "Trošak", Toast.LENGTH_SHORT).show();
                     }
                     String note = ((TextView) findViewById(R.id.txtNote)).getText().toString();
 
@@ -251,22 +262,10 @@ public class CategoryActivity extends AppCompatActivity {
                     if(c == null){
                         c = Category.getCategory("opće");
                     }
-                    //Toast.makeText(getApplicationContext(), c.getName(), Toast.LENGTH_SHORT).show();
                     String dateTxt = ((TextView) findViewById(R.id.txtDate)).getText().toString();
-                    /*
-                    Date date = Calendar.getInstance().getTime();
 
-                    Toast.makeText(getApplicationContext(), dateTxt, Toast.LENGTH_SHORT).show();
-
-                    DateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy");
-                    DateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
-                    String inputDateStr = dateTxt;
-                    Date datet = inputFormat.parse(inputDateStr);
-                    String outputDateStr = outputFormat.format(datet);
-                    */
-                    // TODO Saving to db
-                   transaction = new Transaction(ttype, c, c.getName(), dateTxt, note, amount);
-                   transaction.save();
+                    transaction = new Transaction(ttype, c, c.getName(), dateTxt, note, amount);
+                    transaction.save();
 
                     Toast.makeText(getApplicationContext(), "Uspješno dodano.", Toast.LENGTH_SHORT).show();
                 }
@@ -295,11 +294,8 @@ public class CategoryActivity extends AppCompatActivity {
     }
 
     public void addActivity(View view) {
-    // Do something in response to button
         Intent intent = new Intent(this, AddCategoryActivity.class);
-        // TODO startActivityForResult
         startActivity(intent);
-
     }
 
     @Override

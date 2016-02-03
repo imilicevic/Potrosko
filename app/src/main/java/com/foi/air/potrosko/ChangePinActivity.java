@@ -39,8 +39,8 @@ public class ChangePinActivity extends AppCompatActivity {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
         SetupEvenlyDistributedToolbar.setupEvenlyDistributedToolbar(getWindowManager().getDefaultDisplay(), mToolbar, R.menu.menu_new_transaction); // Calling new method for distributing icons
-        setSupportActionBar(mToolbar);                   // Setting toolbar as the ActionBar with setSupportActionBar() call
-
+        // Setting toolbar as the ActionBar with setSupportActionBar() call
+        setSupportActionBar(mToolbar);
 
         //dohvacanje vrijednosti iz edittext i pretvaranje u string
         etPin = (EditText) findViewById(R.id.edittxt_pin);

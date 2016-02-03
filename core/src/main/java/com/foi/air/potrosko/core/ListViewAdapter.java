@@ -20,8 +20,8 @@ import java.util.Objects;
 /**
  * Created by Marko Plaftarić on 02-Dec-15.
  */
-public class ListViewAdapter extends BaseAdapter {
 
+public class ListViewAdapter extends BaseAdapter {
 
     // Declare Used Variables
     private Activity activity;

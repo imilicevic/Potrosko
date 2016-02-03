@@ -8,6 +8,10 @@ import java.util.ArrayList;
 /**
  * Created by Andrej on 31.1.2016..
  */
+
+/**
+ * Interface kojeg implementira metoda {@code MainActivity()}
+ */
 public interface OnDataLoadedListener {
     public void onDataLoaded(ArrayList<Category> categories, ArrayList<Transaction> transactions);
 }
