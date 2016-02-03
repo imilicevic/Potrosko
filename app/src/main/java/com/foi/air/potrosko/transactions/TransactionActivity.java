@@ -107,7 +107,7 @@ public class TransactionActivity extends AppCompatActivity  {
         switch (id) {
             case R.id.action_accept:
 
-<<<<<<< HEAD
+
                 EditText price = (EditText) findViewById(R.id.price);
                 String priceStr = price.getText().toString();
 
@@ -132,14 +132,6 @@ public class TransactionActivity extends AppCompatActivity  {
                     return true;
 
 
-=======
-                Intent myIntent = new Intent(this, CategoryActivity.class);
-                myIntent.putExtra("myAmount", amount.toString());
-
-
-                startActivity(myIntent);
-                return true;
->>>>>>> 707febfc509a2ceca9488ea646fb8bff284da3a1
             case R.id.action_cancel:
 
                 View view = this.getCurrentFocus();
@@ -158,8 +150,6 @@ public class TransactionActivity extends AppCompatActivity  {
                 return super.onOptionsItemSelected(item);
         }
 
-
-
     }
 
     @Override
@@ -167,7 +157,6 @@ public class TransactionActivity extends AppCompatActivity  {
         this.finish();
         super.onBackPressed();
     }
-<<<<<<< HEAD
 
     // validacija unosa
     private boolean isValidInput(String input) {
@@ -178,6 +167,4 @@ public class TransactionActivity extends AppCompatActivity  {
     }
 
 
-=======
->>>>>>> 707febfc509a2ceca9488ea646fb8bff284da3a1
 }
