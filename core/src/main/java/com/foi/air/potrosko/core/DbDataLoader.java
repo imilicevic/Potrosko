@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.widget.Toast;
 
 import com.activeandroid.query.Select;
+import com.activeandroid.util.SQLiteUtils;
 import com.foi.air.potrosko.core.DataLoader;
 import com.foi.air.potrosko.db.Category;
 import com.foi.air.potrosko.db.Transaction;
@@ -42,11 +43,22 @@ public class DbDataLoader extends DataLoader {
         }
 
         if(databaseQuerySuccessful == true && categoriesFromDb.size() > 0 ){
-            Toast.makeText(activity, "Podaci su uspješno učitani", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "LoadData Successful", Toast.LENGTH_SHORT).show();
             categories = (ArrayList<Category>) categoriesFromDb;
             transactions = (ArrayList<Transaction>) transactionsFromDb;
 
             dataLoaded();
         }
     }
+
+    public List<Transaction> LoadChartData (String transactionType){
+
+        List<Transaction> t = SQLiteUtils.rawQuery(Transaction.class,
+                "Select * from Transactions JOIN TransactionType on TransactionType = TransactionType.id where TransactionType.name=?"
+                , new String[]{transactionType});
+
+        return t;
+    }
+
+
 }

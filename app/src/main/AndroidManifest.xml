@@ -53,11 +53,6 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".settings.ChooseCurrency"
-            android:theme="@style/AppTheme"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
             android:name=".login.OldPinActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateAlwaysVisible"

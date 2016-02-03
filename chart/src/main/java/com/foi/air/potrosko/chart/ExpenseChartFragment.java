@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-//import com.foi.air.potrosko.R;
+import com.foi.air.potrosko.core.DbDataLoader;
 import com.foi.air.potrosko.core.NavigationItem;
 import com.foi.air.potrosko.db.Category;
 import com.foi.air.potrosko.db.Transaction;
@@ -22,7 +22,7 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 
 /**
- * Klasa fragmenta koji je zadužen za crtanje Piechart grafa, također
+ * Klasa fragmenta koji je zadužena za crtanje Piechart grafa troškova, također
  * implementira nužne metode iz sučelja NavigationItem.java kao dio modularnosti
  */
 public class ExpenseChartFragment extends Fragment implements NavigationItem{
@@ -34,6 +34,8 @@ public class ExpenseChartFragment extends Fragment implements NavigationItem{
     private PieChart pChart;
     private int position;
     private String name = "Expense Chart";
+    private float[] yData = {};
+    private String[] xData ={};
 
 
     /** Metoda koja je zadužena za grafički prikaz fragmenta za Piechart graf
@@ -56,9 +58,12 @@ public class ExpenseChartFragment extends Fragment implements NavigationItem{
         Legend l = pChart.getLegend();
         l.setPosition(Legend.LegendPosition.BELOW_CHART_LEFT);
 
+        DbDataLoader dl = new DbDataLoader();
+        dl.LoadData(getActivity());
+        loadData(dl.categories, dl.transactions);
+
         // add data to chart
         addData();
-
 
         return v;
 
@@ -107,13 +112,16 @@ public class ExpenseChartFragment extends Fragment implements NavigationItem{
         return this;
     }
 
-
     /** Metoda koja se implementira zbog sučelja NavigationItem.java,
      * prima vrijednosti polja iz objekata categories i transactions
      * koji sadrže vrijednosti učitane iz baze podataka.
      */
     @Override
     public void loadData(ArrayList<Category> categories, ArrayList<Transaction> transactions) {
+
+        ChartAdapter ch = new ChartAdapter();
+        yData = ch.getFloatValue("expense");
+        xData = ch.getStringValue("expense");
 
     }
 
@@ -124,10 +132,6 @@ public class ExpenseChartFragment extends Fragment implements NavigationItem{
     private void addData() {
 
         // Dohvacam liste sa nazivima kategorija i vrijednostima unesenih transakcija u postocima
-        ChartAdapter ch = new ChartAdapter();
-        float[] yData = ch.getFloatValue("expense");
-        String[] xData = ch.getStringValue("expense");
-
         ArrayList<Entry> yVals1 = new ArrayList<Entry>();
         for (int i = 0; i < yData.length; i++) {
             yVals1.add(new Entry(yData[i], i));

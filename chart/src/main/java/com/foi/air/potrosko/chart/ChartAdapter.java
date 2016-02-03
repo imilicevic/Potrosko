@@ -3,6 +3,7 @@ package com.foi.air.potrosko.chart;
 import android.widget.Toast;
 
 import com.activeandroid.util.SQLiteUtils;
+import com.foi.air.potrosko.core.DbDataLoader;
 import com.foi.air.potrosko.db.Category;
 import com.foi.air.potrosko.db.Transaction;
 import com.foi.air.potrosko.db.TransactionType;
@@ -48,11 +49,10 @@ public class ChartAdapter {
      */
     public float[] getFloatValue(String input){
 
-        List<Transaction> t = SQLiteUtils.rawQuery(Transaction.class,
-                "Select * from Transactions JOIN TransactionType on TransactionType = TransactionType.id where TransactionType.name=?"
-                , new String[]{input});
+        DbDataLoader dl = new DbDataLoader();
+        List<Transaction> t = dl.LoadChartData(input);
 
-        yData = new float[t.size()];
+                yData = new float[t.size()];
 
         double sum = 0, amount = 0;
         for(int i=0; i<t.size(); i++){
@@ -80,9 +80,9 @@ public class ChartAdapter {
      * @return vraća polje s vrijednostima naziva kategorije koje se iscrtavaju na X os
      */
     public String[] getStringValue(String input) {
-        List<Transaction> t = SQLiteUtils.rawQuery(Transaction.class,
-                "Select * from Transactions JOIN TransactionType on TransactionType = TransactionType.id where TransactionType.name=?"
-                , new String[]{input});
+
+        DbDataLoader dl = new DbDataLoader();
+        List<Transaction> t = dl.LoadChartData(input);
 
         xData = new String[t.size()];
         //String[] tempStrA = new String[t.size()];

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.foi.air.potrosko.core.DbDataLoader;
 import com.foi.air.potrosko.core.NavigationItem;
 import com.foi.air.potrosko.db.Category;
 import com.foi.air.potrosko.db.Transaction;
@@ -22,7 +23,8 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 
 /**
- * Created by MarinFOI on 03-Feb-16.
+ * Klasa fragmenta koji je zadužena za crtanje Piechart grafa prihoda, također
+ * implementira nužne metode iz sučelja NavigationItem.java kao dio modularnosti
  */
 public class IncomeChartFragment extends Fragment implements NavigationItem {
     public static Fragment newInstance() {
@@ -32,6 +34,8 @@ public class IncomeChartFragment extends Fragment implements NavigationItem {
     private PieChart pChart;
     private int position;
     private String name = "Income Chart";
+    private float[] yData = {};
+    private String[] xData ={};
 
 
     /** Metoda koja je zadužena za grafički prikaz fragmenta za Piechart graf
@@ -53,6 +57,10 @@ public class IncomeChartFragment extends Fragment implements NavigationItem {
         // configure legend
         Legend l = pChart.getLegend();
         l.setPosition(Legend.LegendPosition.BELOW_CHART_LEFT);
+
+        DbDataLoader dl = new DbDataLoader();
+        dl.LoadData(getActivity());
+        loadData(dl.categories, dl.transactions);
 
         // add data to chart
         addData();
@@ -112,6 +120,11 @@ public class IncomeChartFragment extends Fragment implements NavigationItem {
     @Override
     public void loadData(ArrayList<Category> categories, ArrayList<Transaction> transactions) {
 
+        // Dohvacam liste sa nazivima kategorija i vrijednostima unesenih transakcija u postocima
+        ChartAdapter ch = new ChartAdapter();
+        yData = ch.getFloatValue("income");
+        xData = ch.getStringValue("income");
+
     }
 
 
@@ -119,11 +132,6 @@ public class IncomeChartFragment extends Fragment implements NavigationItem {
      * dodavanje boja grafu te instanciranje samog grafa
      */
     private void addData() {
-
-        // Dohvacam liste sa nazivima kategorija i vrijednostima unesenih transakcija u postocima
-        ChartAdapter ch = new ChartAdapter();
-        float[] yData = ch.getFloatValue("income");
-        String[] xData = ch.getStringValue("income");
 
         ArrayList<Entry> yVals1 = new ArrayList<Entry>();
         for (int i = 0; i < yData.length; i++) {

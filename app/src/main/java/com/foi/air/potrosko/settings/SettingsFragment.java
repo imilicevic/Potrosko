@@ -59,8 +59,8 @@ public class SettingsFragment extends PreferenceFragment implements NavigationIt
     }
 
     @Override
-    public void loadData(ArrayList<Category> categories, ArrayList<Transaction> transactions) {
+    public void loadData(ArrayList<Category> categories, ArrayList<Transaction> transactions) {}
 
-    }
+
 }
 

@@ -40,8 +40,6 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
     private String strDate;
     private String strAmount;
     private String strNote;
-    private ArrayList<Category> categories;
-    private ArrayList<Transaction> transactions;
 
 
     @Override
@@ -61,10 +59,6 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
 
         DataLoader dl = new DbDataLoader();
         dl.LoadData(getActivity());
-        //if(!(categories.equals(dl.categories) && transactions.equals(dl.transactions))) {
-        //    categories = dl.categories;
-        //    transactions = dl.transactions;
-        //}
         loadData(dl.categories,dl.transactions);
 
         // get data from the table by the MyListAdapter
@@ -74,8 +68,8 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
         // long click listener implementation
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent,final View v, final int position, final long id) {
-                try{
+            public boolean onItemLongClick(AdapterView<?> parent, final View v, final int position, final long id) {
+                try {
                     //dohvacam sve iz liste
                     strCategory = ((TextView) v.findViewById(R.id.text_category)).getText().toString();
                     //Toast.makeText(getActivity(), textCategoty, Toast.LENGTH_SHORT).show();
@@ -92,19 +86,19 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
                     //transaction dialogs
                     AlertDialog.Builder dialogBuilderMain = new AlertDialog.Builder(getActivity());
                     dialogBuilderMain.setMessage(getActivity().getResources().getString(R.string.transaction_options))
-                            .setPositiveButton(getActivity().getResources().getString(R.string.delete), new DialogInterface.OnClickListener(){
+                            .setPositiveButton(getActivity().getResources().getString(R.string.delete), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    switch (which){
+                                    switch (which) {
                                         case DialogInterface.BUTTON_POSITIVE:
 
                                             //delete transaction
                                             AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
                                             dialogBuilder.setMessage(getActivity().getResources().getString(R.string.delete_transaction))
-                                                    .setPositiveButton(getActivity().getResources().getString(R.string.yes), new DialogInterface.OnClickListener(){
+                                                    .setPositiveButton(getActivity().getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
                                                         @Override
                                                         public void onClick(DialogInterface dialog, int which) {
-                                                            switch (which){
+                                                            switch (which) {
                                                                 case DialogInterface.BUTTON_POSITIVE:
 
                                                                     // brisanje preko id-a
@@ -118,13 +112,13 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
                                                             }
                                                         }
                                                     })
-                                                    .setNegativeButton(getActivity().getResources().getString(R.string.no),null)
+                                                    .setNegativeButton(getActivity().getResources().getString(R.string.no), null)
                                                     .show();
                                             break;
                                     }
                                 }
                             })
-                            .setNegativeButton(getActivity().getResources().getString(R.string.edit), new DialogInterface.OnClickListener(){
+                            .setNegativeButton(getActivity().getResources().getString(R.string.edit), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     // edit transactions
@@ -132,10 +126,10 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
                                     //TODO ovdje pozvati activity za editiranje unosa
                                     String id = getMyId();
 
-                                    Intent myIntent = new Intent( getActivity(), CategoryActivity.class);
-                                    myIntent.putExtra("amount",strAmount);
-                                    myIntent.putExtra("category",strCategory);
-                                    myIntent.putExtra("date",strDate);
+                                    Intent myIntent = new Intent(getActivity(), CategoryActivity.class);
+                                    myIntent.putExtra("amount", strAmount);
+                                    myIntent.putExtra("category", strCategory);
+                                    myIntent.putExtra("date", strDate);
                                     myIntent.putExtra("note", strNote);
                                     myIntent.putExtra("id", id);
                                     startActivity(myIntent);
@@ -148,9 +142,9 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
                     // return true to say "event handled"
                     return true;
 
-                }catch (Exception ex){
+                } catch (Exception ex) {
                     Toast.makeText(getActivity().getBaseContext(), ex.toString(), Toast.LENGTH_LONG).show();
-                }finally {
+                } finally {
                     //Toast.makeText(getActivity().getBaseContext(), "Long click je uspješan", Toast.LENGTH_SHORT).show();
                 }
 
