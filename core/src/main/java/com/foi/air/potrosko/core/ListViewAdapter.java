@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.foi.air.potrosko.db.Transaction;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * Created by Marko Plaftarić on 02-Dec-15.
@@ -27,7 +28,6 @@ public class ListViewAdapter extends BaseAdapter {
     private ArrayList data;
     private static LayoutInflater inflater=null;
     public Resources res;
-    //ListModel tempValues=null;
     Transaction tempValuesT=null;
     int i=0;
 
@@ -90,7 +90,7 @@ public class ListViewAdapter extends BaseAdapter {
             holder.textNote =(TextView)vi.findViewById(R.id.text_note);
             holder.textAmount =(TextView)vi.findViewById(R.id.text_amount);
             holder.textDate =(TextView)vi.findViewById(R.id.text_date);
-            //holder.image=(ImageView)vi.findViewById(R.id.imageView);
+            holder.image=(ImageView)vi.findViewById(R.id.imageView2);
 
             // Set holder with LayoutInflater
             vi.setTag( holder );
@@ -117,30 +117,35 @@ public class ListViewAdapter extends BaseAdapter {
             holder.textAmount.setText(tempValuesT.getAmountString());
             holder.textDate.setText(tempValuesT.getDate());
 
-            //TODO srediti dohvacanje ikona
-            /*
-            try{
-                String mDrawableName = tempValuesT.getCategory().getCategoryImg();
-                Toast.makeText(activity.getApplicationContext(), mDrawableName, Toast.LENGTH_SHORT).show();
-                int resID = res.getIdentifier(mDrawableName , "drawable", activity.getPackageName());
-                holder.image.setImageResource(resID);
-            }catch (Exception ex){
-                Toast.makeText(activity.getApplicationContext(), tempValuesT.getCategory().getCategoryImg(), Toast.LENGTH_SHORT).show();
-                ex.printStackTrace();
+
+            if (tempValuesT.getCategoryName().equals("General")) {
+                holder.image.setImageDrawable(activity.getResources().getDrawable(R.drawable.barbershop));
             }
-            */
+            else if (tempValuesT.getCategoryName().equals("Food")){
+                holder.image.setImageDrawable(activity.getResources().getDrawable(R.drawable.food));
+            }
+            else if (tempValuesT.getCategoryName().equals("Car")){
+                holder.image.setImageDrawable(activity.getResources().getDrawable(R.drawable.car));
+            }
+            else if (tempValuesT.getCategoryName().equals("Travel")) {
+                holder.image.setImageDrawable(activity.getResources().getDrawable(R.drawable.party));
+            }
+            else if (tempValuesT.getCategoryName().equals("House")) {
+                holder.image.setImageDrawable(activity.getResources().getDrawable(R.drawable.ingredients));
+            }
+            else if (tempValuesT.getCategoryName().equals("Shopping")) {
+                holder.image.setImageDrawable(activity.getResources().getDrawable(R.drawable.clothes));
+            }
+            else if (tempValuesT.getCategoryName().equals("Transport")) {
+                holder.image.setImageDrawable(activity.getResources().getDrawable(R.drawable.car));
+            }
+            else
+                holder.image.setImageDrawable(activity.getResources().getDrawable(R.drawable.mobile));
 
-            //String tempImg = tempValuesT.getCategory().getCategoryImg();
-            //holder.image.setImageDrawable(activity.getResources().getDrawable(R.drawable.car));
 
-            /*
-            holder.image.setImageResource(
-                    res.getIdentifier(
-                            "com.foi.air.potrosko.app:drawable/"+image,null,null));
-            */
-            //Set Item Click Listner for LayoutInflater for each row
+            //TODO srediti ostatak ikona
 
-           vi.setOnClickListener(new OnItemClickListener( tempValuesT, activity));
+           vi.setOnClickListener(new OnItemClickListener(tempValuesT, activity));
         }
         return vi;
     }

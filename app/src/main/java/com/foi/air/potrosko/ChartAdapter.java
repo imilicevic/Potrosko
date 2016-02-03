@@ -9,6 +9,8 @@ import com.foi.air.potrosko.db.TransactionType;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -16,15 +18,12 @@ import java.util.List;
  */
 public class ChartAdapter {
 
-    //private List<Transaction> transactions;
-    //private List<Category> categories;
-
-    //novo
     private ArrayList<Transaction> chartTransactions;
     private ArrayList<Category> chartCategories;
 
     private float[] yData;
     private String[] xData ;
+    private int[] indexi = {};
 
     public ChartAdapter(){}
 
@@ -55,7 +54,6 @@ public class ChartAdapter {
             //yData[i] = Float.parseFloat(df.format(t.get(i).getAmount()).toString());
         }
 
-        //yData = new float[]{ 5, 10, 15, 30, 40 };
         return yData;
     }
 
@@ -69,20 +67,43 @@ public class ChartAdapter {
                 , new String[]{"expense"});
 
         xData = new String[t.size()];
+        //String[] tempStrA = new String[t.size()];
+
         for(int i=0; i<t.size(); i++){
             xData[i] = t.get(i).getCategoryName();
         }
+
+        /*
+        //ovdje nabavim sva unikatna imena kategorija
+        String[] unique = new HashSet<String>(Arrays.asList(xData)).toArray(new String[0]);
+
+        for(int i=0; i<t.size(); i++){
+            stringContainsItemFromList(unique[i],xData);
+        }
+
+        */
         return xData;
     }
+    /*
+    //funkcija prihvaca string i trazi dali se taj string pojavljuje u polju
+    //pa sprema indekse na kojim mjestima se pojavila. Trenutno ne radi kako bi trebalo
+    //jer jer bi trebao generirati dinamicki polja indeksa, pa preko njih sumirati drugu listu...
+    private void  stringContainsItemFromList(String inputString, String[] items)
+    {
+        int flag = 0;
+        for(int i =0; i < items.length; i++)
+        {
+            if(inputString.contains(items[i]))
+            {
 
-    //public float[] getTransactions(){ float[] yData = { 5, 10, 15, 30, 40 }; return yData;}
+                indexi[flag] = i;
+                flag++;
 
-    //public String[] getCategories(){String[] xData = { "Sony", "Huawei", "LG", "Apple", "Samsung" }; return xData;}
+            }
+        }
 
-    //public List<Transaction> getAllTransactions(){return transactions = Transaction.getAll();}
+    }
+    */
 
-    //public List<Category> getAllCategories(){return categories = Category.getAll();}
-
-    //public class Tuple2<T1,T2> {
 
 }

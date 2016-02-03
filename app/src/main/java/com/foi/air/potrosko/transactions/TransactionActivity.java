@@ -120,7 +120,7 @@ public class TransactionActivity extends AppCompatActivity  {
                 String priceStr = price.getText().toString();
 
                 if(!isValidInput(priceStr)){
-                    Toast.makeText(this, "Unesite broj sa max 6 znamenki molim!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Unesite broj sa max 7 znamenki molim!", Toast.LENGTH_LONG).show();
                     return false;
                 }
 
@@ -170,7 +170,7 @@ public class TransactionActivity extends AppCompatActivity  {
 
     // validacija unosa
     private boolean isValidInput(String input) {
-        if (input.length() > 6 || input.isEmpty()) { //input == null || input.isEmpty()
+        if (input.length() > 7 || input.isEmpty()) {
             return false;
         }
         return true;

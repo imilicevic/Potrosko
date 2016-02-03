@@ -75,7 +75,7 @@ public class CategoryActivity extends AppCompatActivity {
                 Category general = new Category("General", "Općenite transakcije, nesvrstane.", expense, "barbershop");
                 Category food = new Category("Food", "Izdavanja na hranu.", expense, "food");
                 Category car = new Category("Car", "Sva izdavanja za automobil.", expense, "car");
-                Category travel = new Category("Travel", "Sva izdavanja za putovanja.", expense, "car");
+                Category travel = new Category("Travel", "Sva izdavanja za putovanja.", expense, "party");
                 Category home = new Category("House", "Izdavanja vezana uz kućanstvo.", expense, "ingredients");
                 Category shopping = new Category("Shopping", "Izdavanja vezana uz shopping", expense, "clothes");
                 Category transport = new Category("Transport", "Izdavanja za prijevoz.", expense, "car");

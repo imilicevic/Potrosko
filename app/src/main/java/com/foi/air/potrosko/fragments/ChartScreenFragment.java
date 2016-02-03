@@ -37,9 +37,6 @@ public class ChartScreenFragment extends Fragment implements NavigationItem{
     private int position;
     private String name = "Charts";
 
-    // premješteno u ChartAdapter klasu
-    //private float[] yData = { 5, 10, 15, 30, 40 };
-    //private String[] xData = { "Sony", "Huawei", "LG", "Apple", "Samsung" };
 
     @Nullable
     @Override
@@ -130,7 +127,7 @@ public class ChartScreenFragment extends Fragment implements NavigationItem{
             xVals.add(xData[i]);
 
         // create pie data set
-        PieDataSet dataSet = new PieDataSet(yVals1, "Market Share");
+        PieDataSet dataSet = new PieDataSet(yVals1, "Expenses by categories");
         dataSet.setSliceSpace(3);
         dataSet.setSelectionShift(5);
 
