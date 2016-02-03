@@ -172,6 +172,7 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
         return this;
     }
 
+
     @Override
     public void loadData(ArrayList<Category> categories, ArrayList<Transaction> transactions) {
 

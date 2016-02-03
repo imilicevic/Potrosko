@@ -14,58 +14,50 @@ import android.widget.TextView;
 /**
  * Created by Andrej on 14.11.2015..
  */
-public class LoginActivity extends AppCompatActivity{
-    // Pin edittext
-    EditText txtPin;
 
+/**
+ * Klasa koja provjerava uneseni PIN u Login polje.
+ */
+public class LoginActivity extends AppCompatActivity{
+
+    EditText txtPin;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
-        //dohvacanje SharedPreferences iz ChangePinActivity klase
+        /**
+         * Dohvacanje SharedPreferences iz ChangePinActivity klase
+         */
         SharedPreferences mSettings = getSharedPreferences("Settings", MODE_PRIVATE);
 
-        /*spremanje dohvacenog pina u pin varijablu
-        pin treba staviti umjesto "1234" kod provjere pina nakon sto se stavi provjera je li SharedPreferences
-        prazan i ako je pozvati ChangePinActivity, ako nije pozvati LoginActivity*/
+        /**
+         * Spremanje dohvacenog pina u {@code pin2} varijablu
+         */
         final String pin2 = mSettings.getString("etPinString", ChangePinActivity.etPinString);
 
-
-        // Pin input text
         txtPin = (EditText) findViewById(R.id.input_pin);
 
-        // Login with pressing soft keyboard key
+        /**
+         * Logika za provjeravanje ispravnog pina kod logina.
+         */
         txtPin.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_GO) {
-                    // do your stuff here
-                    // Get pin from EditText
                     String pin = txtPin.getText().toString();
-
-                        // Check if pin is filled
                         if(pin.trim().length() > 0){
-                            // For testing pin is checked with sample data
-                            // pin = 1234
                             if(pin.equals(pin2)){
-                                // Starting MainActivity
                                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(i);
                                 finish();
-
                             }else{
-                                // pin doesn't match
                                 txtPin.setError("PIN is incorrect");
                             }
                         }else{
-                            // user didn't entered pin
-                            // Show alert asking him to enter the details
                             txtPin.setError("Please enter PIN");
                         }
-
                 }
                 return false;
             }
