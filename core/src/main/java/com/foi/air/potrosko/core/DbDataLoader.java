@@ -1,10 +1,9 @@
-package com.foi.air.potrosko.loaders;
+package com.foi.air.potrosko.core;
 
 import android.app.Activity;
 import android.widget.Toast;
 
 import com.activeandroid.query.Select;
-import com.foi.air.potrosko.R;
 import com.foi.air.potrosko.core.DataLoader;
 import com.foi.air.potrosko.db.Category;
 import com.foi.air.potrosko.db.Transaction;

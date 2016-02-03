@@ -1,4 +1,4 @@
-package com.foi.air.chart;
+package com.foi.air.potrosko.chart;
 
 /**
  * Created by Ivan on 3.2.2016..
