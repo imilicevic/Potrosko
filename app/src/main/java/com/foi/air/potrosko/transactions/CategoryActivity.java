@@ -141,7 +141,15 @@ public class CategoryActivity extends AppCompatActivity {
             }
             if (myIntent.hasExtra("category")) {
                 Spinner mSpin = (Spinner) findViewById(R.id.spinner);
-                //TODO srediti postavljanje kategorije
+                List<Category> AllCategorie;
+                AllCategorie = (List<Category>) Category.getAll();
+                for (int i = 0; i < AllCategorie.size(); i++) {
+                    if(AllCategorie.get(i).getName().equals(myIntent.getStringExtra("category"))){
+
+                        mSpin.setSelection(i,true);
+                        Log.e("KAT", i + " kategorija");
+                    }
+                }
             }
             if (myIntent.hasExtra("note")) {
                 TextView mText = (TextView) findViewById(R.id.txtNote);

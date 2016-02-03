@@ -1,15 +1,13 @@
 package com.foi.air.potrosko.chart;
 
+import android.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.foi.air.potrosko.chart.ChartAdapter;
-//import com.foi.air.potrosko.R;
 import com.foi.air.potrosko.core.NavigationItem;
 import com.foi.air.potrosko.db.Category;
 import com.foi.air.potrosko.db.Transaction;
@@ -20,21 +18,20 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
+
 import java.util.ArrayList;
 
 /**
- * Klasa fragmenta koji je zadužen za crtanje Piechart grafa, također
- * implementira nužne metode iz sučelja NavigationItem.java kao dio modularnosti
+ * Created by MarinFOI on 03-Feb-16.
  */
-public class ChartScreenFragment extends Fragment implements NavigationItem{
-
+public class IncomeChartFragment extends Fragment implements NavigationItem {
     public static Fragment newInstance() {
-        return new ChartScreenFragment();
+        return new IncomeChartFragment();
     }
 
     private PieChart pChart;
     private int position;
-    private String name = "Charts";
+    private String name = "Income Chart";
 
 
     /** Metoda koja je zadužena za grafički prikaz fragmenta za Piechart graf
@@ -44,7 +41,7 @@ public class ChartScreenFragment extends Fragment implements NavigationItem{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_chart_screen,container,false);
+        View v = inflater.inflate(R.layout.fragment_chart_expense,container,false);
 
         pChart = (PieChart) v.findViewById(R.id.pie_chart);
         pChart.setDescription("");
@@ -60,25 +57,6 @@ public class ChartScreenFragment extends Fragment implements NavigationItem{
         // add data to chart
         addData();
 
-/*      //Toast podataka ako će biti potrebno
-        // set a chart value selected listener
-        pChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
-
-            @Override
-            public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
-                // display msg when value selected
-                if (e == null)
-                    return;
-
-                Toast.makeText(getActivity(), xData[e.getXIndex()] + " = " + e.getVal() + "%", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected() {
-
-            }
-        });
-*/
         return v;
 
     }
@@ -144,8 +122,8 @@ public class ChartScreenFragment extends Fragment implements NavigationItem{
 
         // Dohvacam liste sa nazivima kategorija i vrijednostima unesenih transakcija u postocima
         ChartAdapter ch = new ChartAdapter();
-        float[] yData = ch.getFloatValue();
-        String[] xData = ch.getStringValue();
+        float[] yData = ch.getFloatValue("income");
+        String[] xData = ch.getStringValue("income");
 
         ArrayList<Entry> yVals1 = new ArrayList<Entry>();
         for (int i = 0; i < yData.length; i++) {
@@ -158,7 +136,7 @@ public class ChartScreenFragment extends Fragment implements NavigationItem{
             xVals.add(xData[i]);
 
         // create pie data set
-        PieDataSet dataSet = new PieDataSet(yVals1, "Expenses by categories");
+        PieDataSet dataSet = new PieDataSet(yVals1, "Income by categories");
         dataSet.setSliceSpace(3);
         dataSet.setSelectionShift(5);
 
@@ -198,6 +176,8 @@ public class ChartScreenFragment extends Fragment implements NavigationItem{
         pChart.invalidate();
 
     }
+
+
 
 
 }

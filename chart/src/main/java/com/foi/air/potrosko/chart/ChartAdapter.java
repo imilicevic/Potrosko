@@ -15,7 +15,7 @@ import java.util.List;
 
 
 /**Klasa koja sadrži funkcije za dohvaćanje imena kategorija i vrijednosti
- * troškova iz baze podataka te ih prosljeđuje klasi ChartScreenFragment.java
+ * troškova iz baze podataka te ih prosljeđuje klasi ExpenseChartFragment.java
  * koja koristi te vrijednosti za crtanje Piechart grafa
  */
 public class ChartAdapter {
@@ -46,11 +46,11 @@ public class ChartAdapter {
      *
      * @return vraća polje s vrijednostima koje se iscrtavaju na Y os
      */
-    public float[] getFloatValue(){
-        String ttype = "expense";
+    public float[] getFloatValue(String input){
+
         List<Transaction> t = SQLiteUtils.rawQuery(Transaction.class,
                 "Select * from Transactions JOIN TransactionType on TransactionType = TransactionType.id where TransactionType.name=?"
-                , new String[]{"expense"});
+                , new String[]{input});
 
         yData = new float[t.size()];
 
@@ -71,10 +71,10 @@ public class ChartAdapter {
      *
      * @return vraća polje s vrijednostima naziva kategorije koje se iscrtavaju na X os
      */
-    public String[] getStringValue() {
+    public String[] getStringValue(String input) {
         List<Transaction> t = SQLiteUtils.rawQuery(Transaction.class,
                 "Select * from Transactions JOIN TransactionType on TransactionType = TransactionType.id where TransactionType.name=?"
-                , new String[]{"expense"});
+                , new String[]{input});
 
         xData = new String[t.size()];
         //String[] tempStrA = new String[t.size()];
