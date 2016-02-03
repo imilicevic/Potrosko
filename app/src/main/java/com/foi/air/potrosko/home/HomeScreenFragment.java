@@ -40,6 +40,8 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
     private String strDate;
     private String strAmount;
     private String strNote;
+    private ArrayList<Category> categories;
+    private ArrayList<Transaction> transactions;
 
 
     @Override
@@ -48,15 +50,22 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
         setRetainInstance(true);
     }
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_home_screen, null);
-
         list = (ListView)v.findViewById(R.id.listViewHome);
 
-        setListData();
+
+        DataLoader dl = new DbDataLoader();
+        dl.LoadData(getActivity());
+        //if(!(categories.equals(dl.categories) && transactions.equals(dl.transactions))) {
+        //    categories = dl.categories;
+        //    transactions = dl.transactions;
+        //}
+        loadData(dl.categories,dl.transactions);
 
         // get data from the table by the MyListAdapter
         customAdapter = new ListViewAdapter(this.getActivity(),CustomListViewValuesArr, getResources());
@@ -153,6 +162,8 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
         return v;
     }
 
+
+
     /** Metoda koja se implementira zbog sučelja NavigationItem.java,
      * dio dinamičkog prikaza stavki ladičara
      *
@@ -202,10 +213,40 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
      * koji sadrže vrijednosti učitane iz baze podataka.
      */
     @Override
-    public void loadData(ArrayList<Category> categories, ArrayList<Transaction> transactions) {
+    public void loadData(ArrayList<Category> cat, ArrayList<Transaction> tra) {
 
+        CustomListViewValuesArr.clear();
 
+        for (int i = 0; i < tra.size(); i++) {
 
+            final Transaction myList = new Transaction();
+            Transaction t = tra.get(i);
+
+            Category c = cat.get(1);
+
+            // Firstly take data in model object
+            try {
+                myList.setCategory(t.getCategory());
+            }catch (Exception ex){
+                myList.setCategory(c);
+            }
+            myList.setAmount(t.getAmount());
+
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy.");
+            String date = "";
+
+            try {
+                date = t.getDate();
+            } catch (Exception ex) {
+                date = sdf.format(Calendar.getInstance().getTime());
+            }finally {
+                myList.setDate(date);
+            }
+            myList.setNote(t.getNote());
+
+            // Take Model Object in ArrayList
+            CustomListViewValuesArr.add(myList);
+        }
     }
 
 
@@ -230,65 +271,12 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
 
     }
 
-    /** Metoda koja prilikom korisnikovog unosa nove
-     * transakcije prosljeđuje te podatke u listu
-     * koja prikazuje sve transakcije na početnom ekranu.
-     */
-    public void setListData()
-    {
-
-        List<Transaction> transactions = Transaction.getAll();
-        List<Category> categories = Category.getAll();
-        for (int i = 0; i < transactions.size(); i++) {
-
-            final Transaction myList = new Transaction();
-            Transaction t = transactions.get(i);
-
-            // TODO srediti imena kategorija
-            Category c = categories.get(1);
-
-            // Firstly take data in model object
-            try {
-                myList.setCategory(t.getCategory());
-            }catch (Exception ex){
-                myList.setCategory(c);
-            }
-            myList.setAmount(t.getAmount());
-
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy.");
-            String date = "";
-
-            try {
-                date = t.getDate();
-            } catch (Exception ex) {
-                date = sdf.format(Calendar.getInstance().getTime());
-            }finally {
-                myList.setDate(date);
-            }
-            myList.setNote(t.getNote());
-            //myList.setImage("Slika" + i);
-
-            // Take Model Object in ArrayList
-            CustomListViewValuesArr.add(myList);
-        }
-
-    }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         CustomListViewValuesArr.clear();
     }
-
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        DataLoader dl = new DbDataLoader();
-        dl.LoadData(getActivity());
-    }
-
-
 
 
 

@@ -23,7 +23,7 @@ public class ListViewAdapter extends BaseAdapter {
     // Declare Used Variables
     private Activity activity;
     private ArrayList data;
-    private static LayoutInflater inflater=null;
+    private LayoutInflater inflater;
     public Resources res;
     Transaction tempValuesT=null;
     int i=0;

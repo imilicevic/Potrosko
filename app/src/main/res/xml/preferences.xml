@@ -25,12 +25,4 @@
         </Preference>
     </PreferenceScreen>
 
-    <ListPreference
-        android:key="pref_key_curr_title"
-        android:title="@string/curr_title"
-        android:entries="@array/currencies"
-        android:entryValues="@array/currencies_values"
-        android:defaultValue=""
-        />
-
 </PreferenceScreen>
