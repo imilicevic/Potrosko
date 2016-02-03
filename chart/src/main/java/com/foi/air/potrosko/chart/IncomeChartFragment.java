@@ -41,7 +41,7 @@ public class IncomeChartFragment extends Fragment implements NavigationItem {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_chart_expense,container,false);
+        View v = inflater.inflate(R.layout.fragment_chart,container,false);
 
         pChart = (PieChart) v.findViewById(R.id.pie_chart);
         pChart.setDescription("");
