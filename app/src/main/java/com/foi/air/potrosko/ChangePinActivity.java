@@ -22,14 +22,20 @@ import com.foi.air.potrosko.transactions.CategoryActivity;
 import com.foi.air.potrosko.transactions.SetupEvenlyDistributedToolbar;
 
 
-/**
- * Created by Andrej on 15.11.2015..
+/**Klasa za unos pina od strane korisnika, provjerava
+ * je li pin odgovarajuće dužine, sprema ga u SharedPreferences i
+ * zatim poziva MainActivity
  */
 public class ChangePinActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     public static String etPinString;
     EditText etPin;
 
+    /** Metoda koja prikazuje grafičko sučelje iz xml datoteke
+     * activity_change_pin, zamjenjuje action bar toolbarom
+     * i sprema u EditText objekt vrijednost dobivenu prilikom
+     * unošenja pina u EditText polje
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +53,9 @@ public class ChangePinActivity extends AppCompatActivity {
 
     }
 
+    /** Metoda koja dodaje na toolbar gumbe za potvdu unosa
+     * ili prekid unosa.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -54,6 +63,10 @@ public class ChangePinActivity extends AppCompatActivity {
         return true;
     }
 
+    /** Metoda koja sprema string vrijednost pina u etPinString,
+     * provjerava je li pin odgovarajuće dužine, pohranjuje vrijednost
+     * pina u SharedPreferences i zatim poziva MainActivity
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // stavio sam za sad da šalje na MainActivity kad se kliknu kvačića i ikisić samo

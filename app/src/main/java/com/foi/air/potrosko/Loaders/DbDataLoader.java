@@ -12,11 +12,18 @@ import com.foi.air.potrosko.db.Transaction;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Andrej on 31.1.2016..
- */
 
+/**Klasa koja je zadužena za dohvaćanje podataka iz DB tablica
+ * Category i Transaction te punjenje objekata liste istima
+ */
 public class DbDataLoader extends DataLoader {
+
+    /** Metoda koja u liste iz baze podataka dohvaća sve retke
+     * iz tablica Category i Transaction.
+     * Ako je load podataka uspješan, prikazuje se toast poruka
+     * te se loadani podaci nakon casta kopiraju u nove objekte categories
+     * i transactions
+     */
     @Override
     public void LoadData(Activity activity) {
         super.LoadData(activity); // setup the event listener (MainActivity)

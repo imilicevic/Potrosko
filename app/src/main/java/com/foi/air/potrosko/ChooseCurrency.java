@@ -9,6 +9,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 
+/** Klasa koja provjerava koji je radio gumb odabran
+ * i na temelju njega mijenja polja za tekst valute u glavnoj listi
+ * i kod upisa nove transakcije
+ */
 public class ChooseCurrency extends AppCompatActivity {
 
     private RadioGroup radiogroup;
@@ -18,12 +22,19 @@ public class ChooseCurrency extends AppCompatActivity {
     TextView textViewToChange;
     TextView textViewToChangeTransaction;
 
+    /** Metoda koja prikazuje grafičko sučelje
+     * koje je definirano u xml datoteci od aktivnosti.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_currency);
     }
 
+    /** Metoda koja provjerava koji je radio gumb odabran
+     * i na temelju njega mijenja polja za tekst valute u glavnoj listi
+     * i kod upisa nove transakcije
+     */
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();

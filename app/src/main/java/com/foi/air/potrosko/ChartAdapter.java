@@ -13,8 +13,10 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
-/**
- * Created by Marko Plaftarić on 30-Jan-16.
+
+/**Klasa koja sadrži funkcije za dohvaćanje imena kategorija i vrijednosti
+ * troškova iz baze podataka te ih prosljeđuje klasi ChartScreenFragment.java
+ * koja koristi te vrijednosti za crtanje Piechart grafa
  */
 public class ChartAdapter {
 
@@ -25,8 +27,16 @@ public class ChartAdapter {
     private String[] xData ;
     private int[] indexi = {};
 
+    /** Konstruktor za ChartAdapter koji
+     * ne prima argumente
+     */
     public ChartAdapter(){}
 
+    /** Konstruktor za ChartAdapter koji
+     * kao argumente prima polje float vrijednosti
+     * i polje stringova i tim vrijednostima puni
+     * xData i yData polja
+     */
     public ChartAdapter(float[] f,String[] s){
         this.yData = f;
         this.xData = s;

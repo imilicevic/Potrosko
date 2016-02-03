@@ -31,6 +31,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.zip.Inflater;
 
+
 public class HomeScreenFragment extends Fragment implements NavigationItem{
 
     private ListView list;
@@ -149,36 +150,66 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
         return v;
     }
 
+    /** Metoda koja se implementira zbog sučelja NavigationItem.java,
+     * dio dinamičkog prikaza stavki ladičara
+     *
+     * @return vraća ime stavke menija u ladičaru koju čini ovaj fragment
+     */
     @Override
     public String getItemName() {
         return name;
     }
 
 
+    /** Metoda koja se implementira zbog sučelja NavigationItem.java,
+     * dio dinamičkog prikaza stavki ladičara
+     *
+     * @return vraća poziciju stavke menija u ladičaru koju čini ovaj fragment
+     */
     @Override
     public int getPosition() {
         return position;
     }
 
 
+    /** Metoda koja se implementira zbog sučelja NavigationItem.java,
+     * dio dinamičkog prikaza stavki ladičara
+     *
+     * postavlja position ovisno o primljenom argumentu
+     */
     @Override
     public void setPosition(int position) {
         this.position = position;
     }
 
 
+    /** Metoda koja se implementira zbog sučelja NavigationItem.java,
+     * dio dinamičkog prikaza stavki ladičara
+     *
+     * @return vraća referencu za ovaj fragment
+     */
     @Override
     public android.app.Fragment getFragment() {
         return this;
     }
 
 
+    /** Metoda koja se implementira zbog sučelja NavigationItem.java,
+     * prima vrijednosti polja iz objekata categories i transactions
+     * koji sadrže vrijednosti učitane iz baze podataka.
+     */
     @Override
     public void loadData(ArrayList<Category> categories, ArrayList<Transaction> transactions) {
 
     }
 
 
+    /** Metoda koja iz baze podataka dohvaća id vrijednost
+     * za DB tablicu Transactions
+     *
+     * @return vraća string vrijednosti od redaka koji su
+     * dobiveni upitom
+     */
     public String getMyId(){
 
         List<Transaction> t = SQLiteUtils.rawQuery(Transaction.class,
@@ -194,7 +225,10 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
 
     }
 
-    // Function to set data in ArrayList
+    /** Metoda koja prilikom korisnikovog unosa nove
+     * transakcije prosljeđuje te podatke u listu
+     * koja prikazuje sve transakcije na početnom ekranu.
+     */
     public void setListData()
     {
 

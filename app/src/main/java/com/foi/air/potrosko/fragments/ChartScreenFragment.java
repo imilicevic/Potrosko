@@ -24,9 +24,9 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 
 /**
- * Created by Marko Plaftarić on 30-Jan-16.
+ * Klasa fragmenta koji je zadužen za crtanje Piechart grafa, također
+ * implementira nužne metode iz sučelja NavigationItem.java kao dio modularnosti
  */
-
 public class ChartScreenFragment extends Fragment implements NavigationItem{
 
     public static Fragment newInstance() {
@@ -38,6 +38,10 @@ public class ChartScreenFragment extends Fragment implements NavigationItem{
     private String name = "Charts";
 
 
+    /** Metoda koja je zadužena za grafički prikaz fragmenta za Piechart graf
+     *
+     * @return vraća pogled koji prikazuje grafičko sučelje iz xml koda fragmenta
+     */
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -80,36 +84,63 @@ public class ChartScreenFragment extends Fragment implements NavigationItem{
 
     }
 
+    /** Metoda koja se implementira zbog sučelja NavigationItem.java,
+     * dio dinamičkog prikaza stavki ladičara
+     *
+     * @return vraća ime stavke menija u ladičaru koju čini ovaj fragment
+     */
     @Override
     public String getItemName() {
         return name;
     }
 
 
+    /** Metoda koja se implementira zbog sučelja NavigationItem.java,
+     * dio dinamičkog prikaza stavki ladičara
+     *
+     * @return vraća poziciju stavke menija u ladičaru koju čini ovaj fragment
+     */
     @Override
     public int getPosition() {
         return position;
     }
 
 
+    /** Metoda koja se implementira zbog sučelja NavigationItem.java,
+     * dio dinamičkog prikaza stavki ladičara
+     *
+     * postavlja position ovisno o primljenom argumentu
+     */
     @Override
     public void setPosition(int position) {
         this.position = position;
     }
 
 
+    /** Metoda koja se implementira zbog sučelja NavigationItem.java,
+     * dio dinamičkog prikaza stavki ladičara
+     *
+     * @return vraća referencu za ovaj fragment
+     */
     @Override
     public android.app.Fragment getFragment() {
         return this;
     }
 
 
+    /** Metoda koja se implementira zbog sučelja NavigationItem.java,
+     * prima vrijednosti polja iz objekata categories i transactions
+     * koji sadrže vrijednosti učitane iz baze podataka.
+     */
     @Override
     public void loadData(ArrayList<Category> categories, ArrayList<Transaction> transactions) {
 
     }
 
 
+    /** Funkcija za dohvaćanje vrijednosti troškova i kategorija iz DB,
+     * dodavanje boja grafu te instanciranje samog grafa
+     */
     private void addData() {
 
         // Dohvacam liste sa nazivima kategorija i vrijednostima unesenih transakcija u postocima
