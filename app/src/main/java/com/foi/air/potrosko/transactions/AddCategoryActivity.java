@@ -77,6 +77,7 @@ public class AddCategoryActivity extends AppCompatActivity {
 
                 Toast.makeText(getApplicationContext(), "Uspješno dodano.", Toast.LENGTH_SHORT).show();
                 Intent myIntent = new Intent(this, CategoryActivity.class);
+                myIntent.putExtra("myAmount", getIntent().getStringExtra("myAmount"));
                 startActivity(myIntent);
                 this.finish();
                 return true;

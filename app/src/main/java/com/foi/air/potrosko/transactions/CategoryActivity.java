@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,6 +40,7 @@ import java.util.List;
 public class CategoryActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
+    private TextView txtAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,7 @@ public class CategoryActivity extends AppCompatActivity {
         SetupEvenlyDistributedToolbar.setupEvenlyDistributedToolbar(getWindowManager().getDefaultDisplay(), mToolbar, R.menu.menu_new_transaction); // Calling new method for distributing icons
 
         setSupportActionBar(mToolbar);
+        txtAmount = (TextView) findViewById(R.id.txtAmount);
 
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
@@ -66,7 +69,7 @@ public class CategoryActivity extends AppCompatActivity {
          * Getting data from previous activity (TransactionActivity)
          */
         List<TransactionType> transactionTypes = TransactionType.getAll();
-        if(transactionTypes == null || transactionTypes.size() <= 0){
+        if (transactionTypes == null || transactionTypes.size() <= 0) {
             TransactionType expense = new TransactionType("expense", "amounts spent during time period");
             TransactionType income = new TransactionType("income", "amounts received during time period");
 
@@ -77,7 +80,7 @@ public class CategoryActivity extends AppCompatActivity {
 
             List<Category> categories = Category.getAll();
             Toast.makeText(getApplicationContext(), categories.toString(), Toast.LENGTH_LONG).show();
-            if(categories == null || categories.size() <= 0) {
+            if (categories == null || categories.size() <= 0) {
 
                 /**
                  *  expense categories
@@ -119,17 +122,17 @@ public class CategoryActivity extends AppCompatActivity {
 
             }
         }
-        int id= 0;
+        int id = 0;
         Intent inte = getIntent();
         String str = inte.getStringExtra("id");
         try {
             id = Integer.parseInt(str);
+        } catch (Exception ex) {
         }
-        catch (Exception ex){}
         /**
          * Dohvaćanje podataka item-a kojeg se zeli izmjeniti
          */
-        if(id > 0){
+        if (id > 0) {
 
             Intent myIntent = getIntent();
             if (myIntent.hasExtra("amount")) {
@@ -149,19 +152,17 @@ public class CategoryActivity extends AppCompatActivity {
                 mText.setText(myIntent.getStringExtra("date"));
             }
 
-        }
-        else {
+        } else {
             try {
-                   Intent intent = getIntent();
-                   String s = intent.getStringExtra("myAmount");
-                   Double amount = Double.parseDouble(s);
+                Intent intent = getIntent();
+                String s = intent.getStringExtra("myAmount");
+                Double amount = Double.parseDouble(s);
 
-                   TextView txtAmount = (TextView) findViewById(R.id.txtAmount);
-                   txtAmount.setText(amount.toString());
-                    }
-
-                    catch (Exception ex){}
+                TextView txtAmount = (TextView) findViewById(R.id.txtAmount);
+                txtAmount.setText(amount.toString());
+            } catch (Exception ex) {
             }
+        }
 
 
         /**
@@ -170,43 +171,47 @@ public class CategoryActivity extends AppCompatActivity {
          */
         Spinner spinner;
 
-        spinner = (Spinner)findViewById(R.id.spinner);
+        spinner = (Spinner) findViewById(R.id.spinner);
         ArrayList<String> list = new ArrayList<String>();
 
-        List<Category> AllCategorie ;
-        AllCategorie =  (List<Category>) Category.getAll();
+        List<Category> AllCategorie;
+        AllCategorie = (List<Category>) Category.getAll();
+
         String type = "";
-
-        TextView txtAmount = (TextView) findViewById(R.id.txtAmount);
         String value = txtAmount.getText().toString();
-            try{ Double amount = Double.parseDouble(value);
 
-                if (amount < 0) {
-                    type = "expense";
-                    for (int i = 0; i < AllCategorie.size(); i++) {
-                        String val = AllCategorie.get(i).getName().toString();
-                        String ttype = AllCategorie.get(i).getTransactionType().getName().toString();
-                        if (ttype.equals(type))
-                            list.add(new String(val));
-                    }
+        Log.e("TEST", value + " VALUE");
+        try {
+            Double amount = Double.parseDouble(value);
+
+            if (amount < 0) {
+                Log.e("TEST", "USO SAM U AMOUNT");
+                type = "expense";
+                for (int i = 0; i < AllCategorie.size(); i++) {
+                    String val = AllCategorie.get(i).getName();
+                    String ttype = AllCategorie.get(i).getTransactionType().getName();
+                    if (ttype.equals(type))
+                        list.add(val);
                 }
-                else {
-                    type = "income";
-                    for (int i = 0; i < AllCategorie.size(); i++) {
-                        String val = AllCategorie.get(i).getName().toString();
-                        String ttype = AllCategorie.get(i).getTransactionType().getName().toString();
-                        if (ttype.equals(type))
-                            list.add(new String(val));
-                    }
+            } else {
+                Log.e("TEST", "USO SAM U ELSE");
+                type = "income";
+                for (int i = 0; i < AllCategorie.size(); i++) {
+                    String val = AllCategorie.get(i).getName();
+                    String ttype = AllCategorie.get(i).getTransactionType().getName();
+                    if (ttype.equals(type))
+                        list.add(val);
                 }
+            }
 
             ArrayAdapter arrayAdapter;
             arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, list);
             arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(arrayAdapter);
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
-            catch (Exception ex){}
-     }
+    }
 
 
     @Override
@@ -216,9 +221,10 @@ public class CategoryActivity extends AppCompatActivity {
     }
 
     /**
-     *  Handle action bar item clicks here. The action bar will
-     *  automatically handle clicks on the Home/Up button, so long
-     *  as you specify a parent activity in AndroidManifest.xml.
+     * Handle action bar item clicks here. The action bar will
+     * automatically handle clicks on the Home/Up button, so long
+     * as you specify a parent activity in AndroidManifest.xml.
+     *
      * @param item
      */
     @Override
@@ -240,7 +246,8 @@ public class CategoryActivity extends AppCompatActivity {
 
                     new Update(Transaction.class).set(dTxt, deTxt).where("id = ?", id).execute();*/
 
-                try {  Intent intent = getIntent();
+                try {
+                    Intent intent = getIntent();
                     String s = intent.getStringExtra("myAmount");
                     Double amount = Double.parseDouble(s);
 
@@ -249,18 +256,17 @@ public class CategoryActivity extends AppCompatActivity {
                      */
                     if (amount > 0) {
                         ttype = TransactionType.getType("income");
-                    }
-                    else {
+                    } else {
                         ttype = TransactionType.getType("expense");
                         amount *= -1;
                     }
                     String note = ((TextView) findViewById(R.id.txtNote)).getText().toString();
 
-                    Spinner spinner = (Spinner)findViewById(R.id.spinner);
+                    Spinner spinner = (Spinner) findViewById(R.id.spinner);
                     String value = spinner.getSelectedItem().toString();
 
                     c = Category.getCategory(value);
-                    if(c == null){
+                    if (c == null) {
                         c = Category.getCategory("opće");
                     }
                     String dateTxt = ((TextView) findViewById(R.id.txtDate)).getText().toString();
@@ -269,11 +275,9 @@ public class CategoryActivity extends AppCompatActivity {
                     transaction.save();
 
                     Toast.makeText(getApplicationContext(), "Uspješno dodano.", Toast.LENGTH_SHORT).show();
-                }
-                catch (Exception ex) {
+                } catch (Exception ex) {
                     Toast.makeText(getApplicationContext(), ex.toString(), Toast.LENGTH_LONG).show();
-                }
-                finally {
+                } finally {
                     Intent myIntent = new Intent(this, MainActivity.class);
                     myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(myIntent);
@@ -296,6 +300,7 @@ public class CategoryActivity extends AppCompatActivity {
 
     public void addActivity(View view) {
         Intent intent = new Intent(this, AddCategoryActivity.class);
+        intent.putExtra("myAmount", getIntent().getStringExtra("myAmount"));
         startActivity(intent);
     }
 

@@ -27,37 +27,26 @@ public class SplashScreenActivity extends Activity {
 
         final SharedPreferences sharedPrefs = PreferenceManager
                 .getDefaultSharedPreferences(SplashScreenActivity.this);
-                sharedPrefs.registerOnSharedPreferenceChangeListener(new SharedPreferences.OnSharedPreferenceChangeListener() {
-                    @Override
-                    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-                        boolean test = sharedPrefs.getBoolean("pref_key_setpass_title", false);
-                    }
-                });
+
 
 
         new Handler().postDelayed(new Runnable() {
-
             @Override
             public void  run() {
-                // This method will be executed once the timer is over
-                // Start your app main activity
-
-                /*if(sharedPrefs.getBoolean("pref_key_setpass_title", false)){
-                    Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
-                    startActivity(intent);
-                }*/
-
                 if (pin2 != null && !pin2.isEmpty()){
-                    //starting LoginActivity
+                    if(sharedPrefs.getBoolean("pref_key_setpass_title", false)){
+                        Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                    else {
                     Intent intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
                     startActivity(intent);
+                    }
                 }
                 else{
-                    //starting ChangePinActivity
                     Intent intent = new Intent(SplashScreenActivity.this, ChangePinActivity.class);
                     startActivity(intent);
                 }
-                // close this activity
                 finish();
             }
         }, SPLASH_TIMER);
@@ -68,5 +57,4 @@ public class SplashScreenActivity extends Activity {
         super.onPause();
         finish();
     }
-
 }
