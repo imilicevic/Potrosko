@@ -5,8 +5,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.util.Log;
-import android.widget.Toast;
+
+import com.foi.air.potrosko.login.ChangePinActivity;
+import com.foi.air.potrosko.login.LoginActivity;
 
 /**
  * Created by Ivan on 10.11.2015..

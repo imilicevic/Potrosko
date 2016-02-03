@@ -1,10 +1,11 @@
-package com.foi.air.potrosko;
+package com.foi.air.potrosko.settings;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 
-import com.foi.air.potrosko.fragments.SettingsFragment;
+import com.foi.air.potrosko.R;
+import com.foi.air.potrosko.settings.SettingsFragment;
 
 /**Klasa koja u svom grafičkom sučelju
  * učitava fragment od postavki aplikacije

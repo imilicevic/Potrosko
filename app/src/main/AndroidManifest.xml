@@ -35,7 +35,7 @@
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".login.LoginActivity"
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait"></activity>
         <activity
@@ -43,22 +43,22 @@
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".SettingsActivity"
+            android:name=".settings.SettingsActivity"
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".ChangePinActivity"
+            android:name=".login.ChangePinActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateAlwaysVisible"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".ChooseCurrency"
+            android:name=".settings.ChooseCurrency"
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".OldPinActivity"
+            android:name=".login.OldPinActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateAlwaysVisible"
             android:screenOrientation="portrait">

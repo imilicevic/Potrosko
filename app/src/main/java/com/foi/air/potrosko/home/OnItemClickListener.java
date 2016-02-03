@@ -1,4 +1,4 @@
-package com.foi.air.potrosko.core;
+package com.foi.air.potrosko.home;
 
 import android.app.Activity;
 import android.view.View;

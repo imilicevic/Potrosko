@@ -1,4 +1,4 @@
-package com.foi.air.potrosko.fragments;
+package com.foi.air.potrosko.settings;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
