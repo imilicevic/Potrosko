@@ -20,7 +20,7 @@
         <intent
             android:action="android.intent.action.MAIN"
             android:targetPackage="com.foi.air.potrosko"
-            android:targetClass="com.foi.air.potrosko.OldPinActivity"
+            android:targetClass="com.foi.air.potrosko.login.OldPinActivity"
             />
         </Preference>
     </PreferenceScreen>
