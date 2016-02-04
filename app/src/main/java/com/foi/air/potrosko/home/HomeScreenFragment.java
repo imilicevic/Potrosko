@@ -28,7 +28,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-
+/**
+ * Fragment s prikazom prilagođenog ListViewa
+ */
 public class HomeScreenFragment extends Fragment implements NavigationItem{
 
     private ListView list;
@@ -252,10 +254,10 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
      */
     public String getMyId(){
 
-        List<Transaction> t = SQLiteUtils.rawQuery(Transaction.class,
-                "SELECT Transactions.id from Transactions join Categories on Transactions.Category = Categories.id " +
-                        "where note = ? and amount = ? and date = ? and Categories.name = ?"
-                , new String[]{strNote,strAmount,strDate,strCategory});
+        DbDataLoader dl = new DbDataLoader();
+        dl.LoadData(getActivity());
+        List<Transaction> t = dl.LoadMyId(strNote,strAmount,strDate,strCategory);
+
         String idToEdit = "";
                 for(int i=0; i<t.size(); i++){
                     idToEdit = t.get(i).getId().toString();

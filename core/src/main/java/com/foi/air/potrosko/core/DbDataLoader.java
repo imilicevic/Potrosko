@@ -1,11 +1,9 @@
 package com.foi.air.potrosko.core;
 
 import android.app.Activity;
-import android.widget.Toast;
 
 import com.activeandroid.query.Select;
 import com.activeandroid.util.SQLiteUtils;
-import com.foi.air.potrosko.core.DataLoader;
 import com.foi.air.potrosko.db.Category;
 import com.foi.air.potrosko.db.Transaction;
 
@@ -43,7 +41,6 @@ public class DbDataLoader extends DataLoader {
         }
 
         if(databaseQuerySuccessful == true && categoriesFromDb.size() > 0 ){
-            Toast.makeText(activity, "LoadData Successful", Toast.LENGTH_SHORT).show();
             categories = (ArrayList<Category>) categoriesFromDb;
             transactions = (ArrayList<Transaction>) transactionsFromDb;
 
@@ -51,6 +48,11 @@ public class DbDataLoader extends DataLoader {
         }
     }
 
+    /**Metoda koja dohvaća podatke iz baze koje koriste Pie chartovi
+     *
+     * @param transactionType
+     * @return lista transakcija
+     */
     public List<Transaction> LoadChartData (String transactionType){
 
         List<Transaction> t = SQLiteUtils.rawQuery(Transaction.class,
@@ -60,5 +62,19 @@ public class DbDataLoader extends DataLoader {
         return t;
     }
 
+
+    /**Za zadane parametre upit dohvaća id iz baze. Koristi se u HomeScreenFragmentu za Edit i Delete
+     *
+     * @return id
+     */
+    public List<Transaction> LoadMyId (String strNote, String strAmount, String strDate, String strCategory){
+
+        List<Transaction> t = SQLiteUtils.rawQuery(Transaction.class,
+                "SELECT Transactions.id from Transactions join Categories on Transactions.Category = Categories.id " +
+                        "where note = ? and amount = ? and date = ? and Categories.name = ?"
+                , new String[]{strNote,strAmount,strDate,strCategory});
+
+        return  t;
+    }
 
 }
