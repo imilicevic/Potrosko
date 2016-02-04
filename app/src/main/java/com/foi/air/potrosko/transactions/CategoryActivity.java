@@ -20,8 +20,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.activeandroid.query.Update;
+import com.activeandroid.util.SQLiteUtils;
 import com.foi.air.potrosko.MainActivity;
 import com.foi.air.potrosko.R;
+import com.foi.air.potrosko.core.DbDataLoader;
 import com.foi.air.potrosko.db.Category;
 import com.foi.air.potrosko.db.Transaction;
 import com.foi.air.potrosko.db.TransactionType;
@@ -41,6 +43,9 @@ public class CategoryActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
     private TextView txtAmount;
+    private int tempId = -1;
+    private String cat;
+    private String trueId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,8 +130,10 @@ public class CategoryActivity extends AppCompatActivity {
         int id = 0;
         Intent inte = getIntent();
         String str = inte.getStringExtra("id");
+        trueId = str;
         try {
             id = Integer.parseInt(str);
+            tempId = id;
         } catch (Exception ex) {
         }
         /**
@@ -140,14 +147,15 @@ public class CategoryActivity extends AppCompatActivity {
                 mText.setText(myIntent.getStringExtra("amount"));
             }
             if (myIntent.hasExtra("category")) {
+                cat = myIntent.getStringExtra("category");
                 Spinner mSpin = (Spinner) findViewById(R.id.spinner);
                 List<Category> AllCategorie;
                 AllCategorie = (List<Category>) Category.getAll();
                 for (int i = 0; i < AllCategorie.size(); i++) {
                     if(AllCategorie.get(i).getName().equals(myIntent.getStringExtra("category"))){
 
-                        mSpin.setSelection(i,true);
-                        Log.e("KAT", i + " kategorija");
+                        mSpin.setSelection(i, true);
+                        //Log.e("KAT", i + " kategorija");
                     }
                 }
             }
@@ -244,6 +252,8 @@ public class CategoryActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.action_accept:
+
+
                 //Spremanje editiranog item-a
                 /*int id = 0;
                     Intent inte = getIntent();
@@ -254,34 +264,58 @@ public class CategoryActivity extends AppCompatActivity {
 
                     new Update(Transaction.class).set(dTxt, deTxt).where("id = ?", id).execute();*/
 
-                try {
-                    Intent intent = getIntent();
-                    String s = intent.getStringExtra("myAmount");
-                    Double amount = Double.parseDouble(s);
 
-                    /**
-                     * setting Transaction type
-                     */
-                    if (amount < 0) {
-                        ttype = TransactionType.getType("expense");
-                    } else {
-                        ttype = TransactionType.getType("income");
-                    }
-                    String note = ((TextView) findViewById(R.id.txtNote)).getText().toString();
+                //ovo je ok dalje
 
-                    Spinner spinner = (Spinner) findViewById(R.id.spinner);
-                    String value = spinner.getSelectedItem().toString();
 
-                    c = Category.getCategory(value);
-                    if (c == null) {
-                        c = Category.getCategory("opće");
-                    }
-                    String dateTxt = ((TextView) findViewById(R.id.txtDate)).getText().toString();
+                    try {
+                        if (tempId < 0)
+                        {
+                            Intent intent = getIntent();
+                            String s = intent.getStringExtra("myAmount");
+                            Double amount = Double.parseDouble(s);
 
-                    transaction = new Transaction(ttype, c, c.getName(), dateTxt, note, amount);
-                    transaction.save();
+                            //setting Transaction type
 
-                    Toast.makeText(getApplicationContext(), "Uspješno dodano.", Toast.LENGTH_SHORT).show();
+                            if (amount < 0) {
+                                ttype = TransactionType.getType("expense");
+                            } else {
+                                ttype = TransactionType.getType("income");
+                            }
+                            String note = ((TextView) findViewById(R.id.txtNote)).getText().toString();
+
+                            Spinner spinner = (Spinner) findViewById(R.id.spinner);
+                            String value = spinner.getSelectedItem().toString();
+
+                            c = Category.getCategory(value);
+                            if (c == null) {
+                                c = Category.getCategory("opće");
+                            }
+                            String dateTxt = ((TextView) findViewById(R.id.txtDate)).getText().toString();
+
+                            transaction = new Transaction(ttype, c, c.getName(), dateTxt, note, amount);
+                            transaction.save();
+
+                            Toast.makeText(getApplicationContext(), "Uspješno dodano.", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+
+                            String amountStr = ((TextView) findViewById(R.id.txtAmount)).getText().toString();
+                            Spinner spinner = (Spinner) findViewById(R.id.spinner);
+                            String catSpin = spinner.getSelectedItem().toString();
+                            String dateStr = ((TextView) findViewById(R.id.txtDate)).getText().toString();
+                            String noteStr = ((TextView) findViewById(R.id.txtNote)).getText().toString();
+                            if(noteStr.isEmpty()){noteStr = " ";}
+
+                            List<Transaction> t = SQLiteUtils.rawQuery(Transaction.class,
+                                    "UPDATE Transactions SET amount = ?, date = ?, note = ?" +
+                                            " WHERE Transactions.id = ?"
+                                    , new String[]{amountStr, dateStr, noteStr, trueId});
+
+                            //Activeandroid sintaxa neispravna
+                            //new Update(Transaction.class).set(amountStr,noteStr,dateStr).where("id = ? AND date=?", tempId).execute();
+
+                        }
                 } catch (Exception ex) {
                     Toast.makeText(getApplicationContext(), ex.toString(), Toast.LENGTH_LONG).show();
                 } finally {
