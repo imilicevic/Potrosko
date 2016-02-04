@@ -23,10 +23,6 @@
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".transactions.TransactionChartActivity"
-            android:theme="@style/AppTheme"
-            android:screenOrientation="portrait"></activity>
-        <activity
             android:name=".transactions.TransactionActivity"
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait"></activity>
