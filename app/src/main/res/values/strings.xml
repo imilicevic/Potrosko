@@ -21,8 +21,7 @@
     <!-- currency -->
     <string name="currency">USD</string>
 
-    <!-- Drawer  TODO izmjeniti ili maknuti potrosko@gmail.com -->
-    <string name="header">potrosko@gmail.com</string>
+    <!-- Drawer  -->
     <string name="drawer1">Overview</string>
     <string name="drawer2">Charts</string>
     <string name="drawer3">Settings</string>

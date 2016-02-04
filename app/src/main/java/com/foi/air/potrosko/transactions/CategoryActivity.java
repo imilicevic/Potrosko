@@ -1,38 +1,29 @@
 package com.foi.air.potrosko.transactions;
 
-import android.app.DatePickerDialog;
+
 import android.content.Intent;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.activeandroid.query.Update;
 import com.activeandroid.util.SQLiteUtils;
 import com.foi.air.potrosko.MainActivity;
 import com.foi.air.potrosko.R;
-import com.foi.air.potrosko.core.DbDataLoader;
 import com.foi.air.potrosko.db.Category;
 import com.foi.air.potrosko.db.Transaction;
 import com.foi.air.potrosko.db.TransactionType;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -79,9 +70,7 @@ public class CategoryActivity extends AppCompatActivity {
             TransactionType income = new TransactionType("income", "amounts received during time period");
 
             expense.save();
-            //Toast.makeText(getApplicationContext(), expense.toString(), Toast.LENGTH_SHORT).show();
             income.save();
-            //Toast.makeText(getApplicationContext(), income.toString(), Toast.LENGTH_SHORT).show();
 
             List<Category> categories = Category.getAll();
             //Toast.makeText(getApplicationContext(), categories.toString(), Toast.LENGTH_LONG).show();
@@ -121,9 +110,6 @@ public class CategoryActivity extends AppCompatActivity {
                 salary.save();
                 secondIncome.save();
                 gift.save();
-
-                //Toast.makeText(getApplicationContext(), gift.toString(), Toast.LENGTH_SHORT).show();
-                //Toast.makeText(getApplicationContext(), "Kategorije dodane.", Toast.LENGTH_SHORT).show();
 
             }
         }
@@ -196,12 +182,10 @@ public class CategoryActivity extends AppCompatActivity {
         String type = "";
         String value = txtAmount.getText().toString();
 
-        Log.e("TEST", value + " VALUE");
         try {
             Double amount = Double.parseDouble(value);
 
             if (amount < 0) {
-                Log.e("TEST", "USO SAM U AMOUNT");
                 type = "expense";
                 for (int i = 0; i < AllCategorie.size(); i++) {
                     String val = AllCategorie.get(i).getName();
@@ -210,7 +194,6 @@ public class CategoryActivity extends AppCompatActivity {
                         list.add(val);
                 }
             } else {
-                Log.e("TEST", "USO SAM U ELSE");
                 type = "income";
                 for (int i = 0; i < AllCategorie.size(); i++) {
                     String val = AllCategorie.get(i).getName();
@@ -253,21 +236,6 @@ public class CategoryActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_accept:
 
-
-                //Spremanje editiranog item-a
-                /*int id = 0;
-                    Intent inte = getIntent();
-                    int str =Integer.parseInt(inte.getStringExtra("id"));
-                    id = str;
-                    String dTxt = ((TextView) findViewById(R.id.txtDate)).getText().toString();
-                    String deTxt = ((TextView) findViewById(R.id.txtdescrip)).getText().toString();
-
-                    new Update(Transaction.class).set(dTxt, deTxt).where("id = ?", id).execute();*/
-
-
-                //ovo je ok dalje
-
-
                     try {
                         if (tempId < 0)
                         {
@@ -306,6 +274,10 @@ public class CategoryActivity extends AppCompatActivity {
                             String dateStr = ((TextView) findViewById(R.id.txtDate)).getText().toString();
                             String noteStr = ((TextView) findViewById(R.id.txtNote)).getText().toString();
                             if(noteStr.isEmpty()){noteStr = " ";}
+                            if(!isValidInput(amountStr)){
+                                Toast.makeText(this, "Unesite broj sa max 7 znamenki molim!", Toast.LENGTH_LONG).show();
+                                return false;
+                            }
 
                             List<Transaction> t = SQLiteUtils.rawQuery(Transaction.class,
                                     "UPDATE Transactions SET amount = ?, date = ?, note = ?" +
@@ -343,6 +315,14 @@ public class CategoryActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddCategoryActivity.class);
         intent.putExtra("myAmount", getIntent().getStringExtra("myAmount"));
         startActivity(intent);
+    }
+
+    // validacija unosa
+    private boolean isValidInput(String input) {
+        if (input.length() > 7 || input.isEmpty()) {
+            return false;
+        }
+        return true;
     }
 
     @Override
