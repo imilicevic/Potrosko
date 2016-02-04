@@ -28,7 +28,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-
+/**
+ * Fragment s prikazom prilagođenog ListViewa
+ */
 public class HomeScreenFragment extends Fragment implements NavigationItem{
 
     private ListView list;

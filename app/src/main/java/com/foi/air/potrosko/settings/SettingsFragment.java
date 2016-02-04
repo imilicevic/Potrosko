@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 /**
  * Created by Ivan on 14.11.2015..
+ * Settings fragment sadrži prikaz postavki u aplikaciji
  */
 public class SettingsFragment extends PreferenceFragment implements NavigationItem {
     private Class fragmentClass;
@@ -33,8 +34,6 @@ public class SettingsFragment extends PreferenceFragment implements NavigationIt
 
         // Load the preferences from an XML resource
         addPreferencesFromResource(R.xml.preferences);
-
-
     }
 
 
