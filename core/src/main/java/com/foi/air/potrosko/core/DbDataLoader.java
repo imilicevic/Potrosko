@@ -24,7 +24,7 @@ public class DbDataLoader extends DataLoader {
      */
     @Override
     public void LoadData(Activity activity) {
-        super.LoadData(activity); // setup the event listener (MainActivity)
+        super.LoadData(activity);
 
         List<Category> categoriesFromDb = null ;
         List<Transaction> transactionsFromDb = null;
@@ -62,9 +62,7 @@ public class DbDataLoader extends DataLoader {
         return t;
     }
 
-
     /**Za zadane parametre upit dohvaća id iz baze. Koristi se u HomeScreenFragmentu za Edit i Delete
-     *
      * @return id
      */
     public List<Transaction> LoadMyId (String strNote, String strAmount, String strDate, String strCategory){
@@ -76,5 +74,4 @@ public class DbDataLoader extends DataLoader {
 
         return  t;
     }
-
 }

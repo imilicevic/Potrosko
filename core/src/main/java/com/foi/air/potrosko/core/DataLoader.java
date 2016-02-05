@@ -38,5 +38,4 @@ public abstract class DataLoader {
             return true;
         }
     }
-
 }

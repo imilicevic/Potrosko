@@ -29,8 +29,6 @@ public class SplashScreenActivity extends Activity {
         final SharedPreferences sharedPrefs = PreferenceManager
                 .getDefaultSharedPreferences(SplashScreenActivity.this);
 
-
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void  run() {

@@ -94,7 +94,4 @@ public class Category extends Model {
                 .where("name = ?", name)
                 .executeSingle();
     }
-
-
-
 }

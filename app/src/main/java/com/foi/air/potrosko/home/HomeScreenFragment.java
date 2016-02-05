@@ -43,7 +43,6 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
     private String strAmount;
     private String strNote;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,8 +57,7 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
         View v = inflater.inflate(R.layout.fragment_home_screen, null);
         list = (ListView)v.findViewById(R.id.listViewHome);
 
-
-        DataLoader dl = new DbDataLoader();
+        final DataLoader dl = new DbDataLoader();
         dl.LoadData(getActivity());
         loadData(dl.categories,dl.transactions);
 
@@ -105,10 +103,17 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
 
                                                                     // brisanje preko id-a
                                                                     new Delete().from(Transaction.class).where("  id  = ?", getMyId()).execute();
-                                                                    CustomListViewValuesArr.remove(position);
+                                                                    try {
+                                                                        CustomListViewValuesArr.remove(position);
+                                                                    }catch (IndexOutOfBoundsException e){
+                                                                        Toast.makeText(getActivity(),"Ne trebaš me brisati. Unesi svoju prvu transakciju i ja ću nestati!", Toast.LENGTH_LONG).show();
+                                                                    }
+
                                                                     customAdapter.notifyDataSetChanged();
 
-                                                                    Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.delete_successful), Toast.LENGTH_LONG).show();
+                                                                    if (dl.transactions != null){
+                                                                        Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.delete_successful), Toast.LENGTH_LONG).show();
+                                                                    }
 
                                                                     break;
                                                             }
@@ -135,9 +140,6 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
                                     myIntent.putExtra("note", strNote);
                                     myIntent.putExtra("id", id);
                                     startActivity(myIntent);
-
-                                    //Toast.makeText(getActivity(), "Id: " + getMyId(), Toast.LENGTH_SHORT).show();
-
                                 }
                             })
                             .show();
@@ -150,15 +152,12 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
                     //Toast.makeText(getActivity().getBaseContext(), "Long click je uspješan", Toast.LENGTH_SHORT).show();
                 }
 
-
                 return true;
             }
         });
 
         return v;
     }
-
-
 
     /** Metoda koja se implementira zbog sučelja NavigationItem.java,
      * dio dinamičkog prikaza stavki ladičara
@@ -169,8 +168,6 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
     public String getItemName() {
         return name;
     }
-
-
     /** Metoda koja se implementira zbog sučelja NavigationItem.java,
      * dio dinamičkog prikaza stavki ladičara
      *
@@ -180,8 +177,6 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
     public int getPosition() {
         return position;
     }
-
-
     /** Metoda koja se implementira zbog sučelja NavigationItem.java,
      * dio dinamičkog prikaza stavki ladičara
      *
@@ -191,7 +186,6 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
     public void setPosition(int position) {
         this.position = position;
     }
-
 
     /** Metoda koja se implementira zbog sučelja NavigationItem.java,
      * dio dinamičkog prikaza stavki ladičara
@@ -203,7 +197,6 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
         return this;
     }
 
-
     /** Metoda koja se implementira zbog sučelja NavigationItem.java,
      * prima vrijednosti polja iz objekata categories i transactions
      * koji sadrže vrijednosti učitane iz baze podataka.
@@ -211,40 +204,41 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
     @Override
     public void loadData(ArrayList<Category> cat, ArrayList<Transaction> tra) {
 
-        CustomListViewValuesArr.clear();
+        try {
+            CustomListViewValuesArr.clear();
 
-        for (int i = 0; i < tra.size(); i++) {
+            for (int i = 0; i < tra.size(); i++) {
 
-            final Transaction myList = new Transaction();
-            Transaction t = tra.get(i);
+                final Transaction myList = new Transaction();
+                Transaction t = tra.get(i);
 
-            Category c = cat.get(1);
+                Category c = cat.get(1);
 
-            // Firstly take data in model object
-            try {
-                myList.setCategory(t.getCategory());
-            }catch (Exception ex){
-                myList.setCategory(c);
+                try {
+                    myList.setCategory(t.getCategory());
+                }catch (Exception ex){
+                    myList.setCategory(c);
+                }
+                myList.setAmount(t.getAmount());
+
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy.");
+                String date = "";
+
+                try {
+                    date = t.getDate();
+                } catch (Exception ex) {
+                    date = sdf.format(Calendar.getInstance().getTime());
+                }finally {
+                    myList.setDate(date);
+                }
+                myList.setNote(t.getNote());
+
+                CustomListViewValuesArr.add(myList);
             }
-            myList.setAmount(t.getAmount());
+        }catch (NullPointerException e){
 
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy.");
-            String date = "";
-
-            try {
-                date = t.getDate();
-            } catch (Exception ex) {
-                date = sdf.format(Calendar.getInstance().getTime());
-            }finally {
-                myList.setDate(date);
-            }
-            myList.setNote(t.getNote());
-
-            // Take Model Object in ArrayList
-            CustomListViewValuesArr.add(myList);
         }
     }
-
 
     /** Metoda koja iz baze podataka dohvaća id vrijednost
      * za DB tablicu Transactions
@@ -253,7 +247,6 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
      * dobiveni upitom
      */
     public String getMyId(){
-
         DbDataLoader dl = new DbDataLoader();
         dl.LoadData(getActivity());
         List<Transaction> t = dl.LoadMyId(strNote,strAmount,strDate,strCategory);
@@ -262,18 +255,12 @@ public class HomeScreenFragment extends Fragment implements NavigationItem{
                 for(int i=0; i<t.size(); i++){
                     idToEdit = t.get(i).getId().toString();
                 }
-
         return idToEdit;
-
     }
-
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         CustomListViewValuesArr.clear();
     }
-
-
-
 }

@@ -13,22 +13,13 @@ public class OnItemClickListener implements View.OnClickListener {
     private Transaction model;
     private Activity ac;
 
-
     public OnItemClickListener(Transaction model, Activity act) {
         this.model = model;
         this.ac = act;
     }
 
-    OnItemClickListener(int position){
-     mPosition = position;
-    }
-
     @Override
     public void onClick(View arg0) {
-
-        // SHOW ALERT
-        //Toast.makeText(ac, "" + model.getCategory() + "  Amount:" + model.getAmountString(), Toast.LENGTH_LONG).show();
-
 
            }
 }

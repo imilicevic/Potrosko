@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements android.app.Fragm
             nm.addItem(new SettingsFragment());
             nm.loadDefaultFragment();
 
-        } else {  // running to reuse existing fragments
+        } else {
             nm.reloadItems();
         }
     }

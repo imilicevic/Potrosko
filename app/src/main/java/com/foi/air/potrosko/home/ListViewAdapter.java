@@ -3,6 +3,7 @@ package com.foi.air.potrosko.home;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.support.v4.content.res.ResourcesCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,8 +57,6 @@ public class ListViewAdapter extends BaseAdapter {
     public long getItemId(int position) {
         return position;
     }
-
-
 
     // Create a holder Class to contain inflated xml file elements
     public static class ViewHolder{
@@ -116,28 +115,28 @@ public class ListViewAdapter extends BaseAdapter {
 
 
             if (tempValuesT.getCategoryName().equals("General")) {
-                holder.image.setImageDrawable(activity.getResources().getDrawable(com.foi.air.potrosko.core.R.drawable.barbershop));
+                holder.image.setImageDrawable(ResourcesCompat.getDrawable(activity.getResources(), com.foi.air.potrosko.core.R.drawable.barbershop, null));
             }
             else if (tempValuesT.getCategoryName().equals("Food")){
-                holder.image.setImageDrawable(activity.getResources().getDrawable(com.foi.air.potrosko.core.R.drawable.food));
+                holder.image.setImageDrawable(ResourcesCompat.getDrawable(activity.getResources(), com.foi.air.potrosko.core.R.drawable.food, null));
             }
             else if (tempValuesT.getCategoryName().equals("Car")){
-                holder.image.setImageDrawable(activity.getResources().getDrawable(com.foi.air.potrosko.core.R.drawable.car));
+                holder.image.setImageDrawable(ResourcesCompat.getDrawable(activity.getResources(), com.foi.air.potrosko.core.R.drawable.car, null));
             }
             else if (tempValuesT.getCategoryName().equals("Travel")) {
-                holder.image.setImageDrawable(activity.getResources().getDrawable(com.foi.air.potrosko.core.R.drawable.party));
+                holder.image.setImageDrawable(ResourcesCompat.getDrawable(activity.getResources(), com.foi.air.potrosko.core.R.drawable.party, null));
             }
             else if (tempValuesT.getCategoryName().equals("House")) {
-                holder.image.setImageDrawable(activity.getResources().getDrawable(com.foi.air.potrosko.core.R.drawable.ingredients));
+                holder.image.setImageDrawable(ResourcesCompat.getDrawable(activity.getResources(), com.foi.air.potrosko.core.R.drawable.ingredients, null));
             }
             else if (tempValuesT.getCategoryName().equals("Shopping")) {
-                holder.image.setImageDrawable(activity.getResources().getDrawable(com.foi.air.potrosko.core.R.drawable.clothes));
+                holder.image.setImageDrawable(ResourcesCompat.getDrawable(activity.getResources(), com.foi.air.potrosko.core.R.drawable.clothes, null));
             }
             else if (tempValuesT.getCategoryName().equals("Transport")) {
-                holder.image.setImageDrawable(activity.getResources().getDrawable(com.foi.air.potrosko.core.R.drawable.car));
+                holder.image.setImageDrawable(ResourcesCompat.getDrawable(activity.getResources(), com.foi.air.potrosko.core.R.drawable.car, null));
             }
             else
-                holder.image.setImageDrawable(activity.getResources().getDrawable(com.foi.air.potrosko.core.R.drawable.mobile));
+                holder.image.setImageDrawable(ResourcesCompat.getDrawable(activity.getResources(), com.foi.air.potrosko.core.R.drawable.mobile, null));
 
 
             //TODO srediti ostatak ikona
